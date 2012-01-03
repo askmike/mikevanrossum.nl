@@ -21,10 +21,7 @@ All is written by me except for:
  - plugin: jQuery color function of jQuery UI [jqueryui.com]
 
 -->
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lte IE 7]> <html id="html" class="no-js ie7 oldie" lang="nl"> <![endif]-->
-<!--[if gt IE 7]> <html id="html" class="no-js ie8" lang="nl"> <![endif]-->
-<!--[if !IE]><!--><html id="html" class="no-js" lang="nl"><!--<![endif]-->
+<html id="html" class="no-js" lang="nl">
 <head>
 	<meta charset="utf-8">
 
