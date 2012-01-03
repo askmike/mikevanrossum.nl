@@ -21,3 +21,4 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
 </body>
 </html>
+<!-- <?= round((microtime(true) - START)*1000, 4) . ' miliseconds'; ?> -->

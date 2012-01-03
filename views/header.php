@@ -47,7 +47,6 @@ All is written by me except for:
        For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
   <script src="<?php echo BASE; ?>static/js/libs/custom-modernizr.js"></script>
 </head>
-
 <body>
 	<header>
 		<div id='header'>

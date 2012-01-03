@@ -1,4 +1,7 @@
 <?php
+
+define('START', microtime(true));
+
 //define basic things we need before we can require anything at all
 define('APP', 'core/');
 define('CONTROLLERS', APP . 'controllers/');

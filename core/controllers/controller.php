@@ -17,7 +17,7 @@ class Controller {
 		$this->model = new portfolioModel;
 		$data = $this->model->getPortfolio();
 		
-		$data = $this->AddDatesToPortfolio($data);
+		$data = $this->addDatesToPortfolio($data);
 		
 		
 		$this->getSite('home', $data);
@@ -40,17 +40,22 @@ class Controller {
 	}
 	
 	//following 3 functions transform timestamp to dutch dates 
-	function AddDatesToPortfolio($array) {
+	function addDatesToPortfolio($array) {
 		if(is_array($array)) {
 			foreach ($array as $value) {
-				if(is_array($value)) {
-					$month = date('n ',$value['date']);
-					$value['dutchdate'] = date('j ',$value['date']) . $this->getMonth($month -1) . date(' Y',$value['date']);
-					$newArr[] = $value;
-				}
+				$value = $this->addDutchDate($value, 'date', 'dutchdate');
+				$newArr[] = $value;
 			}
 		} 
 		return $newArr ? $newArr : $array;
+	}
+	
+	function addDutchDate($array, $timestamp, $name) {
+		if(is_array($array)) {
+			$month = date('n ',$array[$timestamp]);
+			$array[$name] = date('j ',$array[$timestamp]) . $this->getMonth($month -1) . date(' Y',$array[$timestamp]);
+		}
+		return $array;
 	}
 	
 	function getMonth($number) {
