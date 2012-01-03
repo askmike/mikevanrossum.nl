@@ -79,7 +79,7 @@ $(function() {
 
 			//if this is on pageload
 			if(!isNumber(old)) {
-				$menu.lavaLamp({ fx: "easeInOutCirc", speed: 400 });	
+				$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });	
 				
 				//because of (something that looks like) a bug in animate I set the css also via js
 				//bug: when not setting those via js the first fadeout animation breaks
