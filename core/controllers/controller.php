@@ -12,14 +12,24 @@ class Controller {
 		//instanciate load
 		$this->load = new Load();
 		
-		$this->getPage('home');
+		require MODELS . 'portfolioModel.php';
+		
+		$this->model = new portfolioModel;
+		$data = $this->model->getPortfolio();
+		
+		$data = $this->AddDatesToPortfolio($data);
+		
+		
+		$this->getSite('home', $data);
 	}
 	
-	function getPage($view, $data = null) {  
+	function getSite($view, $data = null) {  
 		//if multiple functions need the menu
 		
 		$this->load->view('header',$data);
 		$this->load->view($view, $data);
+		$this->load->view('portfolio',$data);
+		$this->load->view('blog',$data);
 		$this->load->view('footer');
 	}
 	
@@ -30,29 +40,17 @@ class Controller {
 	}
 	
 	//following 3 functions transform timestamp to dutch dates 
-	function AddDatesToEvents($array) {
+	function AddDatesToPortfolio($array) {
 		if(is_array($array)) {
 			foreach ($array as $value) {
-				//extract the date from timestamp
-				$date = getdate($value['eventdate']);
-				//extract month and day from $date
-				$month = $date['mon'];
-				$day = $date['mday'];
-				//set month (-1 because $allMonths starts at 0)
-				$value['month'] = $this->getMonth($month - 1);
-				$value['day'] = $day;
-				$value['year'] = $date['year'];
-				//store everything in new array
-				$newArr[] = $value;
+				if(is_array($value)) {
+					$month = date('n ',$value['date']);
+					$value['dutchdate'] = date('j ',$value['date']) . $this->getMonth($month -1) . date(' Y',$value['date']);
+					$newArr[] = $value;
+				}
 			}
 		} 
 		return $newArr ? $newArr : $array;
-	}
-	
-	function AddDateToEvent($event) {
-		$month = date('n ',$event['eventdate']);
-		$date = date('j ',$event['eventdate']) . $this->getMonth($month -1) . date(' Y',$event['eventdate']);
-		return $date;
 	}
 	
 	function getMonth($number) {
