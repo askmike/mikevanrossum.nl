@@ -1,0 +1,1 @@
+Ter afsluiting van het vak ServerSide Scripting moeten we een CMS schrijven. Daarnaast heeft [mijn eigen website](mikevanrossum.nl) wel behoefte aan een makeover, hij draait nu namelijk nog op wordpress.
