@@ -1,5 +1,7 @@
 <?php
 
+//so I can time how long the it takes before we sent it back to the client
+//when we get to views/footer.php we compare this with then.
 define('START', microtime(true));
 
 //define basic things we need before we can require anything at all

@@ -11,7 +11,6 @@
 <script defer src="<?php echo BASE; ?>static/js/script.js"></script>
 <!-- end scripts-->
 
-
 <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
 chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <!--[if lt IE 7 ]>
@@ -21,4 +20,4 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
 </body>
 </html>
-<!-- <?= round((microtime(true) - START)*1000, 4) . ' miliseconds'; ?> -->
+<!--# <?= round((microtime(true) - START)*1000, 4) . ' miliseconds' ?> -->
