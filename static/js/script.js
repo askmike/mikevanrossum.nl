@@ -141,7 +141,6 @@ $(function() {
 		//first set it to a number (-1 because items start at 0)
 		var item = mapPortfolioItem(request[1]);
 		
-		first = 'false'; //it's always true unless we start with a portfolio item
 		$pleftA.eq(item).each(function(){
 			$(this).addClass('current');
 			var t = getPortfolioItemHtml(item);
@@ -151,9 +150,9 @@ $(function() {
 
 		
 		$pleftDiv.each(function(i) {
-			$(this).delay(i*50).animate({opacity: 1}, 150);
+			$(this).delay(i*speed/3).animate({opacity: 1}, speed);
 		});
-		fadeInPortfolioItem(475);
+		fadeInPortfolioItem(speed*2);
 		
 	}
 	
