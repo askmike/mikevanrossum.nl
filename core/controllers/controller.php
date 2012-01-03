@@ -17,7 +17,6 @@ class Controller {
 	
 	function getPage($view, $data = null) {  
 		//if multiple functions need the menu
-		$data['menu'] =  $this->buildMenu();
 		
 		$this->load->view('header',$data);
 		$this->load->view($view, $data);
