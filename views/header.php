@@ -9,7 +9,7 @@ __
     \ \_\\ \_\ \_\ \_\ \_\ \____\
      \ /_/ \/_/\/_/\/_/\/_/\/____/
 
-everything here is minified (except this comment)
+alot here is minified
 
 Check out all the code on github [https://github.com/askmike/mikevanrossum.nl]
 
