@@ -23,6 +23,7 @@
 			<h3>
 				<?= $portfolioItem['name'] ?>
 			</h3>
+			<img src="<?= IMG . 'portfolio/' . $portfolioItem['image'] ?>" alt="<?= 'Afbeelding van ' . $portfolioItem['name'] ?>">
 			<?= $portfolioItem['body-html'] ?>
 			<p class="portfolio-technieken">
 				Technieken: <?= $portfolioItem['tech'] ?><br />
