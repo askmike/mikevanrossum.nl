@@ -8,6 +8,8 @@
 *.swp
 *.vi
 *~
+*.jpg
+*.png
 *.sass-cache
 
 # OS or Editor folders
@@ -37,6 +39,7 @@ dwsync.xml
 intermediate
 publish
 build
+static/img
 .idea
 
 #app specific item
