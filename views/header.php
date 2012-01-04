@@ -37,7 +37,7 @@ All is written by me except for:
 
 	<!-- CSS: implied media=all -->
 	<!-- CSS concatenated and minified via ant build script-->
-	<link rel=stylesheet href='<?php echo BASE; ?>static/css/style.css'>
+	<link rel=stylesheet href='<?= BASE; ?>static/css/style.css'>
 	<!-- end CSS-->
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
@@ -45,7 +45,7 @@ All is written by me except for:
   <!-- All JavaScript at the bottom, except for Modernizr / Respond.
        Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
        For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="<?php echo BASE; ?>static/js/libs/custom-modernizr.js"></script>
+  <script src="<?= BASE; ?>static/js/libs/custom-modernizr.js"></script>
 </head>
 <body>
 	<header>

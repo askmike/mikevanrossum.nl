@@ -1,4 +1,3 @@
-
 	<section class='page'>
 		<h1>
 			Blog	
