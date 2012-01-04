@@ -44,8 +44,8 @@ class SiteController extends Controller {
 		$this->load->view('portfolio',$portfolio->part);
 		
 		require CONTROLLERS . 'postController.php';
-		$portfolio = new PostController;
-		$this->load->view('blog',$data);
+		$post = new PostController;
+		$this->load->view('blog',$post->part);
 		
 		$this->load->view('footer');
 	}
