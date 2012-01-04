@@ -9,9 +9,9 @@ class PostModel extends DBmodel {
 	
 	public function getPosts() {
 		
-		$members = $this->connection->query('SELECT * FROM post ORDER BY id DESC');
-		
-		return $this->assocResults($members);
+		$posts = $this->connection->query('SELECT * FROM post ORDER BY id DESC');
+
+		return $this->assocResults($posts);;
 	}
 	
 	

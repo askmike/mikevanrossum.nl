@@ -17,23 +17,25 @@ class PartController extends Controller {
 	}
 	
 	//following functions transform timestamp to dutch dates 
-	function addDatesToItems($array) {
+	function getDatesFromItems($array) {
 		if(is_array($array)) {
-			foreach ($array as $value) {
-				$value = $this->addDutchDate($value, 'date', 'dutchdate');
-				$newArr[] = $value;
+			//we can't use a for each loop because we need to manip the array we're looping
+			$len = sizeof($array);
+			for($i = 0; $i < $len ; $i++){
+				$array[$i]['dutchdate'] = $this->getDutchDate($array[$i]['date']);
 			}
-		} 
-		return $newArr ? $newArr : $array;
+		}
+		//print_r($array);
+		return $array;
 	}
 	
 	
-	function addDutchDate($array, $timestamp, $name) {
-		if(is_array($array)) {
-			$month = date('n ',$array[$timestamp]);
-			$array[$name] = date('j ',$array[$timestamp]) . $this->getMonth($month -1) . date(' Y',$array[$timestamp]);
-		}
-		return $array;
+	function getDutchDate($timestamp) {
+		
+		$month = date('n ',$timestamp);
+		$dutchDate = date('j ',$timestamp) . $this->getMonth($month -1) . date(' Y', $timestamp);
+		
+		return $dutchDate;
 	}
 	
 	function getMonth($number) {

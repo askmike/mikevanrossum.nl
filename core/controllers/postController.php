@@ -2,7 +2,7 @@
 
 class PostController extends PartController {
 	
-	function __construct() {
+	function __construct($page = null) {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
@@ -14,7 +14,9 @@ class PostController extends PartController {
 		$data = $this->model->getPosts();
 		//overwrite main data with added dates
 	
-		$data = $this->addDatesToItems($data);
+		$data = $this->getDatesFromItems($data);
+		
+		if(!$page) $data['firstpage'] = true;
 		
 		$this->part = $data;
 	}

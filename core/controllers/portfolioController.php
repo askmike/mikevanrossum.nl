@@ -14,7 +14,7 @@ class PortfolioController extends PartController {
 		$part = $this->model->getPortfolio();
 		
 		//overwrite main data with added dates
-		$part = $this->addDatesToItems($part);
+		$part = $this->getDatesFromItems($part);
 		
 		//print_r($part);
 		$this->part = $part;
