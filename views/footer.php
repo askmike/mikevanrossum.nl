@@ -1,4 +1,6 @@
 </div>
+<!-- this is the last piece of content before the scripts, it stores every PHP var I need in my js-->
+<div id='php' data-time='<?= round((microtime(true) - START)*1000, 4)?>' data-session=''></div>
 <!-- JavaScript at the bottom for fast page loading -->
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
@@ -17,6 +19,5 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
-<div id='php' data-time='<?= round((microtime(true) - START)*1000, 4)?>'></div>
 </body>
 </html>
