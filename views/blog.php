@@ -6,9 +6,9 @@
 		<div id='blog-posts'>
 			
 			<a href='#blog/1' class='blog-post'>
-				<h3>
+				<h2>
 					Hello world!
-				</h3>
+				</h2>
 				<time datetime='2011-12-30'>
 					5 days ago
 				</time>
@@ -23,9 +23,9 @@
 			</a>
 			
 			<a href='#blog/1' class='blog-post'>
-				<h3>
+				<h2>
 					Hello world!
-				</h3>
+				</h2>
 				<time datetime='2011-12-30'>
 					5 days ago
 				</time>
@@ -40,9 +40,9 @@
 			</a>
 			
 			<a href='#blog/1' class='blog-post'>
-				<h3>
+				<h2>
 					Hello world!
-				</h3>
+				</h2>
 				<time datetime='2011-12-30'>
 					5 days ago
 				</time>
@@ -57,9 +57,9 @@
 			</a>
 			
 			<a href='#blog/1' class='blog-post'>
-				<h3>
+				<h2>
 					Hello world!
-				</h3>
+				</h2>
 				<time datetime='2011-12-30'>
 					5 days ago
 				</time>
@@ -74,9 +74,9 @@
 			</a>
 			
 			<a href='#blog/1' class='blog-post'>
-				<h3>
+				<h2>
 					Hello world!
-				</h3>
+				</h2>
 				<time datetime='2011-12-30'>
 					5 days ago
 				</time>

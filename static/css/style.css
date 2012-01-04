@@ -209,10 +209,6 @@ div#pleft a.current {
 	font-style:italic;
 }
 
-#blog-posts a.blog-post h3 {
-	float:left;
-}
-
 #blog-posts a.blog-post p {
 	clear:both;
 }
@@ -236,8 +232,11 @@ div#pleft a.current {
 	text-align:justify;
 }
 
-#blog-posts h3 {
+#blog-posts h2 {
 	margin:5px 0 10px 0;
+	float:left;
+	font-size: 18px;
+	font-weight: lighter;
 }
 
 #blog-nav {
