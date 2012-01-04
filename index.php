@@ -17,7 +17,7 @@ $request = explode('/',$_GET['r']);
 
 //route
 if (true) { 
-	require CONTROLLERS . 'SiteController.php';
+	require CONTROLLERS . 'siteController.php';
 	$con = new SiteController($request);
 
 } else if ($request[0] == 'leden' || $request[0] == 'lid') { 
