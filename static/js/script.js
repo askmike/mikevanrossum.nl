@@ -168,7 +168,7 @@ $(function() {
 				.addClass('current');
 			
 			var t = getPortfolioItemHtml(indexP);
-			$pright.animate({marginTop: -20, opacity: 0}, 200, function(){
+			$pright.animate({marginTop: 0 - offset, opacity: 0}, speed, function(){
 				setPortfolioItemHtml(t);
 				fadeInPortfolioItem();
 			});
@@ -196,9 +196,9 @@ $(function() {
 	
 	function fadeInPortfolioItem(delay) {
 		$pright
-			.css('marginTop',20)
+			.css('marginTop', offset)
 			.delay(delay)
-			.animate({marginTop: 0, opacity: 1}, 200);	
+			.animate({marginTop: 0, opacity: 1}, speed);	
 	}
 	
 	/* in JS 0 = false, I need to check if a var is set (possible 0) */
@@ -246,7 +246,7 @@ $(function() {
 	}
 	
 	function fadeBg(e) {
-		$(this).stop().animate({ backgroundColor: e.data.color }, 400 );
+		$(this).stop().animate({ backgroundColor: e.data.color }, speed*2.5 );
 	}
 	
 	log($('#php').data('time'));
