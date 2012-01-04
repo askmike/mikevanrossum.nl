@@ -248,4 +248,6 @@ $(function() {
 	function fadeBg(e) {
 		$(this).stop().animate({ backgroundColor: e.data.color }, 400 );
 	}
+	
+	log($('#php').data('time'));
 });

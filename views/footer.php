@@ -17,6 +17,6 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
-<div id='php' data-php='<?= round((microtime(true) - START)*1000, 4)?>'></div>
+<div id='php' data-time='<?= round((microtime(true) - START)*1000, 4)?>'></div>
 </body>
 </html>
