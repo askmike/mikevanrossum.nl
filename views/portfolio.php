@@ -2,12 +2,12 @@
 		<h1>Portfolio</h1>
 		<div>
 			<div id='pleft'>
-				<?php foreach ($data as $portfolioItem) {
+				<?php foreach ($data as $item) {
 				//we only want arays in the array data
-				if(is_array($portfolioItem)) { 
+				if(is_array($item)) { 
 					//the html needs to get minified by php
 					//see: http://stackoverflow.com/questions/5312349/minifying-final-html-output-using-regular-expressions-with-codeigniter ?> 
-					<div class='hide'><a href='#portfolio/<?= $portfolioItem['name'] ?>'></a><p><?= $portfolioItem['name'] ?></p></div>
+					<div class='hide'><a href='#portfolio/<?= $item['name'] ?>'></a><p><?= $item['name'] ?></p></div>
 				<?php } } ?>
 			</div>
 			<div id='pright'>
@@ -16,18 +16,18 @@
 		</div>
 	</section>
 	<div id='portfolio-items'>
-	<?php foreach ($data as $portfolioItem) {
+	<?php foreach ($data as $item) {
 	//we only want arays in the array data
-	if(is_array($portfolioItem)) { ?> 
+	if(is_array($item)) { ?> 
 		<div class="portfolio-item">
 			<h3>
-				<?= $portfolioItem['name'] ?>
+				<?= $item['name'] ?>
 			</h3>
-			<img src="<?= IMG . 'portfolio/' . $portfolioItem['image'] ?>" alt="<?= 'Afbeelding van ' . $portfolioItem['name'] ?>">
-			<?= $portfolioItem['body-html'] ?>
+			<img src="<?= IMG . 'portfolio/' . $item['image'] ?>" alt="<?= 'Afbeelding van ' . $item['name'] ?>">
+			<?= $item['body-html'] ?>
 			<p class="portfolio-technieken">
-				Technieken: <?= $portfolioItem['tech'] ?><br />
-				Datum: <?= $portfolioItem['dutchdate'] ?>
+				Technieken: <?= $item['tech'] ?><br />
+				Datum: <?= $item['dutchdate'] ?>
 			</p>
 		</div>
 	<?php } } ?>

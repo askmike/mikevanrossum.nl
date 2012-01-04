@@ -18,7 +18,7 @@ All is written by me except for:
  - jQuery 1.7.1 [http://jquery.com/]
  - menu: lavalamp 1.2 [http://www.gmarwaha.com/blog/2007/08/23/lavalamp-for-jquery-lovers/]
  - browser support: Modernizr 2.0 [http://modernizr.com/]
- - plugin: jQuery color function of jQuery UI [jqueryui.com]
+ - plugin: jQuery color function of jQuery UI 1.9pre [jqueryui.com]
 
 -->
 <html id="html" class="no-js" lang="nl">
