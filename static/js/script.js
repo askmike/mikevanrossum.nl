@@ -13,9 +13,8 @@ $(function() {
 		$pleftDiv = $pleft.find('div'),
 		$pright = $('#pright'),
 		$portfolioItems = $('#portfolio-items').children(),
+		$window = $(window),
 		
-		//this div stores all tracking info from php
-		$php = $('#php'),
 		
 		request, //stores the request in an array
 		pageIndex, //stores the current menu item (number)
@@ -32,7 +31,9 @@ $(function() {
 		pages = getPages(),
 		pItems = getPortfolioItems(),
 		
-		
+		//this div stores all tracking info from php
+		$php = $('#php'),
+		steps = [],
 		//this object stores everything for the analytics
 		tracking = {};
 	
@@ -78,7 +79,9 @@ $(function() {
 		
 		//only do this if we're changing pages
 		if(pageIndex != old) { 
-
+			// if # is empty it's home
+			steps.push( request[0] ? request[0] : 'home' );
+			
 			//prepare for the lavalamp (spawning or updating)
 			$menu.find('li')
 				.removeClass('current')
@@ -104,6 +107,8 @@ $(function() {
 			} else { //we're not on home
 				$menu.find('.current').trigger('mouseenter');
 				animatePage(pageIndex, request);
+				
+				trackData();
 			}
 			
 			old = pageIndex;
@@ -226,7 +231,7 @@ $(function() {
 	
 	//bind functions to event handlers
 	if( Modernizr.hashchange ) {
-		$(window).bind('hashchange',function(){ //also triggers when not using site navigation (back button, etc.)
+		$window.bind('hashchange',function(){ //also triggers when not using site navigation (back button, etc.)
 			init();
 		});
 	} else { //only triggers on click
@@ -259,13 +264,44 @@ $(function() {
 		$(this).stop().animate({ backgroundColor: e.data.color }, speed*2.5 );
 	}
 	
+	
+	/* all the functions for the javascript sided tracking */
 	function initTracking() {
+		
+		var nav = navigator;
+		var scr = screen;
+		
+		// resolutie
+		
+		
 		tracking = {
 			phptime: $php.data('time'),
-			session: $php.data('session')
+			session: $php.data('session'),
+			steps: steps,
+			client: {
+				platform: nav.platform,
+				browser: nav.userAgent,
+				resolution: scr.width + 'x' + scr.height,
+				viewport: $window.width() + 'x' + $window.height()
+			}
 		};
+		
+		
+		sendTracking();
 	}
 	
-	log(tracking);
+	function trackData(object) {
+		//update the steps
+		
+		tracking.steps = steps;
+		
+		sendTracking();
+	}
+	
+	function sendTracking() {
+		log(steps.length);
+		log(tracking);
+	}
+	
 	
 });
