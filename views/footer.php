@@ -1,6 +1,6 @@
 </div>
 <!-- this is the last piece of content before the scripts, it stores every PHP var I need in my js-->
-<div id='php' data-time='<?= round((microtime(true) - STARTTIME)*1000, 4)?>' data-session=''></div>
+<div id='php' data-session='<?= session_id() ?>' data-time='<?= round( (microtime( true ) - STARTTIME)*1000, 4 )?>'></div>
 <!-- JavaScript at the bottom for fast page loading -->
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
@@ -10,6 +10,7 @@
 
 <!-- scripts concatenated and minified via ant build script-->
 <script defer src="<?= BASE ?>static/js/plugins.js"></script>
+<script defer src="<?= BASE ?>static/js/tracking.js"></script>
 <script defer src="<?= BASE ?>static/js/script.js"></script>
 <!-- end scripts-->
 

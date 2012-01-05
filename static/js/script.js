@@ -1,6 +1,7 @@
 /* Author: Mike van Rossum 
 
 all in here is handwritten by me
+
 */
 $(function() {
 	
@@ -248,6 +249,4 @@ $(function() {
 	function fadeBg(e) {
 		$(this).stop().animate({ backgroundColor: e.data.color }, speed*2.5 );
 	}
-	
-	log($('#php').data('time'));
 });
