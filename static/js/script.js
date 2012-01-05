@@ -14,6 +14,9 @@ $(function() {
 		$pright = $('#pright'),
 		$portfolioItems = $('#portfolio-items').children(),
 		
+		//this div stores all tracking info from php
+		$php = $('#php'),
+		
 		request, //stores the request in an array
 		pageIndex, //stores the current menu item (number)
 		old, //stores the old menu item (number)
@@ -27,7 +30,11 @@ $(function() {
 		oldRequest = [],
 	
 		pages = getPages(),
-		pItems = getPortfolioItems();
+		pItems = getPortfolioItems(),
+		
+		
+		//this object stores everything for the analytics
+		tracking = {};
 	
 	
 	/* This function returns all the names of the pages in an array */	
@@ -70,7 +77,7 @@ $(function() {
 		if(!pageIndex) pageIndex = 0;
 		
 		//only do this if we're changing pages
-		if(pageIndex != old) {
+		if(pageIndex != old) { 
 
 			//prepare for the lavalamp (spawning or updating)
 			$menu.find('li')
@@ -81,6 +88,8 @@ $(function() {
 			//if this is on pageload
 			if(!isNumber(old)) {
 				$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });	
+				
+				initTracking();
 				
 				//because of (something that looks like) a bug in animate I set the css also via js
 				//bug: when not setting those via js the first fadeout animation breaks
@@ -249,4 +258,14 @@ $(function() {
 	function fadeBg(e) {
 		$(this).stop().animate({ backgroundColor: e.data.color }, speed*2.5 );
 	}
+	
+	function initTracking() {
+		tracking = {
+			phptime: $php.data('time'),
+			session: $php.data('session')
+		};
+	}
+	
+	log(tracking);
+	
 });

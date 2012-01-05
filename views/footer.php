@@ -10,7 +10,6 @@
 
 <!-- scripts concatenated and minified via ant build script-->
 <script defer src="<?= BASE ?>static/js/plugins.js"></script>
-<script defer src="<?= BASE ?>static/js/tracking.js"></script>
 <script defer src="<?= BASE ?>static/js/script.js"></script>
 <!-- end scripts-->
 
