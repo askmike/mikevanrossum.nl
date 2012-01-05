@@ -42,9 +42,9 @@ class SiteController extends Controller {
 		$portfolio = new PortfolioController;
 		$this->load->view('portfolio',$portfolio->part);
 		
-		require CONTROLLERS . 'postController.php';
-		$post = new PostController;
-		$this->load->view('blog',$post->part);
+		require CONTROLLERS . 'postsController.php';
+		$posts = new PostsController;
+		$this->load->view('blog',$posts->part);
 		
 		$this->load->view('footer');
 	}
