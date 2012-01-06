@@ -20,8 +20,9 @@ if ($request[0] == 'json') {
 	//it's a json request
 	//return json and die asap
 
-} else if ($request[0] == 'leden') { 
-	//empty
+} else if ($request[0] == 'track') { 
+	//it's a track request: some analytics data getting passed
+	
 	
 } else { 
 	//home or 404
