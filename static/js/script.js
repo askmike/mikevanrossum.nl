@@ -286,11 +286,11 @@ $(function() {
 			}
 		};
 		
-		sendTracking();
+		sendTracking(tracking);
 	}
 	
-	function trackPage(page) {
-
+	function trackPage() {
+		
 		tracking.steps.push([page,SecondsSincePageLoad()]);
 		
 		sendTracking();
@@ -300,6 +300,12 @@ $(function() {
 		//currently just logs to console
 		log(steps.length);
 		log(tracking);
+		
+		$.ajax({
+		  type: "POST",
+		  url: $php.data('base') + "track",
+		  data: tracking
+		})
 	}
 	
 	function SecondsSincePageLoad() {
