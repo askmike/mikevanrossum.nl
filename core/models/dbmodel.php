@@ -41,7 +41,7 @@ class DBModel {
 		while ($row = $results->fetch_assoc()) {
 			$rows[] = $row;
 		}
-		//return the array
+		
 		return $rows;
 	}
 }

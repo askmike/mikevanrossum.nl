@@ -23,6 +23,8 @@ if ($request[0] == 'json') {
 } else if ($request[0] == 'track') { 
 	//it's a track request: some analytics data getting passed
 	
+	require CONTROLLERS . 'trackController.php';
+	$con = new TrackController();
 	
 } else { 
 	//home or 404
@@ -33,6 +35,6 @@ if ($request[0] == 'json') {
 } 
 
 //end with killing the connection
-$con = NULL;
+if($con) $con = NULL;
 
 ?>

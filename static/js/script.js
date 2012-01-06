@@ -277,6 +277,7 @@ $(function() {
 		tracking = {
 			phptime: $php.data('time'),
 			session: $php.data('session'),
+			referrer: document.referrer,
 			steps: steps,
 			client: {
 				platform: nav.platform,
@@ -286,10 +287,10 @@ $(function() {
 			}
 		};
 		
-		sendTracking(tracking);
+		sendTracking();
 	}
 	
-	function trackPage() {
+	function trackPage(page) {
 		
 		tracking.steps.push([page,SecondsSincePageLoad()]);
 		
@@ -301,11 +302,9 @@ $(function() {
 		log(steps.length);
 		log(tracking);
 		
-		$.ajax({
-		  type: "POST",
-		  url: $php.data('base') + "track",
-		  data: tracking
-		})
+		$.post($php.data('base') + "track", tracking, function(data) {
+		   $('html').html(data);
+		 });
 	}
 	
 	function SecondsSincePageLoad() {
