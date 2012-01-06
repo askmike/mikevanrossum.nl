@@ -34,6 +34,7 @@ $(function() {
 		//this div stores all tracking info from php
 		$php = $('#php'),
 		steps = [],
+		starttime = new Date().getTime(),
 		//this object stores everything for the analytics
 		tracking = {};
 	
@@ -80,7 +81,7 @@ $(function() {
 		//only do this if we're changing pages
 		if(pageIndex != old) { 
 			// if # is empty it's home
-			steps.push( request[0] ? request[0] : 'home' );
+			var page = request[0] ? request[0] : 'home' ;
 			
 			//prepare for the lavalamp (spawning or updating)
 			$menu.find('li')
@@ -92,7 +93,7 @@ $(function() {
 			if(!isNumber(old)) {
 				$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });	
 				
-				initTracking();
+				initTracking(page);
 				
 				//because of (something that looks like) a bug in animate I set the css also via js
 				//bug: when not setting those via js the first fadeout animation breaks
@@ -108,7 +109,7 @@ $(function() {
 				$menu.find('.current').trigger('mouseenter');
 				animatePage(pageIndex, request);
 				
-				trackData();
+				trackPage(page);
 			}
 			
 			old = pageIndex;
@@ -266,13 +267,12 @@ $(function() {
 	
 	
 	/* all the functions for the javascript sided tracking */
-	function initTracking() {
+	function initTracking(page) {
 		
 		var nav = navigator;
 		var scr = screen;
 		
-		// resolutie
-		
+		steps = [[page,SecondsSincePageLoad()]];
 		
 		tracking = {
 			phptime: $php.data('time'),
@@ -286,22 +286,24 @@ $(function() {
 			}
 		};
 		
-		
 		sendTracking();
 	}
 	
-	function trackData(object) {
-		//update the steps
-		
-		tracking.steps = steps;
+	function trackPage(page) {
+
+		tracking.steps.push([page,SecondsSincePageLoad()]);
 		
 		sendTracking();
 	}
 	
 	function sendTracking() {
+		//currently just logs to console
 		log(steps.length);
 		log(tracking);
 	}
 	
+	function SecondsSincePageLoad() {
+		return ((new Date().getTime()) - starttime) / 1000;
+	}
 	
 });
