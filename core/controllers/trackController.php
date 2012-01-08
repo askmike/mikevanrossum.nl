@@ -4,20 +4,34 @@ require CONTROLLERS . 'controller.php';
 
 class TrackController extends Controller {
 	
-	function __construct() {
+	function __construct($step) {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
-		
-		if( !$this->checkTrack() ) return;
-		
+	
 		require MODELS . 'trackModel.php';
 		$this->model = new TrackModel;
 		
-		//check if this is a new session
-		if($this->model->getSession($_POST['session'])) {
-			//it's an existing session
+		if($step) {
+			
+			$whitelist = array('session','page','pagetime');
+			if( !$this->checkInput($whitelist) ) return;
+			
+			//it wants to add a step to a session
+			$this->addStep();
 		} else {
-			//it's a new session
+			$whitelist = array('phptime','session','page','referrer', 'pagetime', 'platform', 'resolution', 'viewport', 'browser');
+			if( !$this->checkInput($whitelist) ) return;
+			
+			//we need to check if it's a new pageload in an existing session
+			$session = $this->model->getSession($_POST['session']);
+			
+			if(!empty($session)) {
+				//it's a new pageload in an existing session
+				$this->addStep();
+			} else {
+				//it's a new session
+				$this->addTrack();
+			}
 		}
 		
 	}
@@ -27,9 +41,25 @@ class TrackController extends Controller {
 		parent::__destruct();
 	}
 	
-	function checkTrack() {
-		//small checks to make sure nobody is messing with the POST input
-		$whitelist = array('phptime','session','steps','client','referrer');
+	function addStep() {
+		
+		$this->model->addStepToSession($_POST);
+		
+	//	echo 'added step';
+	}
+	
+	function addTrack() {
+		
+		$this->model->createNewSession($_POST);
+		
+	//	echo 'added track';
+		
+	}
+	
+	//small checks to make sure nobody is messing with the POST input
+	function checkInput($whitelist) {
+		//this could be improved by storing all the PHP created sessions in the DB
+		//and compare POST session with the DB
 		
 		//check if every whitelist item is in $_POST
 		foreach ($whitelist as $item) {
@@ -39,6 +69,7 @@ class TrackController extends Controller {
 		//check if the're the same size
 		if( sizeof($whitelist) != sizeof($_POST) ) return false;
 		
+		//all checks are passed
 		return true;
 	}
 }

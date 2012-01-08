@@ -105,7 +105,7 @@ $(function() {
 				//showportfolio is called in fadeinpage but that never gets run on pageload
 				if(request[0] == 'portfolio') showPortfolio(request);
 				
-			} else { //we're not on home
+			} else { //we're not on pageload
 				$menu.find('.current').trigger('mouseenter');
 				animatePage(pageIndex, request);
 				
@@ -272,19 +272,16 @@ $(function() {
 		var nav = navigator;
 		var scr = screen;
 		
-		steps = [[page,SecondsSincePageLoad()]];
-		
 		tracking = {
 			phptime: $php.data('time'),
 			session: $php.data('session'),
 			referrer: document.referrer,
-			steps: steps,
-			client: {
-				platform: nav.platform,
-				browser: nav.userAgent,
-				resolution: scr.width + 'x' + scr.height,
-				viewport: $window.width() + 'x' + $window.height()
-			}
+			page: page,
+			pagetime: SecondsSincePageLoad(),
+			platform: nav.platform,
+			browser: nav.userAgent,
+			resolution: scr.width + 'x' + scr.height,
+			viewport: $window.width() + 'x' + $window.height()
 		};
 		
 		sendTracking();
@@ -292,23 +289,29 @@ $(function() {
 	
 	function trackPage(page) {
 		
-		tracking.steps.push([page,SecondsSincePageLoad()]);
+		var step = {
+			page: page, 
+			pagetime: SecondsSincePageLoad(), 
+			session: tracking.session
+		};
 		
-		sendTracking();
+		sendTracking(step);
 	}
 	
-	function sendTracking() {
-		//currently just logs to console
-		log(steps.length);
-		log(tracking);
+	function sendTracking(obj) {
 		
-		$.post($php.data('base') + "track", tracking, function(data) {
-		   $('html').html(data);
-		 });
+		//need to change $.post to ajax since $.post is basically a shortcut to $.ajax
+		
+		if(!obj) {
+			$.post($php.data('base') + "track", tracking);
+		} else {	
+			$.post($php.data('base') + "track/step", obj);
+		}
+		
 	}
 	
 	function SecondsSincePageLoad() {
-		return ((new Date().getTime()) - starttime) / 1000;
+		return (new Date().getTime() - starttime) / 1000;
 	}
 	
 });

@@ -24,7 +24,7 @@ if ($request[0] == 'json') {
 	//it's a track request: some analytics data getting passed
 	
 	require CONTROLLERS . 'trackController.php';
-	$con = new TrackController();
+	$con = new TrackController($request[1]);
 	
 } else { 
 	//home or 404
