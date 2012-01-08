@@ -58,7 +58,6 @@ class TrackModel extends DBmodel {
 	
 	public function addStepToSession($step, $trackID) {
 		
-	//	$statement = $this->connection->prepare('UPDATE tracking SET steps = concat(steps , ?), steptimes = concat(steptimes , ?) WHERE phpsession = ?');
 		$statement = $this->connection->prepare('INSERT INTO step (trackingID, time, page) VALUES (?, ?, ?)');
 		
 		$page = $step['page'];
