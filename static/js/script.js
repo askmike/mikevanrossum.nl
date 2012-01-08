@@ -277,7 +277,6 @@ $(function() {
 			session: $php.data('session'),
 			referrer: document.referrer,
 			page: page,
-			pagetime: SecondsSincePageLoad(),
 			platform: nav.platform,
 			browser: nav.userAgent,
 			resolution: scr.width + 'x' + scr.height,
@@ -291,7 +290,6 @@ $(function() {
 		
 		var step = {
 			page: page, 
-			pagetime: SecondsSincePageLoad(), 
 			session: tracking.session
 		};
 		
@@ -303,9 +301,9 @@ $(function() {
 		//need to change $.post to ajax since $.post is basically a shortcut to $.ajax
 		
 		if(!obj) {
-			$.post($php.data('base') + "track", tracking);
+			$.post($php.data('base') + "track", tracking /*, function(data) { $('html').html(data) }*/);
 		} else {	
-			$.post($php.data('base') + "track/step", obj);
+			$.post($php.data('base') + "track/step", obj/*, function(data) { $('html').html(data) }*/);
 		}
 		
 	}

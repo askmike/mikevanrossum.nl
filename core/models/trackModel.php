@@ -27,27 +27,23 @@ class TrackModel extends DBmodel {
 	public function createNewSession($track) {
 		
 		# Maak een SQL statement klaar voor toevoegen
-		$statement = $this->connection->prepare('INSERT INTO tracking (phpsession, steps, steptimes, phptime, referrer, platform, browser, resolution, viewport, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+		$statement = $this->connection->prepare('INSERT INTO tracking (phpsession, phptime, referrer, platform, browser, resolution, viewport) VALUES (?, ?, ?, ?, ?, ?, ?)');
 		
 		//prepare vars
 		extract($track);
 		$page .= ',';
-		$pagetime .= ',';
-		$time = time();
+		$pagetime = time() . ',';
 		
 		# Koppel de variabele $tekst aan het SQL toevoegen statement
 		$statement->bind_param(
-				'sssdssssss', 
+				'sdsssss', 
 				$session,
-				$page,
-				$pagetime,
 				$phptime, 
 				$referrer, 
 				$platform, 
 				$browser,
 				$resolution,
-				$viewport,
-				$time
+				$viewport
 				);
 	
 		# Voer het SQL statement uit
@@ -57,21 +53,25 @@ class TrackModel extends DBmodel {
 		// $sql = 'INSERT INTO tracking (phpsession, steps, steptimes, phptime, referrer, platform, browser, resolution, viewport) VALUES (';
 		// $sql .= '"' . $session . '","' . $steps . '","' . $steptimes . '",' . $phptime . ',"' . $referrer . '","' . $platform . '","' . $browser . '","' . $resolution . '","' .  $viewport . '")';
 		// echo $sql;
+		
 	}
 	
-	public function addStepToSession($step) {
+	public function addStepToSession($step, $trackID) {
 		
-		$statement = $this->connection->prepare('UPDATE tracking SET steps = concat(steps , ?), steptimes = concat(steptimes , ?) WHERE phpsession = ?');
+	//	$statement = $this->connection->prepare('UPDATE tracking SET steps = concat(steps , ?), steptimes = concat(steptimes , ?) WHERE phpsession = ?');
+		$statement = $this->connection->prepare('INSERT INTO step (trackingID, time, page) VALUES (?, ?, ?)');
 		
-		extract($step);
-		$page .= ',';
-		$pagetime .= ',';
+		$page = $step['page'];
+		$pagetime = time();
 		
 		# Koppel de variabele $tekst aan het SQL toevoegen statement
-		$statement->bind_param('sss', $page, $pagetime, $session);
+		$statement->bind_param('sss', $trackID, $pagetime, $page);
 
 		# Voer het SQL statement uit
 		$statement->execute();
+		
+		//debugging
+		//echo ' INSERT INTO step (trackingID, time, page) VALUES ("' . $trackID . '", "' . $pagetime . '", "' . $page . '")';
 		
 	}
 	

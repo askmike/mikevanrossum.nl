@@ -4,6 +4,8 @@ require CONTROLLERS . 'controller.php';
 
 class TrackController extends Controller {
 	
+	private $session;
+	
 	function __construct($step) {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
@@ -11,26 +13,35 @@ class TrackController extends Controller {
 		require MODELS . 'trackModel.php';
 		$this->model = new TrackModel;
 		
-		if($step) {
+		//get current session
+		$this->session = $this->model->getSession($_POST['session']);
+		
+		if($step) {//it's a step req
 			
-			$whitelist = array('session','page','pagetime');
+			$whitelist = array('session','page');
 			if( !$this->checkInput($whitelist) ) return;
 			
 			//it wants to add a step to a session
 			$this->addStep();
-		} else {
-			$whitelist = array('phptime','session','page','referrer', 'pagetime', 'platform', 'resolution', 'viewport', 'browser');
+			
+		} else {//it's seems like a track req
+			
+			$whitelist = array('phptime','session','page','referrer', 'platform', 'resolution', 'viewport', 'browser');
 			if( !$this->checkInput($whitelist) ) return;
 			
-			//we need to check if it's a new pageload in an existing session
-			$session = $this->model->getSession($_POST['session']);
-			
-			if(!empty($session)) {
+			if(!empty($this->session)) {
+				
 				//it's a new pageload in an existing session
 				$this->addStep();
 			} else {
+				
 				//it's a new session
 				$this->addTrack();
+				
+				//reset this because before the addTrack there was no record yet
+				$this->session = $this->model->getSession($_POST['session']);
+				
+				$this->addStep();
 			}
 		}
 		
@@ -43,14 +54,16 @@ class TrackController extends Controller {
 	
 	function addStep() {
 		
-		$this->model->addStepToSession($_POST);
+		$this->model->addStepToSession($_POST, $this->session['id']);
 		
-	//	echo 'added step';
 	}
 	
 	function addTrack() {
 		
 		$this->model->createNewSession($_POST);
+		
+		
+		//	$this->model->addStepToSession($_POST);
 		
 	//	echo 'added track';
 		
