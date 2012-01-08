@@ -23,6 +23,7 @@ class TrackModel extends DBmodel {
 		
 	}
 	
+	// this function creates a new record in tracking
 	// track input is an array
 	public function createNewSession($track) {
 		
@@ -56,6 +57,8 @@ class TrackModel extends DBmodel {
 		
 	}
 	
+	//this function creates a new step record
+	//the trackID is the ID of the PHP session belonging to this step
 	public function addStepToSession($step, $trackID) {
 		
 		$statement = $this->connection->prepare('INSERT INTO step (trackingID, time, page) VALUES (?, ?, ?)');
