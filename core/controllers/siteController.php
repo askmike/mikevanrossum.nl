@@ -22,9 +22,7 @@ class SiteController extends Controller {
 		//we're gonna need our base model a couple of times
 		require MODELS . 'dbmodel.php';
 		
-		//require the load
 		include APP . 'load.php';
-		//instanciate load
 		$this->load = new Load();
 		
 		$this->getSite();

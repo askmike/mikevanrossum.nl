@@ -7,7 +7,7 @@
 				//we only want arays in the array data
 				if(is_array($item)) { ?> 
 					
-					<a href="<?= BASE . $item['url'] ?>" class='blog-post'>
+					<a href="<?= $item['url'] ?>" class='blog-post'>
 						<h2>
 							<?= $item['titel'] ?>
 						</h2>
@@ -20,7 +20,6 @@
 					</a>
 					
 				<?php } } ?>
-				
 		<div id="blog-nav">
 			<?php //lastpage does not exist yet, so right now it always passes this if
 			if(!$lastpage) { ?>

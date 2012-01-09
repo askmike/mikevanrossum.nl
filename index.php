@@ -16,9 +16,13 @@ require APP . 'config.php';
 $request = explode('/',$_GET['r']);
 
 //route
-if ($request[0] == 'json') { 
-	//it's a json request
-	//return json and die asap
+if ($request[0] == 'blog' /*|| $request[0] == 'blog'*/) { 
+	//single post request
+	
+	define('PAGE', 'post');
+	
+	require CONTROLLERS . 'postController.php';
+	$con = new PostController($_GET['r']);
 
 } else if ($request[0] == 'track') { 
 	//it's a track request: some analytics data getting passed
@@ -28,6 +32,8 @@ if ($request[0] == 'json') {
 	
 } else { 
 	//home or 404
+	
+	define('PAGE', 'site');
 	
 	require CONTROLLERS . 'siteController.php';
 	$con = new SiteController($request);

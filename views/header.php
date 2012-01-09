@@ -19,9 +19,10 @@ All is written by me except for:
  - menu: lavalamp 1.2 [http://www.gmarwaha.com/blog/2007/08/23/lavalamp-for-jquery-lovers/]
  - browser support: Modernizr 2.0 [http://modernizr.com/]
  - plugin: jQuery color function of jQuery UI 1.9pre [jqueryui.com]
+ - syntax highlighting: shjs [http://shjs.sourceforge.net/]
 
 -->
-<html id="html" class="no-js" lang="nl">
+<html id="html" class="no-js <?= PAGE ?>" lang="nl">
 <head>
 	<meta charset="utf-8">
 
@@ -56,11 +57,18 @@ All is written by me except for:
 		</div>
 	</header>
 	<nav id="menu">
-	   <ul>
+		<ul> 
+		<?php if(PAGE == 'site') { ?>
 			<li><a href="#">Home</a></li>
 			<li><a href="#projects">Projects</a></li>
 			<li><a href='#portfolio'>Portfolio</a></li>
 			<li><a href="#blog">Blog</a></li>
+		<?php } else { ?>
+			<li><a href="<?= BASE ?>#">Home</a></li>
+			<li><a href="<?= BASE ?>#projects">Projects</a></li>
+			<li><a href='<?= BASE ?>#portfolio'>Portfolio</a></li>
+			<li><a href="<?= BASE ?>#blog">Blog</a></li>
+		<?php } ?>
 		</ul> 
 	</nav>
 	<div id='container'>

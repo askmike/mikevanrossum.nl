@@ -66,9 +66,9 @@ $(function() {
 		//get & parse request if none is provided
 		if(!request) request = getHash();
 		
+		//set map pageIndex on the request (name to number)
 		//we need to reset it because when it's not the first time, it never catches #
 		pageIndex = null;
-		//set map pageIndex on the request (name to number)
 		if (request[0]) {
 			//map request to pages
 			for(var i=0, len = pages.length; i < len; i++) {
@@ -244,9 +244,6 @@ $(function() {
 		});
 	}
 	
-	//boot it up on pageload
-	init();
-	
 	//some transitions, only run those when css3 transitions are not supported
 	
 	//chrome currently bugs so I have to browser sniff:
@@ -263,6 +260,26 @@ $(function() {
 	
 	function fadeBg(e) {
 		$(this).stop().animate({ backgroundColor: e.data.color }, speed*2.5 );
+	}
+	
+	//boot it up on pageload
+	var $html = $('#html');
+	
+	if($html.hasClass('site')) init();
+	if($html.hasClass('post')) postInit();
+	
+	function postInit() {
+		//basic init for a single post page
+		
+		//menu
+		$menu.find('li').eq(3).addClass('current');
+		$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });
+		
+		//tracking
+		initTracking($php.data('post'));
+		
+		//syntax hightlighting
+		sh_highlightDocument($php.data('base') + "static/shjs/", '.min.js');
 	}
 	
 	

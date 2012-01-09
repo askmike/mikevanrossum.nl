@@ -38,7 +38,7 @@ class TrackController extends Controller {
 				//it's a new session
 				$this->addTrack();
 				
-				//reset this because before the addTrack there was no record yet
+				//redo this because before the addTrack there was no record yet
 				$this->session = $this->model->getSession($_POST['session']);
 				
 				$this->addStep();
@@ -61,11 +61,6 @@ class TrackController extends Controller {
 	function addTrack() {
 		
 		$this->model->createNewSession($_POST);
-		
-		
-		//	$this->model->addStepToSession($_POST);
-		
-	//	echo 'added track';
 		
 	}
 	
