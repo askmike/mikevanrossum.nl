@@ -14,7 +14,7 @@ class PostModel extends DBmodel {
 	
 	public function getPosts() {
 		
-		$posts = $this->connection->query('SELECT * FROM post ORDER BY id DESC');
+		$posts = $this->connection->query('SELECT * FROM post ORDER BY id DESC LIMIT 0, 5');
 
 		return $this->assocResults($posts);
 	}

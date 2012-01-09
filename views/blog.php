@@ -6,7 +6,6 @@
 				<?php foreach ($data as $item) {
 				//we only want arays in the array data
 				if(is_array($item)) { ?> 
-					
 					<a href="<?= $item['url'] ?>" class='blog-post'>
 						<h2>
 							<?= $item['titel'] ?>

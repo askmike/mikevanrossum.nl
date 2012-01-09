@@ -31,7 +31,7 @@ class PostController extends PartController {
 		include APP . 'load.php';
 		$this->load = new Load();
 		
-		$this->load->view('header');
+		$this->load->view('header',$data);
 		$this->load->view('post', $data);
 		$this->load->view('footer');
 		

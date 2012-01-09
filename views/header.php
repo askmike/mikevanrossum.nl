@@ -31,7 +31,11 @@ All is written by me except for:
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<title>Mike van Rossum - webdeveloper</title>
-	<meta name="description" content="">
+	<?php if(PAGE == 'site') { ?>
+		<meta name="description" content="Op het portfolio en blog van Mike van Rossum, een webdeveloper en CMDA student uit Amsterdam, vind je van van alles wat te maken heeft met de front-end en back-end van websites."
+	<?php } else { ?>
+		<meta name="description" content="<?= $meta ?>">
+	<?php } ?>
 	<meta name="author" content="Mike van Rossum">
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
