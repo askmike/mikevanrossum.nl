@@ -177,9 +177,12 @@ class PostModel extends DBmodel {
 				return $result ? $result : $str;
 			}
 			
-			$arr['excerpt'] = shrinkText($tagless, 290)  . ' (...)';
+			// I need to smartypants the excerpt to [consistance is key]
+			$excerpt = shrinkText($tagless, 290)  . ' (...)';
+			$arr['excerpt'] = SmartyPants($excerpt);
+			
+			// in the meta I need to escape all the ' and "
 			$meta = shrinkText($tagless, 160);
-			//in the meta I need to escape all the ' and "
 			$arr['meta'] = addSlashes($meta);
 			
 			// replaced by the statemachine
