@@ -88,10 +88,11 @@ class PostModel extends DBmodel {
 	//
 	// this function returns an array with all those different versions of the text
 	function prepareContent($content) {
-			require_once $_SERVER['DOCUMENT_ROOT'] . BASE . LIBS . 'smartypants.php';
-			require_once $_SERVER['DOCUMENT_ROOT'] . BASE . LIBS . 'markdown.php';
+			require_once LIBS . 'smartypants.php';
+			require_once LIBS . 'markdown.php';
 			
 			// I use this instead of htmlentities because I sometimes got htmlentities stored and it tries to escape the entity chars
+			// this should be improved
 			function removeAngleBrackts($str) {
 				$str = str_replace('<','&lt;',$str);
 				$str = str_replace('>','&gt;',$str);
