@@ -76,15 +76,15 @@ class PostModel extends DBmodel {
 		
 	}
 	
-	// I write my posts in markdown
+	// I write my posts in markdown [http://daringfireball.net/projects/markdown/]
 	// when I hit save I want a couple of things to happen auto:
 	// - I want to save the text excactly how I leave it
 	// - I want everything stripped except for the plain text (excluding code from inside a pre) so I can create:
 	//		- Excerpt (300 chars)
 	//		- meta (160 chars)
-	// - I want all my ' and " to be converted in HTML using SmartyPants [http://daringfireball.net/projects/smartypants/]
+	// - I want all my ' and " to be converted in HTML using SmartyPants [http://michelf.com/projects/php-smartypants/]
 	// - I want all my pre's to be htmlentitie'd
-	// - I want everything outside my pre's to be converted to HTML by PHPMarkdown [http://daringfireball.net/projects/markdown/]
+	// - I want everything outside my pre's to be converted to HTML by PHPMarkdown [http://michelf.com/projects/php-markdown/]
 	//
 	// this function returns an array with all those different versions of the text
 	function prepareContent($content) {
