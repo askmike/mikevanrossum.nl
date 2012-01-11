@@ -125,7 +125,7 @@ class PostModel extends DBmodel {
 			// $html, $plaintext and $preless are all written in here
 			// it would be more readable/managable to seperate them into their own foreach IMO
 			// however I'm doing a preg match on 1/2 of the segments (each pre element
-			// introduces 3 new segments)*. Here I go for performace > readability
+			// introduces 3 new segments). Here I go for performace > readability*
 			
 			// *Though this only get's run whenever I update/create a post
 			
