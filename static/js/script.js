@@ -277,7 +277,7 @@ $(function() {
 		$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });
 		
 		//tracking
-		initTracking($php.data('post'));
+		initTracking(location.pathname);
 		
 		//syntax hightlighting
 		sh_highlightDocument($php.data('base') + "static/js/shjs/", '.min.js');
@@ -322,7 +322,7 @@ $(function() {
 	function sendTracking(obj) {
 		
 		obj = obj ? obj : tracking
-		//log(obj);
+		// log(obj);
 		
 		//need to change $.post to ajax since $.post is basically a shortcut to $.ajax
 		
