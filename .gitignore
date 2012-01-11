@@ -40,6 +40,7 @@ intermediate
 publish
 build
 static/img
+libs
 .idea
 
 #app specific item

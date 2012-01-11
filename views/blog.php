@@ -19,6 +19,7 @@
 					</a>
 					
 				<?php } } ?>
+		</div>
 		<div id="blog-nav">
 			<?php //lastpage does not exist yet, so right now it always passes this if
 			if(!$lastpage) { ?>

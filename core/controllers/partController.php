@@ -29,6 +29,14 @@ class PartController extends Controller {
 		return $array;
 	}
 	
+	function getDatesFromItem($array) {
+		if(is_array($array)) {
+			$array['dutchdate'] = $this->getDutchDate($array['date']);
+		}
+		//print_r($array);
+		return $array;
+	}
+	
 	
 	function getDutchDate($timestamp) {
 		

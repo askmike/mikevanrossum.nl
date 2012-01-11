@@ -6,6 +6,7 @@ define('STARTTIME', microtime(true));
 
 //define basic things we need before we can require anything at all
 define('APP', 'core/');
+define('LIBS', 'libs/');
 define('CONTROLLERS', APP . 'controllers/');
 define('MODELS', APP . 'models/');
 
@@ -30,6 +31,14 @@ if ($request[0] == 'blog' /*|| $request[0] == 'blog'*/) {
 	require CONTROLLERS . 'trackController.php';
 	$con = new TrackController($request[1]);
 	
+} else if ($request[0] == 'admin') { 
+	//backend time
+
+	define('PAGE', 'admin');
+	
+	require CONTROLLERS . 'adminController.php';
+	$con = new AdminController($_GET['r']);
+
 } else { 
 	//home or 404
 	

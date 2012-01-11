@@ -241,7 +241,7 @@ div#pleft a.current {
 }
 
 #blog-nav {
-/*	margin-left: 62px;*/
+	margin-left: 62px;
 }
 
 #blog-nav a {
@@ -255,7 +255,7 @@ div#pleft a.current {
 
 /* single post */
 
-.post #container {
+.post #container, .admin #container {
 	width: 640px;
 	margin: 60px auto 50px auto;
 	padding-right: 15px;
@@ -369,6 +369,74 @@ pre.sh_sourceCode .sh_property {
 
 pre.sh_sourceCode .sh_value {
   color: #c7696d;
+}
+
+/* admin */
+
+.admin #blog-posts a {
+	overflow:hidden;
+}
+
+#editPost textarea {
+	width:600px;
+	height:75px;
+	padding:5px;
+	margin:6px 0;
+	line-height: 1.4em;
+	border:none;
+	-webkit-box-shadow: 0 0 3px #888;
+	box-shadow: 0 0 3px #888;
+}
+
+#editPost #editContent {
+	height:300px;
+}
+
+#editPost input {
+	width:600px;
+	padding:5px;
+	margin:6px 0;
+	border:none;
+	-webkit-box-shadow: 0 0 3px #888;
+	box-shadow: 0 0 3px #888;
+}
+
+#editPost .labeledTextarea p {
+	float:left;
+	width:80px;
+	line-height:70px;
+}
+
+#editPost .labeledTextarea textarea {
+	float:left;
+	width:520px;
+	margin:10px 0;
+}
+
+#editPost .labeledInput p {
+	float:left;
+	width:80px;
+}
+
+#editPost .labeledInput input {
+	float:left;
+	width:520px;
+	margin:10px 0;
+}
+
+#editTitle {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#editPost #submitPost {
+	float:right;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	width:100px;
+	padding:10px 20px;
+	margin-right:27px;
+	margin-bottom:100px;
 }
 
 /* rest of reset */

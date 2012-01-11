@@ -35,6 +35,7 @@ All is written by me except for:
 		<meta name="description" content="Op het portfolio en blog van Mike van Rossum, een webdeveloper en CMDA student uit Amsterdam, vind je van van alles wat te maken heeft met de front-end en back-end van websites."
 	<?php } else { ?>
 		<meta name="description" content="<?= $meta ?>">
+		<meta name="keywords" content="Mike van Rossum, webdevelopment, website, webdesign, web, <?= $tags ?>">
 	<?php } ?>
 	<meta name="author" content="Mike van Rossum">
 
