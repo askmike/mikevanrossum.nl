@@ -55,11 +55,12 @@ class AdminController extends PartController {
 		//because in the admin interface blog/ is prepended to the view url
 		$request = substr($request, 6);
 		
-		if($_POST['submit']) {
-			$this->model->updatePost($request, $_POST);
-		}
+		if($_POST['submit']) $this->model->updatePost($request, $_POST);
 		
 		$data = $this->model->getPost($request);
+		$data = $data[0];
+		
+		// print_r($data);
 		
 		$this->part = $data;
 		

@@ -14,9 +14,8 @@ class PortfolioModel extends DBmodel {
 	
 	public function getPortfolio() {
 		
-		$members = $this->connection->query('SELECT * FROM portfolio ORDER BY id DESC');
-		
-		return $this->assocResults($members);
+		return $this->query('SELECT * FROM portfolio ORDER BY id DESC');
+	
 	}
 	
 	
