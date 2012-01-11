@@ -102,13 +102,8 @@ class PostModel extends DBmodel {
 			$segments = preg_split('/(<\/?pre.*?>)/', $content, -1, PREG_SPLIT_DELIM_CAPTURE);
 			
 			// STATE MACHINE
-			// this down here is probably overkill but it's solving a complicated problem:
-			
-			// I want to write text in markdown
-			// I want to write about code using SHJS, therefor I need to make pre's with classes (so I can't use the default tabbing syntax from markdown)
-			// when there is a tab infront of a line PHPMarkdown ignores my pre and adds it's own pre inside
-			// so I need to escape anglebrackets in a pre and markdown everything else
-			// besides that I need plain text (without any pre content) for the excerpt & meta
+			// complicated solution for a complicated problem :)
+			// problem: see above function
 			
 			// borrowed from: http://stackoverflow.com/questions/1278491/howto-encode-texts-outside-the-pre-pre-tag-with-htmlentities-php#answer-1278575
 			
