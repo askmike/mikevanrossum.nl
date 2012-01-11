@@ -36,7 +36,6 @@ class DBModel {
 		//return the results in a associative array
 		return $this->assocResults($q);
 	}
-	
 }
 
 ?>

@@ -58,11 +58,15 @@ class TrackController extends Controller {
 	
 	function addStep() {
 		
+		if(!$this->checkStep()) return;
+		
 		$this->model->addStepToSession($_POST, $this->session['id']);
 		
 	}
 	
 	function addTrack() {
+		
+		if(!$this->checkTrack()) return;
 		
 		$this->model->createNewSession($_POST);
 		
@@ -70,8 +74,6 @@ class TrackController extends Controller {
 	
 	// small checks to make sure nobody is messing with the POST vars
 	//
-	// NOTE: this is the only checking I do because all input goes straight into
-	// the database using bind_param, according to stackoverflow I'm good:
 	// http://stackoverflow.com/questions/2284317/do-i-have-to-use-mysql-real-escape-string-if-i-bind-parameters#answer-2284327
 	function checkInput($whitelist) {
 		//this could be improved by storing all the PHP created sessions in the DB
@@ -86,6 +88,33 @@ class TrackController extends Controller {
 		if( sizeof($whitelist) != sizeof($_POST) ) return false;
 		
 		//all checks are passed
+		return true;
+	}
+	
+	
+	//		verify the input agressive (regex) since it's POSTED
+	//		this is not the fastest but no one is waiting :)
+
+	function checkTrack() {
+		// I verify everything with the exception of the browser string (not going to do anything with it yet + 
+		// can't find which chars are allowed / not allowed)
+		
+		//phptime: needs to be a number (with dots) / we match for a decimal with (min 2 & max 4) digits behind the .
+		if(!preg_match('/^\d+(.\d{2,4})?$/', $_POST['phptime'])) return false;
+		//resolution + viewport: needs to be [number]x[number]
+		if(!preg_match('/[0-9]+(x[0-9]+)/', $_POST['resolution'])) return false;
+		if(!preg_match('/[0-9]+(x[0-9]+)/', $_POST['viewport'])) return false;
+		
+		if(!$this->checkStep()) return false;
+		
+		return true;
+	}
+	
+	function checkStep() {
+		//in page I don't want any strange chars
+		if(!preg_match('/^[^(){};^*@$%<>\\\'"]*$/', $_POST['page'])) return false;
+		//session: needs to be hex and 32 chars
+		if(!preg_match('/[a-f0-9]{32}/', $_POST['session'])) return false;
 		return true;
 	}
 }
