@@ -20,6 +20,8 @@ class TrackModel extends DBmodel {
 		$track = $this->connection->query('SELECT * FROM tracking WHERE phpsession = "' . $session . '"');
 		
 		return $track->fetch_assoc();
+	
+		// return $this->query('SELECT * FROM tracking WHERE phpsession = "' . $session . '"');
 		
 	}
 	

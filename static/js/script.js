@@ -315,13 +315,12 @@ $(function() {
 	
 	function sendTracking(obj) {
 		
+		obj = obj ? obj : tracking
+		//log(obj);
+		
 		//need to change $.post to ajax since $.post is basically a shortcut to $.ajax
 		
-		if(!obj) {
-			$.post($php.data('base') + "track", tracking /*, function(data) { $('html').html(data) }*/);
-		} else {	
-			$.post($php.data('base') + "track/step", obj/*, function(data) { $('html').html(data) }*/);
-		}
+		$.post($php.data('base') + "track", obj /*,function(data) { $('html').html(data) }*/);
 		
 	}
 	

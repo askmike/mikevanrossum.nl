@@ -29,7 +29,7 @@ if ($request[0] == 'blog' /*|| $request[0] == 'blog'*/) {
 	//it's a track request: some analytics data getting passed
 	
 	require CONTROLLERS . 'trackController.php';
-	$con = new TrackController($request[1]);
+	$con = new TrackController;
 	
 } else if ($request[0] == 'admin') { 
 	//backend time
