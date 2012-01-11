@@ -113,8 +113,6 @@ class TrackController extends Controller {
 	function checkStep() {
 		//in page I don't want any strange chars
 		if(!preg_match('/^[^(){};^*@$%<>\\\'"]*$/', $_POST['page'])) return false;
-		//also don't like anything with the word script
-		if(preg_match('/script/', $_POST['page'])) return false;
 		//session: needs to be hex and 32 chars
 		if(!preg_match('/[a-f0-9]{32}/', $_POST['session'])) return false;
 		return true;
