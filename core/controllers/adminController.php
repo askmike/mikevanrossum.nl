@@ -60,6 +60,9 @@ class AdminController extends PartController {
 		$data = $this->model->getPost($request);
 		$data = $data[0];
 		
+		//prepend domain + base to the url so the links are nicer
+		$data['url'] = DOMAIN . BASE . $data['url'];
+		
 		// print_r($data);
 		
 		$this->part = $data;

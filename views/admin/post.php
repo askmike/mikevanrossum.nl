@@ -1,7 +1,7 @@
 <form id='editPost' method='post'>
 	<input name='title' id='editTitle' value='<?= $titel ?>'>
 	<p>
-		url: <a href='<?= BASE . $url ?>' target='_blank'><?= BASE . $url ?></a><br>
+		url: <a href='<?= $url ?>' target='_blank'><?= $url ?></a><br>
 		datum: <?= $dutchdate ?>
 	</p>
 	<textarea name='content' id='editContent'><?= $bodyMd ?></textarea>
