@@ -267,6 +267,7 @@ $(function() {
 	
 	if($html.hasClass('site')) init();
 	if($html.hasClass('post')) postInit();
+	if($html.hasClass('admin')) adminInit();
 	
 	function postInit() {
 		//basic init for a single post page
@@ -282,6 +283,11 @@ $(function() {
 		sh_highlightDocument($php.data('base') + "static/js/shjs/", '.min.js');
 	}
 	
+	function adminInit() {
+		//menu
+		$menu.find('li').eq(2).addClass('current');
+		$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });
+	}
 	
 	/* all the functions for the javascript sided tracking */
 	function initTracking(page) {

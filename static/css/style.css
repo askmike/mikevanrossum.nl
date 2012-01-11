@@ -64,6 +64,10 @@ header {
 	margin-left:400px;
 }
 
+.admin #menu ul {
+	margin-left: 433px;
+}
+
 #menu li {
 	float: left;
 	list-style: none;
@@ -261,9 +265,21 @@ div#pleft a.current {
 	padding-right: 15px;
 }
 
+.post #container {
+	width: 511px;
+}
+
 .post #container p {
 	text-align:justify;
 	line-height: 1.4em;
+}
+
+code {
+	background-color: #0d142c;
+	color: #FFFFFF;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding:2px 4px;
 }
 
 pre {
@@ -273,7 +289,8 @@ pre {
 	font-style: normal;
 	line-height: 1.45em;
 	border: 1px solid #CCCCCC;
-	width: 624px;
+	width: 540px;
+	margin-left: -20px;
 	overflow:auto;
 	padding:7px;
 	-moz-border-radius: 5px;
@@ -288,15 +305,15 @@ pre.sh_sourceCode .sh_keyword {
 }
 
 pre.sh_sourceCode .sh_type {
-  color: #4c73a6;
+  color: #7e90a4;
 }
 
 pre.sh_sourceCode .sh_string {
-  color: #c4c7c8;
+  color: #6ecf43;
 }
 
 pre.sh_sourceCode .sh_regexp {
-  color: #666666;
+  color: #6ecf43;
 }
 
 pre.sh_sourceCode .sh_specialchar {
@@ -312,11 +329,11 @@ pre.sh_sourceCode .sh_number {
 }
 
 pre.sh_sourceCode .sh_preproc {
-  color: #0000b3;
+  color: #F9DA44;
 }
 
 pre.sh_sourceCode .sh_function {
-  color: #d3583b;
+  color: #E16F30;
 }
 
 pre.sh_sourceCode .sh_url {
@@ -344,7 +361,7 @@ pre.sh_sourceCode .sh_name {
 }
 
 pre.sh_sourceCode .sh_variable {
-  color: #c297c8;
+  color: white;
 }
 
 pre.sh_sourceCode .sh_oldfile {
@@ -360,15 +377,15 @@ pre.sh_sourceCode .sh_difflines {
 }
 
 pre.sh_sourceCode .sh_selector {
-  color: #b9e1e3;
+  color: #E16F30;
 }
 
 pre.sh_sourceCode .sh_property {
-  color: #f9da44;
+  color: #7E90A4;
 }
 
 pre.sh_sourceCode .sh_value {
-  color: #c7696d;
+  color: #F9DA44;
 }
 
 /* admin */
