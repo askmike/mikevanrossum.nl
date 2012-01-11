@@ -78,7 +78,7 @@ class PostModel extends DBmodel {
 	
 	// I write my posts in markdown [http://daringfireball.net/projects/markdown/]
 	// when I hit save I want a couple of things to happen auto:
-	// - I want to save the text excactly how I leave it
+	// - I want to save the text excactly how I leave it (with the exception of htmlentity pre's)
 	// - I want everything stripped except for the plain text (excluding code from inside a pre) so I can create:
 	//		- Excerpt (300 chars)
 	//		- meta (160 chars)
@@ -88,37 +88,19 @@ class PostModel extends DBmodel {
 	//
 	// this function returns an array with all those different versions of the text
 	function prepareContent($content) {
-			//save it the same way as we got it
-			$arr['md'] = $content;
-		
-			//						the excerpt & meta
-			
-			//remove all pre's (with content)
-			$preless = preg_replace('/<pre.*?>(.*?)<\/pre>/imsu','', $content);
-			
-			//remove all tags
-			$preless = strip_tags($preless);
-			
-			function shrinkText($str, $limit) {
-				$strlen = strlen($str);
-				if($strlen > $limit) {
-					$pos = strpos($str, ' ', $limit);
-					if($strlen > $pos) {
-						$result = substr($str,0,$pos);
-					}
-				}
-				return $result ? $result : $str;
-			}
-			
-			$arr['excerpt'] = shrinkText($preless, 290)  . ' (...)';
-			$arr['meta'] = shrinkText($preless, 160);
-			
-			//						the html
-			
 			require_once $_SERVER['DOCUMENT_ROOT'] . BASE . LIBS . 'smartypants.php';
 			require_once $_SERVER['DOCUMENT_ROOT'] . BASE . LIBS . 'markdown.php';
-			
+		
 			$sp = SmartyPants($content);
+			
+			// I use this instead of htmlentities because I sometimes got htmlentities stored and it tries to escape the entity chars
+			function removeAngleBrackts($str) {
+				$str = str_replace('<','&lt;',$str);
+				$str = str_replace('>','&gt;',$str);
+				return $str;
+			}
+		
+			$segments = preg_split('/(<\/?pre.*?>)/', $sp, -1, PREG_SPLIT_DELIM_CAPTURE);
 			
 			// STATE MACHINE
 			// this down here is probably overkill but this was my problem:
@@ -133,26 +115,60 @@ class PostModel extends DBmodel {
 			
 			// $state = 0 if outside of a pre
 			// $state = 1 if inside of a pre
-			$segments = preg_split('/(<\/?pre.*?>)/', $sp, -1, PREG_SPLIT_DELIM_CAPTURE);
 			$state = 0;
+			
+			$plaintext = '';
+			$html = '';
+			
 			foreach ($segments as &$segment) {
 			    if ($state == 0) {
-			        if (preg_match('<pre.*?>',$segment))
+			        if (preg_match('#<pre[^>]*>#i',$segment)) {
 						$state = 1;	
-			        else
+						$html .= $segment;
+						$plaintext .= $segment;
+					}
+			        else {
 						//this is outside the pre tag
-						$segment = Markdown($segment);
+						$plaintext .= $segment;
+						$html .= Markdown($segment);
+					}
 			    } else if ($state == 1) {
-			        if ($segment == '</pre>')
-			            $state = 0;
-					else
-						//this is inside a pre tag
-						$segment = htmlentities($segment);
+			        if ($segment == '</pre>') {
+						$state = 0;
+						$html .= $segment;
+						$plaintext .= $segment;
+					}
+					else {
+						//this is inside the pre tag
+						$enti = removeAngleBrackts($segment);
+						$html .= $enti;
+						$plaintext .= $enti;
+					}
 			    }
 			}
 			
-			$arr['html'] = implode($segments);
-		
+			// echo $plaintext . "\n\n\n\n\n\n\n\n\n\n\n" . $html . "\n\n\n\n\n";
+			$arr['html'] = $html;
+			$arr['md'] = $plaintext;
+			
+			//						the excerpt & meta
+			
+			//remove all tags
+			$tagless = strip_tags($plaintext);
+			
+			function shrinkText($str, $limit) {
+				$strlen = strlen($str);
+				if($strlen > $limit) {
+					$pos = strpos($str, ' ', $limit);
+					if($strlen > $pos) {
+						$result = substr($str,0,$pos);
+					}
+				}
+				return $result ? $result : $str;
+			}
+			
+			$arr['excerpt'] = shrinkText($tagless, 290)  . ' (...)';
+			$arr['meta'] = shrinkText($tagless, 160);
 			
 			// replaced by the statemachine
 			//escape everything inside pre tags: http://davidwalsh.name/php-html-entities
