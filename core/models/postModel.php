@@ -105,7 +105,7 @@ class PostModel extends DBmodel {
 			// this down here is probably overkill but it's solving a complicated problem:
 			
 			// I want to write text in markdown
-			// I want to write about code using SHJS, therefor I need to make pre's with classes (so I can't use the default tabbing)
+			// I want to write about code using SHJS, therefor I need to make pre's with classes (so I can't use the default tabbing syntax from markdown)
 			// when there is a tab infront of a line PHPMarkdown ignores my pre and adds it's own pre inside
 			// so I need to escape anglebrackets in a pre and markdown everything else
 			// besides that I need plain text (without any pre content) for the excerpt & meta
@@ -136,8 +136,7 @@ class PostModel extends DBmodel {
 						$state = 1;	
 						$html .= $segment;
 						$plaintext .= $segment;
-					}
-			        else {
+					} else {
 						//this is outside the pre tag
 						$plaintext .= $segment;
 						$html .= Markdown($segment);
@@ -149,8 +148,7 @@ class PostModel extends DBmodel {
 						$state = 0;
 						$html .= $segment;
 						$plaintext .= $segment;
-					}
-					else {
+					} else {
 						//this is inside the pre tag
 						$enti = removeAngleBrackts($segment);
 						$html .= $enti;
