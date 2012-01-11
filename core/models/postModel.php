@@ -150,7 +150,7 @@ class PostModel extends DBmodel {
 						$segment = htmlentities($segment);
 			    }
 			}
-
+			
 			$arr['html'] = implode($segments);
 		
 			

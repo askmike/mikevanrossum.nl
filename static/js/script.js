@@ -279,7 +279,7 @@ $(function() {
 		initTracking($php.data('post'));
 		
 		//syntax hightlighting
-		sh_highlightDocument($php.data('base') + "static/shjs/", '.min.js');
+		sh_highlightDocument($php.data('base') + "static/js/shjs/", '.min.js');
 	}
 	
 	

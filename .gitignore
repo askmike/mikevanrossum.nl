@@ -40,7 +40,7 @@ intermediate
 publish
 build
 static/img
-static/shjs
+static/js/shjs
 libs
 .idea
 
