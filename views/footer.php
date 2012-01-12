@@ -21,4 +21,4 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <![endif]-->
 </body>
 </html>
-<!-- <?= 'page served in: ' . round( (microtime( true ) - STARTTIME), 5 ) . ' seconds' ?>-->
+<!--# <?= 'page served in: ' . round( (microtime( true ) - STARTTIME), 5 ) . ' seconds' ?> -->
