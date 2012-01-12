@@ -17,7 +17,6 @@ class PostController extends PartController {
 		
 		// get main data
 		$data = $this->model->getPost($request);
-		$data = $data[0];
 		
 		$data['editUrl'] = DOMAIN . BASE . 'admin/' . $data['url'];
 		

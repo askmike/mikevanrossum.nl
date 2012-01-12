@@ -16,9 +16,9 @@ class PostModel extends DBmodel {
 		return $this->querySingle('SELECT count( * ) as numberOfPosts FROM post', 'numberOfPosts');
 	}
 	
-	public function getPosts($from) {
+	public function getPosts($from, $number) {
 		
-		return $this->query('SELECT excerpt,titel,date,url FROM post ORDER BY date DESC LIMIT ' . $from . ', 5');
+		return $this->query('SELECT excerpt,titel,date,url FROM post ORDER BY date DESC LIMIT ' . $from . ', ' . $number);
 		
 	}
 	
@@ -34,10 +34,8 @@ class PostModel extends DBmodel {
 		
 		$statement->bind_result($id, $titel, $bodyHtml, $bodyMd, $meta, $tags, $date, $url, $modifyDate, $excerpt);
 		
-		$i = 0;
-		
 		while ($statement->fetch()) {
-			$array[$i] =  array(
+			$array =  array(
 				'id' => $id, 
 				'titel' => $titel, 
 				'bodyHtml' => $bodyHtml, 

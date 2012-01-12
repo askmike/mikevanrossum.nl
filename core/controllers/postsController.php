@@ -16,7 +16,7 @@ class PostsController extends PartController {
 		$numberOfPosts = $this->model->getNumberOfPosts();
 		
 		// get main data
-		$data = $this->model->getPosts( $page * 5 - 5 );
+		$data = $this->model->getPosts( $page * 5 - 5, 5 );
 		
 		// overwrite main data with added dates
 		
