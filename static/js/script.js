@@ -123,12 +123,12 @@ $(function() {
 		} else if(request[1] && request[1] != oldP) {
 			//where not changing pages, but changing portfolio items
 			changePortfolioItem(request);
-			trackPage(location.href);
+			trackPage(location.hash);
 			
 		} if(request[0] == 'blog' && isNumber(request[1])) {
 			//were changing blog pages
 			changeBlogPosts(request[1]);
-			trackPage(location.href);
+			trackPage(location.hash);
 		}
 	}
 	
