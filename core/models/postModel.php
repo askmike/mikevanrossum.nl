@@ -151,6 +151,8 @@ class PostModel extends DBmodel {
 					} else {
 						//this is inside the pre tag
 						$plaintext .= removeAngleBrackets($segment);
+						// first encode &gt; to > so I can re encode it together with other chars
+						// else we get double encoding like: $amp;gt;
 						$enti = html_entity_decode($segment);
 						$html .= htmlspecialchars($enti, ENT_QUOTES);
 					}
