@@ -17,6 +17,7 @@ $(function() {
 		$portfolioItems = $('#portfolio-items').children(),
 		$window = $(window),
 		
+		loc = location,
 		
 		request, //stores the request in an array
 		pageIndex, //stores the current menu item (number)
@@ -123,12 +124,12 @@ $(function() {
 		} else if(request[1] && request[1] != oldP) {
 			//where not changing pages, but changing portfolio items
 			changePortfolioItem(request);
-			trackPage(location.hash);
+			trackPage(loc.hash);
 			
 		} if(request[0] == 'blog' && isNumber(request[1])) {
 			//were changing blog pages
 			changeBlogPosts(request[1]);
-			trackPage(location.hash);
+			trackPage(loc.hash);
 		}
 	}
 	
@@ -204,7 +205,7 @@ $(function() {
 	}
 	
 	function getHash() {
-		return parseLink(window.location.hash);
+		return parseLink(loc.hash);
 	}
 	
 	function parseLink(link) {
@@ -325,7 +326,7 @@ $(function() {
 		initLavalamp(3);
 		
 		//tracking
-		initTracking(location.pathname);
+		initTracking(loc.pathname);
 		
 		//syntax hightlighting
 		sh_highlightDocument($php.data('base') + "static/js/mylibs/shjs/", '.min.js');
@@ -334,6 +335,9 @@ $(function() {
 	function adminInit() {
 		//menu
 		initLavalamp(2);
+		
+		//for as long as the admin is public I want to track it to
+		initTracking(loc.pathname);
 	}
 	
 	/* all the functions for the javascript sided tracking */
