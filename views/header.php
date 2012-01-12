@@ -10,16 +10,22 @@ __
      \ /_/ \/_/\/_/\/_/\/_/\/____/
 
 alot here is minified
-
 Check out all the code on github [https://github.com/askmike/mikevanrossum.nl]
 
 All is written by me except for:
+
+Javascript:
 
  - jQuery 1.7.1 [http://jquery.com/]
  - menu: lavalamp 1.2 [http://www.gmarwaha.com/blog/2007/08/23/lavalamp-for-jquery-lovers/]
  - browser support: Modernizr 2.0 [http://modernizr.com/]
  - plugin: jQuery color function of jQuery UI 1.9pre [jqueryui.com]
  - syntax highlighting: shjs [http://shjs.sourceforge.net/]
+
+PHP:
+
+ - PHP Markdown 1.0.1o [http://michelf.com/projects/php-markdown/]
+ - PHP SmartyPants [http://michelf.com/projects/php-smartypants/]
 
 -->
 <html id="html" class="no-js <?= PAGE ?>" lang="nl">

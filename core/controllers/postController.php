@@ -6,6 +6,8 @@ class PostController extends PartController {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
+		define('PAGE', 'post');
+		
 		$this->model = new PostModel;
 		
 		// get main data
@@ -26,8 +28,8 @@ class PostController extends PartController {
 		// the dates added, however I would have to create a date array mapped
 		// to the data array.
 		
-		// possible solution: create a general class that would handle mapping 2 arrays.
-		//$data = $this->getDatesFromItems($data);
+		// possible solution: create a general class that would handle mapping 2 arrays
+		$data = $this->getDatesFromItem($data);
 		
 		$this->load = new Load();
 		
