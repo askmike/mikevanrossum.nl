@@ -16,37 +16,49 @@ require APP . 'config.php';
 $request = explode('/',$_GET['r']);
 
 //route
-if ($request[0] == 'blog' /*|| $request[0] == 'blog'*/) { 
-	//single post request
-	
-	define('PAGE', 'post');
-	
-	require CONTROLLERS . 'postController.php';
-	$con = new PostController($_GET['r']);
+switch ($request[0]) {
+    case 'blog':
+        //single post request
+		define('PAGE', 'post');
 
-} else if ($request[0] == 'track') { 
-	//it's a track request: some analytics data getting passed
-	
-	require CONTROLLERS . 'trackController.php';
-	$con = new TrackController;
-	
-} else if ($request[0] == 'admin') { 
-	//backend time
+		require CONTROLLERS . 'postController.php';
+		$con = new PostController($_GET['r']);
+		
+        break;
+    case 'track':
+		// it's a track request: some analytics data getting passed
+		// we don't return anything
 
-	define('PAGE', 'admin');
-	
-	require CONTROLLERS . 'adminController.php';
-	$con = new AdminController($_GET['r']);
+		require CONTROLLERS . 'trackController.php';
+		$con = new TrackController;
 
-} else { 
-	//home or 404
-	
-	define('PAGE', 'site');
-	
-	require CONTROLLERS . 'siteController.php';
-	$con = new SiteController($request);
-	
-} 
+        break;
+    case 'admin':
+		// backend time
+
+		define('PAGE', 'admin');
+
+		require CONTROLLERS . 'adminController.php';
+		$con = new AdminController($_GET['r']);
+
+        break;
+	case 'json':
+		// it's a json request
+
+		require CONTROLLERS . 'postsController.php';
+		$con = new AdminController($_GET['r']);
+
+        break;
+	default:
+		// home or 404
+
+		define('PAGE', 'site');
+
+		require CONTROLLERS . 'siteController.php';
+		$con = new SiteController($request);
+}
+
+
 
 //end with killing the connection
 if($con) $con = NULL;
