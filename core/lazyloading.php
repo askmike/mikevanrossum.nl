@@ -1,6 +1,6 @@
 <?php
 
-function __autoload($class) {
+spl_autoload_register(function($class) {
 	
 	//we check for classes in those dirs
 	$dirs = array(
@@ -19,7 +19,7 @@ function __autoload($class) {
 			return;
 		}
 	}
-}
+});
 
 
 ?>
