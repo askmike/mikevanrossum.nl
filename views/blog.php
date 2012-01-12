@@ -21,12 +21,12 @@
 				<?php } } ?>
 		</div>
 		<div id="blog-nav">
-			<?php //lastpage does not exist yet, so right now it always passes this if
-			if(!$lastpage) { ?>
-			<a href='#'>&#60; oudere posts</a>
+			<?php
+			if($previousPage) { ?>
+			<a href='<?= $previousPage ?>'>&#60; oudere posts</a>
 			<?php } ?>
-			<?php if(!$firstpage) { ?>
-			<a href='#'>nieuwere posts &#62;</a>
+			<?php if($nextPage) { ?>
+			<a href='<?= $nextPage ?>'>nieuwere posts &#62;</a>
 			<?php } ?>
 		</div>
 	</section>
