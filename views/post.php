@@ -8,7 +8,8 @@
 <h1>
 	<?= $titel ?>
 </h1>
-<time><?= $dutchDate ?></time>
+<time class='postTime'><?= $dutchdate ?></time>
+<div class='clearfix'></div>
 <?= $bodyHtml ?>
 <hr>
 <p>
