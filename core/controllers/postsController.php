@@ -6,6 +6,9 @@ class PostsController extends PartController {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
+		//$page can be GET input
+		if(!is_numeric($page)) return;
+		
 		require MODELS . 'postModel.php';
 		
 		$this->model = new PostModel;
@@ -28,13 +31,13 @@ class PostsController extends PartController {
 		//show the previous (older posts) if there are
 		if($page*5 < $numberOfPosts) {
 			$data['previousPage'] = BASE . "json/blog/" . ($page + 1);
-			$data['jsonPrevious'] = BASE . '#blog/json/' . ($page + 1);
+			$data['jsonPrevious'] = BASE . '#blog/' . ($page + 1);
 		}
 		
 		//show the next (newer posts) if we're not at page 1
 		if($page > 1) {
 			$data['nextPage'] = BASE . "json/blog/" . ($page - 1);
-			$data['jsonNext'] = BASE . '#blog/json/' . ($page - 1);
+			$data['jsonNext'] = BASE . '#blog/' . ($page - 1);
 		}
 		
 		$this->part = $data;
