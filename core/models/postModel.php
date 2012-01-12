@@ -95,9 +95,9 @@ class PostModel extends DBmodel {
 			require_once LIBS . 'smartypants.php';
 			require_once LIBS . 'markdown.php';
 			
-			// I use this instead of htmlentities because I sometimes got htmlentities stored and it tries to escape the entity chars
-			// this should be improved
-			function removeAngleBrackts($str) {
+			// I use this instead of htmlentities for the plain text, this prevents HTML to be parsed inside the edit screen
+			// all HTML is served with htmlentities instead
+			function removeAngleBrackets($str) {
 				$str = str_replace('<','&lt;',$str);
 				$str = str_replace('>','&gt;',$str);
 				return $str;
@@ -138,8 +138,9 @@ class PostModel extends DBmodel {
 					} else {
 						//this is outside the pre tag
 						$plaintext .= $segment;
-						$html .= Markdown($segment);
-						$preless .= $segment;
+						$markdown = Markdown($segment);
+						$html .= $markdown;
+						$preless .= $markdown;
 					}
 			    } else if ($state == 1) {
 			        if ($segment == '</pre>') {
@@ -149,9 +150,9 @@ class PostModel extends DBmodel {
 						$plaintext .= $segment;
 					} else {
 						//this is inside the pre tag
-						$enti = removeAngleBrackts($segment);
-						$html .= $enti;
-						$plaintext .= $enti;
+						$plaintext .= removeAngleBrackets($segment);
+						$enti = html_entity_decode($segment);
+						$html .= htmlspecialchars($enti, ENT_QUOTES);
 					}
 			    }
 			}
@@ -161,7 +162,7 @@ class PostModel extends DBmodel {
 			
 			//						the excerpt & meta
 			
-			//remove all tags
+			// remove all html tags (markdown is already converted to HTML)
 			$tagless = strip_tags($preless);
 			
 			// echo $tagless;
@@ -181,9 +182,7 @@ class PostModel extends DBmodel {
 			$excerpt = shrinkText($tagless, 275)  . ' (...)';
 			$arr['excerpt'] = SmartyPants($excerpt);
 			
-			// in the meta I need to escape all the ' and "
-			$meta = shrinkText($tagless, 160);
-			$arr['meta'] = addSlashes($meta);
+			$arr['meta'] = shrinkText($tagless, 160);
 			
 			// replaced by the statemachine
 			//escape everything inside pre tags: http://davidwalsh.name/php-html-entities
