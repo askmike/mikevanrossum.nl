@@ -29,8 +29,9 @@ a:link { -webkit-tap-highlight-color: #cb8f42; }
 
 /* header */
 
-#container {
-	
+#header h1 a {
+	display:block;
+	height:130px;
 }
 
 header {

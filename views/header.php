@@ -56,8 +56,10 @@ All is written by me except for:
 <body>
 	<header>
 		<div id='header'>
-			<h1 class='ir'>
-				Mike van Rossum - webdeveloper
+			<h1>
+				<a class='ir' href='<?= BASE ?>'>
+					Mike van Rossum - webdeveloper
+				</a>
 			</h1>
 		</div>
 	</header>
