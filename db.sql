@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 09, 2012 at 11:41 PM
+-- Generation Time: Jan 12, 2012 at 01:14 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `step` (
   `time` int(11) NOT NULL,
   `page` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=323 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1621 ;
 
 -- --------------------------------------------------------
 
@@ -80,4 +80,4 @@ CREATE TABLE IF NOT EXISTS `tracking` (
   `resolution` text NOT NULL,
   `viewport` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=116 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=141 ;
