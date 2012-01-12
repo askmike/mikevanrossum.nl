@@ -21,6 +21,7 @@ a, p, li, pre { font-family:helvetica; font-size:13px}
 a {color:#AE7001;text-decoration: none;}
 a:hover {text-decoration: underline;}
 h1 {font-size: 25px;}
+.strike {text-decoration: line-through;}
 
 ::-moz-selection{ background: #cb8f42; color:white; text-shadow: none; }
 ::selection { background:#cb8f42; color:white; text-shadow: none; }
@@ -258,6 +259,24 @@ div#pleft a.current {
 }
 
 /* single post */
+
+.message, .adminBar {
+	background: #eee;
+	padding:10px 15px;
+	border-radius:6px;
+	border: 1px solid #ccc;
+	margin:0;
+}
+
+#editPost .message {
+	margin-bottom: 15px;
+	width:577px;
+}
+
+.adminBar {
+	float:right;
+	display:inline-block;
+}
 
 .post #container, .admin #container {
 	width: 640px;

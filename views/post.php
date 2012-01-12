@@ -1,7 +1,14 @@
+<?php if(true) { ?>
+<p class='adminBar'>
+	<a href='<?= $editUrl ?>'>Edit deze pagina</a> 
+	/ <a href='./'>Post statistieken</a>
+</p>
+<div class='clearfix'></div>
+<?php } ?>
 <h1>
 	<?= $titel ?>
 </h1>
-<p><em><a href='<?= $editUrl ?>'>Edit deze pagina</a></em></p>
+<time><?= $dutchDate ?></time>
 <?= $bodyHtml ?>
 <hr>
 <p>
