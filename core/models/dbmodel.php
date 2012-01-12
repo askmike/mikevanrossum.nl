@@ -36,6 +36,18 @@ class DBModel {
 		//return the results in a associative array
 		return $this->assocResults($q);
 	}
+	
+	public function queryRow($query) {
+		$r = $this->query($query);
+		
+		return $r[0];
+	}
+	
+	public function querySingle($query, $var) {
+		$r = $this->queryRow($query);
+		
+		return $r[$var];
+	}
 }
 
 ?>
