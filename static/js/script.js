@@ -280,7 +280,7 @@ $(function() {
 		initTracking(location.pathname);
 		
 		//syntax hightlighting
-		sh_highlightDocument($php.data('base') + "static/js/shjs/", '.min.js');
+		sh_highlightDocument($php.data('base') + "static/js/mylibs/shjs/", '.min.js');
 	}
 	
 	function adminInit() {
