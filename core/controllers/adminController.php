@@ -29,7 +29,7 @@ class AdminController extends PartController {
 	
 	function index() {
 		// get main data
-		$data = $this->model->getPosts( 0 );
+		$data = $this->model->getPosts( 0, 20 );
 		
 		// overwrite main data with added dates
 		
@@ -61,7 +61,6 @@ class AdminController extends PartController {
 		}
 		
 		$data = $this->model->getPost($request);
-		$data = $data[0];
 		
 		//prepend domain + base to the url so the links are nicer
 		$data['url'] = DOMAIN . BASE . $data['url'];
