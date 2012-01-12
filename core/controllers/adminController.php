@@ -29,7 +29,7 @@ class AdminController extends PartController {
 	
 	function index() {
 		// get main data
-		$data = $this->model->getPosts();
+		$data = $this->model->getPosts(1);
 		
 		// overwrite main data with added dates
 		

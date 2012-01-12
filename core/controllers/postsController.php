@@ -11,10 +11,9 @@ class PostsController extends PartController {
 		$this->model = new PostModel;
 		
 		$numberOfPosts = $this->model->getNumberOfPosts();
-		$numberOfPosts = $numberOfPosts[0]['numberOfPosts'];
 		
 		// get main data
-		$data = $this->model->getPosts($page);
+		$data = $this->model->getPosts( $page * 5 - 5 );
 		
 		// overwrite main data with added dates
 		
@@ -26,9 +25,11 @@ class PostsController extends PartController {
 		// possible solution: create a general class that would handle mapping 2 arrays.
 		$data = $this->getDatesFromItems($data);
 		
-		//if no date is provided we're at site/blog
-		if($page) $data['previousPage'] = BASE . "json/blog/" . ($page + 1);
-		if($page) $data['nextPage'] = BASE . "json/blog/" . ($page - 1);
+		//show the previous (older posts) if there are
+		if($page*5 < $numberOfPosts) $data['previousPage'] = BASE . "json/blog/" . ($page + 1);
+		
+		//show the next (newer posts) if we're not at page 1
+		if($page > 1) $data['nextPage'] = BASE . "json/blog/" . ($page - 1);
 		
 		$this->part = $data;
 	}

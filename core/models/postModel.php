@@ -12,9 +12,13 @@ class PostModel extends DBmodel {
 		parent::__destruct();
 	}
 	
-	public function getPosts() {
+	public function getNumberOfPosts() {
+		return $this->querySingle('SELECT count( * ) as numberOfPosts FROM post', 'numberOfPosts');
+	}
+	
+	public function getPosts($from) {
 		
-		return $this->query('SELECT * FROM post ORDER BY id DESC LIMIT 0, 5');
+		return $this->query('SELECT * FROM post ORDER BY id DESC LIMIT ' . $from . ', 5');
 		
 	}
 	
@@ -174,7 +178,7 @@ class PostModel extends DBmodel {
 			}
 			
 			// I need to smartypants the excerpt to [consistance is key]
-			$excerpt = shrinkText($tagless, 290)  . ' (...)';
+			$excerpt = shrinkText($tagless, 275)  . ' (...)';
 			$arr['excerpt'] = SmartyPants($excerpt);
 			
 			// in the meta I need to escape all the ' and "
