@@ -20,9 +20,7 @@ $request = explode('/',$_GET['r']);
 switch ($request[0]) {
     case 'blog':
         //single post request
-		define('PAGE', 'post');
 
-		// require_once CONTROLLERS . 'postController.php';
 		$con = new PostController($_GET['r']);
 		
         break;
@@ -35,8 +33,6 @@ switch ($request[0]) {
         break;
     case 'admin':
 		// backend time
-
-		define('PAGE', 'admin');
 
 		$con = new AdminController($_GET['r']);
 

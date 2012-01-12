@@ -6,6 +6,8 @@ class AdminController extends PartController {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
+		define('PAGE', 'admin');
+		
 		$this->model = new PostModel;
 		
 		$this->load = new Load();
