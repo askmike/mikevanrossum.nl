@@ -2,6 +2,8 @@
 
 all in here is handwritten by me
 
+TODO: it's a mess right now, should group things into scopes (or objects)
+
 */
 $(function() {
 	
@@ -64,8 +66,6 @@ $(function() {
 	
 	/* This function loads a page */
 	function init(request) {
-		//set up listeners for the blog nav
-		blogNav();
 		
 		//get & parse request if none is provided
 		if(!request) request = getHash();
@@ -95,7 +95,7 @@ $(function() {
 
 			//if this is on pageload
 			if(!isNumber(old)) {
-				$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });	
+				initLavalamp();
 				
 				initTracking(page);
 				
@@ -124,9 +124,10 @@ $(function() {
 			//where not changing pages, but changing portfolio items
 			changePortfolioItem(request);
 			trackPage(location.href);
-		} if(request[0] == 'blog' && request[1] == 'json') {
+			
+		} if(request[0] == 'blog' && isNumber(request[1])) {
 			//were changing blog pages
-			changeBlogPosts(request[2]);
+			changeBlogPosts(request[1]);
 			trackPage(location.href);
 		}
 	}
@@ -279,26 +280,28 @@ $(function() {
 	if($html.hasClass('admin')) adminInit();
 	
 	function changeBlogPosts(page) {
-		$blogNav = $('#blog-nav');
+		var $blogNav = $('#blog-nav');
 		var link = $php.data('base') + 'json/blog/' + page;
 		var $blogPosts = $('#blog-posts');
 		var $posts = $blogPosts.children().filter('.blog-post');
 		//need to change $.getJSON to ajax since $.getJSON is a shortcut to $.ajax (double function call)
 		$.getJSON(link, function(data) {
-			if(oldBlogPage < page) var offset = 15;
-			else offset = -15;
-			$blogPosts.stop().animate({opacity: 0, marginLeft: 55-offset, marginRight: 0+offset}, speed, function() {
+			var offset = (oldBlogPage < page) ?  15 : -15;
+			$blogPosts.stop().animate({opacity: 0, marginLeft: 55-offset, marginRight: 0+offset}, speed, 'easeInOutCirc', function() {
 				//each post
 				for(var i=0; i < 5; i++) {
 					var $post = $posts.eq(i);
 					if(data[i]) {
-						$post.find('h2').html(data[i].titel);
-						$post.find('p').html(data[i].excerpt);
-						$post.find('time').html(data[i].dutchdate);
+						$post
+							.find('h2').html(data[i].titel).end()
+							.find('p').html(data[i].excerpt).end()
+							.find('time').html(data[i].dutchdate).end()
+							.attr('href', data[i].url);
 					} else {
-						$post.find('h2').html('');
-						$post.find('p').html('');
-						$post.find('time').html('');
+						$post
+							.find('h2').html('').end()
+							.find('p').html('').end()
+							.find('time').html('');
 					}
 				}
 				//the nav
@@ -306,21 +309,10 @@ $(function() {
 				if(data.previousPage) nav += '<a href="' + data.jsonPrevious + '">&lt; oudere posts</a>';
 				if(data.nextPage) nav += '<a href="' + data.jsonNext + '" class=right>nieuwere posts &#62;</a>';
 				$blogNav.html(nav);
-				$blogPosts.stop().animate({opacity: 1, marginLeft: 55, marginRight: 0}, speed)
+				$blogPosts.stop().animate({opacity: 1, marginLeft: 55, marginRight: 0}, speed, 'easeInOutCirc')
 				oldBlogPage = page;
 			});
 		});
-		
-	}
-	
-	function blogNav() {
-		
-		
-		function bindNav() {
-			
-			
-			//return false;
-		}
 		
 	}
 	
@@ -328,8 +320,7 @@ $(function() {
 		//basic init for a single post page
 		
 		//menu
-		$menu.find('li').eq(3).addClass('current');
-		$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });
+		initLavalamp(3);
 		
 		//tracking
 		initTracking(location.pathname);
@@ -340,8 +331,7 @@ $(function() {
 	
 	function adminInit() {
 		//menu
-		$menu.find('li').eq(2).addClass('current');
-		$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });
+		initLavalamp(2);
 	}
 	
 	/* all the functions for the javascript sided tracking */
@@ -389,4 +379,8 @@ $(function() {
 		return (new Date().getTime() - starttime) / 1000;
 	}
 	
+	function initLavalamp(page) {
+		if(isNumber(page)) $menu.find('li').eq(page).addClass('current');
+		$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });
+	}
 });
