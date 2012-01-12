@@ -253,7 +253,7 @@ div#pleft a.current {
 	float:left;
 }
 
-#blog-nav a:nth-child(2) {
+#blog-nav .right {
 	float:right;
 }
 

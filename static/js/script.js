@@ -283,10 +283,11 @@ $(function() {
 		var link = $php.data('base') + 'json/blog/' + page;
 		var $blogPosts = $('#blog-posts');
 		var $posts = $blogPosts.children().filter('.blog-post');
+		//need to change $.getJSON to ajax since $.getJSON is a shortcut to $.ajax (double function call)
 		$.getJSON(link, function(data) {
 			if(oldBlogPage < page) var offset = 15;
 			else offset = -15;
-			$blogPosts.stop().animate({opacity: 0, marginLeft: 55-offset, marginRight: 0+offset}, speed*2, function() {
+			$blogPosts.stop().animate({opacity: 0, marginLeft: 55-offset, marginRight: 0+offset}, speed, function() {
 				//each post
 				for(var i=0; i < 5; i++) {
 					var $post = $posts.eq(i);
@@ -303,9 +304,9 @@ $(function() {
 				//the nav
 				var nav = '';
 				if(data.previousPage) nav += '<a href="' + data.jsonPrevious + '">&lt; oudere posts</a>';
-				if(data.nextPage) nav += '<a href="' + data.jsonNext + '">nieuwere posts &#62;</a>';
+				if(data.nextPage) nav += '<a href="' + data.jsonNext + '" class=right>nieuwere posts &#62;</a>';
 				$blogNav.html(nav);
-				$blogPosts.stop().animate({opacity: 1, marginLeft: 55, marginRight: 0}, speed*2)
+				$blogPosts.stop().animate({opacity: 1, marginLeft: 55, marginRight: 0}, speed)
 				oldBlogPage = page;
 			});
 		});

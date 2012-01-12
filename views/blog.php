@@ -22,10 +22,10 @@
 			<div id="blog-nav">
 				<?php
 				if($previousPage) { ?>
-				<a href='<?= $jsonPrevious ?>' data-link='<?= $previousPage ?>'>&#60; oudere posts</a>
+				<a href='<?= $jsonPrevious ?>'>&#60; oudere posts</a>
 				<?php } ?>
 				<?php if($nextPage) { ?>
-				<a href='<?= $jsonNext ?>' data-link='<?= $nextPage ?>'>nieuwere posts &#62;</a>
+				<a href='<?= $jsonNext ?>' class='right'>nieuwere posts &#62;</a>
 				<?php } ?>
 			</div>
 		</div>
