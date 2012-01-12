@@ -1,20 +1,13 @@
 <?php
 
-require MODELS . 'dbmodel.php';
-require CONTROLLERS . 'controller.php';
-require CONTROLLERS . 'partController.php';
-
 class AdminController extends PartController {
 	
 	function __construct($request) {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
-		require MODELS . 'postModel.php';
-		
 		$this->model = new PostModel;
 		
-		include APP . 'load.php';
 		$this->load = new Load();
 		
 		if($request == 'admin/' || $request == 'admin') $this->index();

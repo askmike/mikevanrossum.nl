@@ -14,6 +14,10 @@ class Controller {
 		//kill the DB connection
 		$this->model = NULL;
 	}
+	
+	function error() {
+		new ErrorController;
+	}
 }
 
 ?>

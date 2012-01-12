@@ -90,8 +90,6 @@ class PostModel extends DBmodel {
 	//
 	// this function returns an array with all those different versions of the text
 	function prepareContent($content) {
-			require_once LIBS . 'smartypants.php';
-			require_once LIBS . 'markdown.php';
 			
 			// I use this instead of htmlentities for the plain text, this prevents HTML to be parsed inside the edit screen
 			// all HTML is served with htmlentities instead

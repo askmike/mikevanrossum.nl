@@ -9,8 +9,6 @@ class PostsController extends PartController {
 		//$page can be GET input
 		if(!is_numeric($page)) return;
 		
-		require MODELS . 'postModel.php';
-		
 		$this->model = new PostModel;
 		
 		$numberOfPosts = $this->model->getNumberOfPosts();

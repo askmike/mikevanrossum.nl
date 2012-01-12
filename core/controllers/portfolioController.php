@@ -6,8 +6,6 @@ class PortfolioController extends PartController {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
-		require MODELS . 'portfolioModel.php';
-		
 		$this->model = new PortfolioModel;
 		
 		// get main data

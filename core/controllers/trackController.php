@@ -10,7 +10,6 @@ class TrackController extends Controller {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 	
-		require MODELS . 'trackModel.php';
 		$this->model = new TrackModel;
 		
 		//get current session

@@ -1,9 +1,4 @@
 <?php
-
-//really need lazy loading
-require CONTROLLERS . 'controller.php';
-require CONTROLLERS . 'partController.php';
-require MODELS . 'dbmodel.php';
 		
 class PostController extends PartController {
 	
@@ -11,12 +6,16 @@ class PostController extends PartController {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
-		require MODELS . 'postModel.php';
-		
 		$this->model = new PostModel;
 		
 		// get main data
 		$data = $this->model->getPost($request);
+		
+		//if the requested blog entry does not exist
+		if(empty($data)) {
+			$this->error();
+			return;
+		}
 		
 		$data['editUrl'] = DOMAIN . BASE . 'admin/' . $data['url'];
 		
@@ -30,7 +29,6 @@ class PostController extends PartController {
 		// possible solution: create a general class that would handle mapping 2 arrays.
 		//$data = $this->getDatesFromItems($data);
 		
-		include APP . 'load.php';
 		$this->load = new Load();
 		
 		$this->load->view('header',$data);

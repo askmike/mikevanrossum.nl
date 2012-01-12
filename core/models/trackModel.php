@@ -1,7 +1,5 @@
 <?php
 
-require MODELS . 'dbmodel.php';
-
 class TrackModel extends DBmodel {
 	
 	function __construct() {

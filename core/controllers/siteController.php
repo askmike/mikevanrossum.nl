@@ -16,13 +16,6 @@ class SiteController extends Controller {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
-		
-		//controllers responsible for getting all the parts
-		require CONTROLLERS . 'partController.php';
-		//we're gonna need our base model a couple of times
-		require MODELS . 'dbmodel.php';
-		
-		include APP . 'load.php';
 		$this->load = new Load();
 		
 		$this->getSite();
@@ -36,11 +29,9 @@ class SiteController extends Controller {
 		$this->load->view('home');
 		
 		//load the controller part
-		require CONTROLLERS . 'portfolioController.php';
 		$portfolio = new PortfolioController;
 		$this->load->view('portfolio',$portfolio->part);
 		
-		require CONTROLLERS . 'postsController.php';
 		$posts = new PostsController;
 		$this->load->view('blog',$posts->part);
 		
