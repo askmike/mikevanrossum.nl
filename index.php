@@ -44,10 +44,15 @@ switch ($request[0]) {
         break;
 	case 'json':
 		// it's a json request
-
+		
+		require MODELS . 'dbmodel.php';
+		require CONTROLLERS . 'controller.php';
+		require CONTROLLERS . 'partController.php';
 		require CONTROLLERS . 'postsController.php';
-		$con = new AdminController($_GET['r']);
-
+		$con = new PostsController($request[2]);
+		
+		$con->jsonData();
+		
         break;
 	default:
 		// home or 404

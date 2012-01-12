@@ -36,7 +36,8 @@ $(function() {
 		steps = [],
 		starttime = new Date().getTime(),
 		//this object stores everything for the analytics
-		tracking = {};
+		tracking = {},
+		oldBlogPage = 1;
 	
 	
 	/* This function returns all the names of the pages in an array */	
@@ -63,6 +64,9 @@ $(function() {
 	
 	/* This function loads a page */
 	function init(request) {
+		//set up listeners for the blog nav
+		blogNav();
+		
 		//get & parse request if none is provided
 		if(!request) request = getHash();
 		
@@ -119,6 +123,11 @@ $(function() {
 		} else if(request[1] && request[1] != oldP) {
 			//where not changing pages, but changing portfolio items
 			changePortfolioItem(request);
+			trackPage(location.href);
+		} if(request[0] == 'blog' && request[1] == 'json') {
+			//were changing blog pages
+			changeBlogPosts(request[2]);
+			trackPage(location.href);
 		}
 	}
 	
@@ -268,6 +277,51 @@ $(function() {
 	if($html.hasClass('site')) init();
 	if($html.hasClass('post')) postInit();
 	if($html.hasClass('admin')) adminInit();
+	
+	function changeBlogPosts(page) {
+		$blogNav = $('#blog-nav');
+		var link = $php.data('base') + 'json/blog/' + page;
+		var $blogPosts = $('#blog-posts');
+		var $posts = $blogPosts.children().filter('.blog-post');
+		$.getJSON(link, function(data) {
+			if(oldBlogPage < page) var offset = 15;
+			else offset = -15;
+			$blogPosts.stop().animate({opacity: 0, marginLeft: 55-offset, marginRight: 0+offset}, speed*2, function() {
+				//each post
+				for(var i=0; i < 5; i++) {
+					var $post = $posts.eq(i);
+					if(data[i]) {
+						$post.find('h2').html(data[i].titel);
+						$post.find('p').html(data[i].excerpt);
+						$post.find('time').html(data[i].dutchdate);
+					} else {
+						$post.find('h2').html('');
+						$post.find('p').html('');
+						$post.find('time').html('');
+					}
+				}
+				//the nav
+				var nav = '';
+				if(data.previousPage) nav += '<a href="' + data.jsonPrevious + '">&lt; oudere posts</a>';
+				if(data.nextPage) nav += '<a href="' + data.jsonNext + '">nieuwere posts &#62;</a>';
+				$blogNav.html(nav);
+				$blogPosts.stop().animate({opacity: 1, marginLeft: 55, marginRight: 0}, speed*2)
+				oldBlogPage = page;
+			});
+		});
+		
+	}
+	
+	function blogNav() {
+		
+		
+		function bindNav() {
+			
+			
+			//return false;
+		}
+		
+	}
 	
 	function postInit() {
 		//basic init for a single post page

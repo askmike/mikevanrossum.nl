@@ -19,14 +19,14 @@
 					</a>
 					
 				<?php } } ?>
-		</div>
-		<div id="blog-nav">
-			<?php
-			if($previousPage) { ?>
-			<a href='<?= $previousPage ?>'>&#60; oudere posts</a>
-			<?php } ?>
-			<?php if($nextPage) { ?>
-			<a href='<?= $nextPage ?>'>nieuwere posts &#62;</a>
-			<?php } ?>
+			<div id="blog-nav">
+				<?php
+				if($previousPage) { ?>
+				<a href='<?= $jsonPrevious ?>' data-link='<?= $previousPage ?>'>&#60; oudere posts</a>
+				<?php } ?>
+				<?php if($nextPage) { ?>
+				<a href='<?= $jsonNext ?>' data-link='<?= $nextPage ?>'>nieuwere posts &#62;</a>
+				<?php } ?>
+			</div>
 		</div>
 	</section>

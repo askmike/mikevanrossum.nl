@@ -26,10 +26,16 @@ class PostsController extends PartController {
 		$data = $this->getDatesFromItems($data);
 		
 		//show the previous (older posts) if there are
-		if($page*5 < $numberOfPosts) $data['previousPage'] = BASE . "json/blog/" . ($page + 1);
+		if($page*5 < $numberOfPosts) {
+			$data['previousPage'] = BASE . "json/blog/" . ($page + 1);
+			$data['jsonPrevious'] = BASE . '#blog/json/' . ($page + 1);
+		}
 		
 		//show the next (newer posts) if we're not at page 1
-		if($page > 1) $data['nextPage'] = BASE . "json/blog/" . ($page - 1);
+		if($page > 1) {
+			$data['nextPage'] = BASE . "json/blog/" . ($page - 1);
+			$data['jsonNext'] = BASE . '#blog/json/' . ($page - 1);
+		}
 		
 		$this->part = $data;
 	}
@@ -37,6 +43,10 @@ class PostsController extends PartController {
 	function __destruct() {
 		//this runs the destruct of the class this class is extending
 		parent::__destruct();
+	}
+	
+	public function jsonData() {
+		echo json_encode($this->part);
 	}
 		
 }
