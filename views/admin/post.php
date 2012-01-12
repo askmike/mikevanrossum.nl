@@ -1,4 +1,7 @@
 <form id='editPost' method='post'>
+	<?php if(LIVE == true) { ?>
+	<p class='message'><em>Dit is de online versie van mijn website, ivm. beveiliging worden je wijzigingen niet doorgevoerd.</em></p>
+	<?php } ?>
 	<input name='title' id='editTitle' value='<?= $titel ?>'>
 	<p>
 		url: <a href='<?= $url ?>' target='_blank'><?= $url ?></a><br>

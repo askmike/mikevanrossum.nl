@@ -19,6 +19,8 @@ class PostController extends PartController {
 		$data = $this->model->getPost($request);
 		$data = $data[0];
 		
+		$data['editUrl'] = DOMAIN . BASE . 'admin/' . $data['url'];
+		
 		// overwrite main data with added dates
 		
 		// note: it would be better to just add the dates over here

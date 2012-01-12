@@ -284,7 +284,9 @@ $(function() {
 		var link = $php.data('base') + 'json/blog/' + page;
 		var $blogPosts = $('#blog-posts');
 		var $posts = $blogPosts.children().filter('.blog-post');
-		//need to change $.getJSON to ajax since $.getJSON is a shortcut to $.ajax (double function call)
+		// need to change $.getJSON to ajax since $.getJSON is a shortcut to $.ajax (double function call)
+		// also need to to fix the 'assumed speed' since the page right now is waiting for get JSON to do anything
+		// thinking about spinner.js
 		$.getJSON(link, function(data) {
 			var offset = (oldBlogPage < page) ?  15 : -15;
 			$blogPosts.stop().animate({opacity: 0, marginLeft: 55-offset, marginRight: 0+offset}, speed, 'easeInOutCirc', function() {
