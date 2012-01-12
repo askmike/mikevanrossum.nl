@@ -65,7 +65,9 @@ switch ($request[0]) {
         break;
 
 	default:
-		// home or 404
+		// 404
+		require CONTROLLERS . '404.php';
+		new ErrorController;
 }
 
 
