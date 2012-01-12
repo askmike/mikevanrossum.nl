@@ -54,13 +54,18 @@ switch ($request[0]) {
 		$con->jsonData();
 		
         break;
-	default:
-		// home or 404
+	case '':
+		// home
 
 		define('PAGE', 'site');
 
 		require CONTROLLERS . 'siteController.php';
 		$con = new SiteController($request);
+
+        break;
+
+	default:
+		// home or 404
 }
 
 
