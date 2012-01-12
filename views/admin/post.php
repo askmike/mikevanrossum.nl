@@ -5,7 +5,8 @@
 	<input name='title' id='editTitle' value='<?= $titel ?>'>
 	<p>
 		url: <a href='<?= $url ?>' target='_blank'><?= $url ?></a><br>
-		datum: <?= $dutchdate ?>
+		datum: <?= $dutchdate ?><br>
+		<a href='http://tech.thingoid.com/download/PHPMarkdownExtraSyntaxSummary1.0.1.pdf' target='_blank'>Markdown cheatsheet</a>
 	</p>
 	<textarea name='content' id='editContent'><?= $bodyMd ?></textarea>
 	<div class='labeledInput'>
