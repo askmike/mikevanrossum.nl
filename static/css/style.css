@@ -417,6 +417,42 @@ pre.sh_sourceCode .sh_value {
   color: #F9DA44;
 }
 
+.socialite-loaded {
+	float:left;
+	margin-right:15px;
+}
+
+.post #share p {
+	line-height: 34px;
+	text-align: center;
+}
+
+#share.loaded p {
+	float:left;
+}
+
+#share {
+	background:#ddd;
+	height:66px;
+	padding:5px;
+	padding-bottom:2px;
+	width:193px;
+}
+
+#share .facebook {
+	width:46px;
+	margin-left:15px;
+}
+
+#share .googleplus {
+	margin-top: 1px;
+}
+
+#share.loaded {
+	background:white;
+	width:400px;
+}
+
 /* admin */
 
 .admin #blog-posts a {

@@ -325,6 +325,12 @@ $(function() {
 		//menu
 		initLavalamp(3);
 		
+		//sharing
+		$('#share').bind('mouseenter', function() {
+			$(this).addClass('loaded');
+			Socialite.load($(this));	
+		});
+		
 		//tracking
 		initTracking(loc.pathname);
 		

@@ -21,6 +21,7 @@ Javascript:
  - browser support: Modernizr 2.0 [http://modernizr.com/]
  - plugin: jQuery color function of jQuery UI 1.9pre [jqueryui.com]
  - syntax highlighting: shjs [http://shjs.sourceforge.net/]
+ - AJAX social media buttons: socialite.js [http://socialitejs.com/]
 
 PHP:
 
@@ -36,10 +37,11 @@ PHP:
 	More info: h5bp.com/b/378 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Mike van Rossum - webdeveloper</title>
 	<?php if(PAGE == 'site') { ?>
+		<title>Mike van Rossum - webdeveloper</title>
 		<meta name="description" content="Op het portfolio en blog van Mike van Rossum, een webdeveloper en CMDA student uit Amsterdam, vind je van van alles wat te maken heeft met de front-end en back-end van websites."
 	<?php } else { ?>
+		<title><?= $titel ?></title>
 		<meta name="description" content="<?= $meta ?>">
 		<meta name="keywords" content="Mike van Rossum, webdevelopment, website, webdesign, web, <?= $tags ?>">
 	<?php } ?>

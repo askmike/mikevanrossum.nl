@@ -311,3 +311,417 @@ Copyright (C) 2007, 2008 gnombat@users.sourceforge.net */
 /* License: http://shjs.sourceforge.net/doc/gplv3.html */
 
 if(!this.sh_languages){this.sh_languages={}}var sh_requests={};function sh_isEmailAddress(a){if(/^mailto:/.test(a)){return false}return a.indexOf("@")!==-1}function sh_setHref(b,c,d){var a=d.substring(b[c-2].pos,b[c-1].pos);if(a.length>=2&&a.charAt(0)==="<"&&a.charAt(a.length-1)===">"){a=a.substr(1,a.length-2)}if(sh_isEmailAddress(a)){a="mailto:"+a}b[c-2].node.href=a}function sh_konquerorExec(b){var a=[""];a.index=b.length;a.input=b;return a}function sh_highlightString(B,o){if(/Konqueror/.test(navigator.userAgent)){if(!o.konquered){for(var F=0;F<o.length;F++){for(var H=0;H<o[F].length;H++){var G=o[F][H][0];if(G.source==="$"){G.exec=sh_konquerorExec}}}o.konquered=true}}var N=document.createElement("a");var q=document.createElement("span");var A=[];var j=0;var n=[];var C=0;var k=null;var x=function(i,a){var p=i.length;if(p===0){return}if(!a){var Q=n.length;if(Q!==0){var r=n[Q-1];if(!r[3]){a=r[1]}}}if(k!==a){if(k){A[j++]={pos:C};if(k==="sh_url"){sh_setHref(A,j,B)}}if(a){var P;if(a==="sh_url"){P=N.cloneNode(false)}else{P=q.cloneNode(false)}P.className=a;A[j++]={node:P,pos:C}}}C+=p;k=a};var t=/\r\n|\r|\n/g;t.lastIndex=0;var d=B.length;while(C<d){var v=C;var l;var w;var h=t.exec(B);if(h===null){l=d;w=d}else{l=h.index;w=t.lastIndex}var g=B.substring(v,l);var M=[];for(;;){var I=C-v;var D;var y=n.length;if(y===0){D=0}else{D=n[y-1][2]}var O=o[D];var z=O.length;var m=M[D];if(!m){m=M[D]=[]}var E=null;var u=-1;for(var K=0;K<z;K++){var f;if(K<m.length&&(m[K]===null||I<=m[K].index)){f=m[K]}else{var c=O[K][0];c.lastIndex=I;f=c.exec(g);m[K]=f}if(f!==null&&(E===null||f.index<E.index)){E=f;u=K;if(f.index===I){break}}}if(E===null){x(g.substring(I),null);break}else{if(E.index>I){x(g.substring(I,E.index),null)}var e=O[u];var J=e[1];var b;if(J instanceof Array){for(var L=0;L<J.length;L++){b=E[L+1];x(b,J[L])}}else{b=E[0];x(b,J)}switch(e[2]){case -1:break;case -2:n.pop();break;case -3:n.length=0;break;default:n.push(e);break}}}if(k){A[j++]={pos:C};if(k==="sh_url"){sh_setHref(A,j,B)}k=null}C=w}return A}function sh_getClasses(d){var a=[];var b=d.className;if(b&&b.length>0){var e=b.split(" ");for(var c=0;c<e.length;c++){if(e[c].length>0){a.push(e[c])}}}return a}function sh_addClass(c,a){var d=sh_getClasses(c);for(var b=0;b<d.length;b++){if(a.toLowerCase()===d[b].toLowerCase()){return}}d.push(a);c.className=d.join(" ")}function sh_extractTagsFromNodeList(c,a){var f=c.length;for(var d=0;d<f;d++){var e=c.item(d);switch(e.nodeType){case 1:if(e.nodeName.toLowerCase()==="br"){var b;if(/MSIE/.test(navigator.userAgent)){b="\r"}else{b="\n"}a.text.push(b);a.pos++}else{a.tags.push({node:e.cloneNode(false),pos:a.pos});sh_extractTagsFromNodeList(e.childNodes,a);a.tags.push({pos:a.pos})}break;case 3:case 4:a.text.push(e.data);a.pos+=e.length;break}}}function sh_extractTags(c,b){var a={};a.text=[];a.tags=b;a.pos=0;sh_extractTagsFromNodeList(c.childNodes,a);return a.text.join("")}function sh_mergeTags(d,f){var a=d.length;if(a===0){return f}var c=f.length;if(c===0){return d}var i=[];var e=0;var b=0;while(e<a&&b<c){var h=d[e];var g=f[b];if(h.pos<=g.pos){i.push(h);e++}else{i.push(g);if(f[b+1].pos<=h.pos){b++;i.push(f[b]);b++}else{i.push({pos:h.pos});f[b]={node:g.node.cloneNode(false),pos:h.pos}}}}while(e<a){i.push(d[e]);e++}while(b<c){i.push(f[b]);b++}return i}function sh_insertTags(k,h){var g=document;var l=document.createDocumentFragment();var e=0;var d=k.length;var b=0;var j=h.length;var c=l;while(b<j||e<d){var i;var a;if(e<d){i=k[e];a=i.pos}else{a=j}if(a<=b){if(i.node){var f=i.node;c.appendChild(f);c=f}else{c=c.parentNode}e++}else{c.appendChild(g.createTextNode(h.substring(b,a)));b=a}}return l}function sh_highlightElement(d,g){sh_addClass(d,"sh_sourceCode");var c=[];var e=sh_extractTags(d,c);var f=sh_highlightString(e,g);var b=sh_mergeTags(c,f);var a=sh_insertTags(b,e);while(d.hasChildNodes()){d.removeChild(d.firstChild)}d.appendChild(a)}function sh_getXMLHttpRequest(){if(window.ActiveXObject){return new ActiveXObject("Msxml2.XMLHTTP")}else{if(window.XMLHttpRequest){return new XMLHttpRequest()}}throw"No XMLHttpRequest implementation available"}function sh_load(language,element,prefix,suffix){if(language in sh_requests){sh_requests[language].push(element);return}sh_requests[language]=[element];var request=sh_getXMLHttpRequest();var url=prefix+"sh_"+language+suffix;request.open("GET",url,true);request.onreadystatechange=function(){if(request.readyState===4){try{if(!request.status||request.status===200){eval(request.responseText);var elements=sh_requests[language];for(var i=0;i<elements.length;i++){sh_highlightElement(elements[i],sh_languages[language])}}else{throw"HTTP error: status "+request.status}}finally{request=null}}};request.send(null)}function sh_highlightDocument(g,k){var b=document.getElementsByTagName("pre");for(var e=0;e<b.length;e++){var f=b.item(e);var a=sh_getClasses(f);for(var c=0;c<a.length;c++){var h=a[c].toLowerCase();if(h==="sh_sourcecode"){continue}if(h.substr(0,3)==="sh_"){var d=h.substring(3);if(d in sh_languages){sh_highlightElement(f,sh_languages[d])}else{if(typeof(g)==="string"&&typeof(k)==="string"){sh_load(d,f,g,k)}else{throw'Found <pre> element with class="'+h+'", but no such language exists'}}break}}}};
+
+
+
+/*
+ * Socialite v1.0
+ * http://socialitejs.com
+ * Copyright (c) 2011 David Bushell
+ * Dual-licensed under the BSD or MIT licenses: http://socialitejs.com/license.txt
+ */
+
+window.Socialite = (function()
+{
+	var	Socialite = { },
+
+		// internal functions
+		_socialite = { },
+		// social networks and callback functions to initialise each instance
+		networks = { },
+		// remembers which scripts have been appended
+		appended = { },
+		// a collection of URLs for external scripts
+		sources = { },
+		// remember loaded scripts
+		loaded = { },
+		// all Socialite button instances
+		cache = { },
+
+		doc = window.document,
+		sto = window.setTimeout,
+		euc = encodeURIComponent,
+		gcn = typeof doc.getElementsByClassName === 'function';
+
+	// append a known script element once
+	_socialite.appendScript = function(network, id, callback)
+	{
+		if (appended[network] || sources[network] === undefined) {
+			return false;
+		}
+		var js = appended[network] = doc.createElement('script');
+		js.async = true;
+		js.src = sources[network];
+		js.onload = js.onreadystatechange = function ()
+		{
+			if (_socialite.hasLoaded(network)) {
+				return;
+			}
+			var rs = js.readyState;
+			if ( ! rs || rs === 'loaded' || rs === 'complete') {
+				loaded[network] = true;
+				js.onload = js.onreadystatechange = null;
+				// activate all instances from cache if no callback is defined
+				if (callback !== undefined) {
+					if (typeof callback === 'function') {
+						callback();
+					}
+				} else {
+					_socialite.activateCache(network);
+				}
+			}
+		};
+		if (id) {
+			js.id = id;
+		}
+		doc.body.appendChild(js);
+		return true;
+	};
+
+	// check if an appended script has loaded
+	_socialite.hasLoaded = function(network)
+	{
+		return (typeof network !== 'string') ? false : loaded[network] === true;
+	};
+
+	// remove an appended script
+	_socialite.removeScript = function(network) {
+		if ( ! _socialite.hasLoaded(network)) {
+			return false;
+		}
+		doc.body.removeChild(appended[network]);
+		appended[network] = loaded[network] = false;
+		return true;
+	};
+
+	// return an iframe element and activate the instance on load
+	_socialite.createIframe = function(src, instance)
+	{
+		var iframe = doc.createElement('iframe');
+		iframe.style.cssText = 'overflow: hidden; border: none;';
+		iframe.setAttribute('allowtransparency', 'true');
+		iframe.setAttribute('frameborder', '0');
+		iframe.setAttribute('scrolling', 'no');
+		iframe.setAttribute('src', src);
+		// trigger onLoad after iframe, or on timeout if IE < 9 - is getElementsByClassName an accurate test?
+		if (instance !== undefined) {
+			if (gcn) {
+				iframe.onload = iframe.onreadystatechange = function() {
+					iframe.onload = iframe.onreadystatechange = null;
+					_socialite.activateInstance(instance);
+				};
+			} else {
+				sto(function() {
+					_socialite.activateInstance(instance);
+				}, 10);
+			}
+		}
+		return iframe;
+	};
+
+	// called once an instance is ready to display
+	_socialite.activateInstance = function(instance)
+	{
+		if (instance.loaded) {
+			return;
+		}
+		instance.loaded = true;
+		instance.container.className += ' socialite-loaded';
+	};
+
+	// activate all instances waiting in the cache
+	_socialite.activateCache = function(network)
+	{
+		if (cache[network] !== undefined) {
+			for (var i = 0; i < cache[network].length; i++) {
+				_socialite.activateInstance(cache[network][i]);
+			}
+		}
+	};
+
+	// copy data-* attributes from one element to another
+	_socialite.copyDataAttributes = function(from, to)
+	{
+		var i, attr = from.attributes;
+		for (i = 0; i < attr.length; i++) {
+			if (attr[i].name.indexOf('data-') === 0 && attr[i].value.length) {
+				to.setAttribute(attr[i].name, attr[i].value);
+			}
+		}
+	};
+
+	// return data-* attributes from an element as a query string or object
+	_socialite.getDataAttributes = function(from, noprefix, nostr)
+	{
+		var i, str = '', obj = {}, attr = from.attributes;
+		for (i = 0; i < attr.length; i++) {
+			if (attr[i].name.indexOf('data-') === 0 && attr[i].value.length) {
+				var key = attr[i].name;
+				var val = attr[i].value;
+				if (noprefix === true) {
+					key = key.substring(5);
+				}
+				if (nostr === true) {
+					obj[key] = val;
+				} else {
+					str += euc(key) + '=' + euc(val) + '&';
+				}
+			}
+		}
+		return nostr ? obj : str;
+	};
+
+	// get elements within context with a class name (with fallback for IE < 9)
+	_socialite.getElements = function(context, name)
+	{
+		if (gcn) {
+			return context.getElementsByClassName(name);
+		}
+		var i = 0, elems = [], all = context.getElementsByTagName('*'), len = all.length;
+		for (i = 0; i < len; i++) {
+			var cname = ' ' + all[i].className + ' ';
+			if (cname.indexOf(' ' + name + ' ') !== -1) {
+				elems.push(all[i]);
+			}
+		}
+		return elems;
+	};
+
+	// load a single button
+	Socialite.activate = function(elem, network)
+	{
+		Socialite.load(null, elem, network);
+	};
+
+	// load and initialise buttons (recursively)
+	Socialite.load = function(context, elem, network)
+	{
+		// if no context use the document
+		context = (typeof context === 'object' && context !== null && context.nodeType === 1) ? context : doc;
+
+		// if no element then search the context for instances
+		if (elem === undefined || elem === null) {
+			var	find = _socialite.getElements(context, 'socialite'),
+				elems = find, length = find.length;
+			if (!length) {
+				return;
+			}
+			// create a new array if we're dealing with a live NodeList
+			if (typeof elems.item !== undefined) {
+				elems = [];
+				for (var i = 0; i < length; i++) {
+					elems[i] = find[i];
+				}
+			}
+			Socialite.load(context, elems, network);
+			return;
+		}
+
+		// if an array of elements load individually
+		if (typeof elem === 'object' && elem.length) {
+			for (var j = 0; j < elem.length; j++) {
+				Socialite.load(context, elem[j], network);
+			}
+			return;
+		}
+
+		// Not an element? Get outa here!
+		if (typeof elem !== 'object' || elem.nodeType !== 1) {
+			return;
+		}
+
+		// if no network is specified or recognised look for one in the class name
+		if (typeof network !== 'string' || networks[network] === undefined) {
+			network = null;
+			var classes = elem.className.split(' ');
+			for (var k = 0; k < classes.length; k++) {
+				if (networks[classes[k]] !== undefined) {
+					network = classes[k];
+					break;
+				}
+			}
+			if (typeof network !== 'string') {
+				return;
+			}
+		}
+		if (typeof networks[network] === 'string') {
+			network = networks[network];
+		}
+		if (typeof networks[network] !== 'function') {
+			return;
+		}
+
+		// create the button elements
+		var	container = doc.createElement('div'),
+			button = doc.createElement('div');
+		container.className = 'socialised ' + network;
+		button.className = 'socialite-button';
+
+		// insert container before parent element, or append to the context
+		var parent = elem.parentNode;
+		if (parent === null) {
+			parent = (context === doc) ? doc.body : context;
+			parent.appendChild(container);
+		} else {
+			parent.insertBefore(container, elem);
+		}
+
+		// insert button and element into container
+		container.appendChild(button);
+		button.appendChild(elem);
+
+		// hide element from future loading
+		elem.className = elem.className.replace(/\bsocialite\b/, '');
+
+		// create the button instance and save it in cache
+		if (cache[network] === undefined) {
+			cache[network] = [];
+		}
+		var instance = {
+			elem: elem,
+			button: button,
+			container: container,
+			parent: parent,
+			loaded: false
+		};
+		cache[network].push(instance);
+
+		// initialise the button
+		networks[network](instance, _socialite);
+	};
+
+	// extend the array of supported networks
+	Socialite.extend = function(network, callback, source)
+	{
+		if (typeof network !== 'string' || typeof callback !== 'function') {
+			return false;
+		}
+		// split into an array to map multiple classes to one network
+		network = (network.indexOf(' ') > 0) ? network.split(' ') : [network];
+		if (networks[network[0]] !== undefined) {
+			return false;
+		}
+		for (var i = 1; i < network.length; i++) {
+			networks[network[i]] = network[0];
+		}
+		if (source !== undefined && typeof source === 'string') {
+			sources[network[0]] = source;
+		}
+		networks[network[0]] = callback;
+		return true;
+	};
+
+	// boom
+	return Socialite;
+
+})();
+
+
+/*
+ * Socialite Extensions - Pick 'n' Mix!
+ *
+ */
+
+(function()
+{
+
+	var s = window.Socialite;
+
+	// Twitter
+	// https://twitter.com/about/resources/
+	s.extend('twitter tweet', function(instance, _s)
+	{
+		var cn = ' ' + instance.elem.className + ' ';
+		if (cn.indexOf(' tweet ') !== -1) {
+			instance.elem.className = 'twitter-tweet';
+		} else {
+			var	el = document.createElement('a'),
+				dt = instance.elem.getAttribute('data-type'),
+				tc = ['share', 'follow', 'hashtag', 'mention'],
+				ti = 0;
+			for (var i = 1; i < 4; i++) {
+				if (dt === tc[i] || cn.indexOf(' ' + tc[i] + ' ') !== -1) {
+					ti = i;
+				}
+			}
+			el.className = 'twitter-' + tc[ti] + '-button';
+			if (instance.elem.getAttribute('href') !== undefined) {
+				el.setAttribute('href', instance.elem.href);
+			}
+			_s.copyDataAttributes(instance.elem, el);
+			instance.button.replaceChild(el, instance.elem);
+		}
+		var twttr = window.twttr;
+		if (typeof twttr === 'object' && typeof twttr.widgets === 'object' && typeof twttr.widgets.load === 'function') {
+			twttr.widgets.load();
+			_s.activateInstance(instance);
+		} else {
+			if (_s.hasLoaded('twitter')) {
+				_s.removeScript('twitter');
+			}
+			if (_s.appendScript('twitter', 'twitter-wjs', false)) {
+				window.twttr = {
+					_e: [function() {
+						_s.activateCache('twitter');
+					}]
+				};
+			}
+		}
+	}, '//platform.twitter.com/widgets.js');
+
+	// Google+
+	// https://developers.google.com/+/plugins/+1button/
+	s.extend('googleplus', function(instance, _s)
+	{
+		var el = document.createElement('div');
+		el.className = 'g-plusone';
+		_s.copyDataAttributes(instance.elem, el);
+		instance.button.replaceChild(el, instance.elem);
+		if (typeof window.gapi === 'object' && typeof window.gapi.plusone === 'object' && typeof gapi.plusone.render === 'function') {
+			window.gapi.plusone.render(instance.button, _s.getDataAttributes(el, true, true));
+			_s.activateInstance(instance);
+		} else {
+			if ( ! _s.hasLoaded('googleplus')) {
+				_s.appendScript('googleplus');
+			}
+		}
+	}, '//apis.google.com/js/plusone.js');
+
+	// Facebook
+	// http://developers.facebook.com/docs/reference/plugins/like/
+	s.extend('facebook', function(instance, _s)
+	{
+		var el = document.createElement('div');
+		if ( ! _s.hasLoaded('facebook')) {
+			el.className = 'fb-like';
+			_s.copyDataAttributes(instance.elem, el);
+			instance.button.replaceChild(el, instance.elem);
+			_s.appendScript('facebook', 'facebook-jssdk');
+		} else {
+			var src = '//www.facebook.com/plugins/like.php?';
+			src += _s.getDataAttributes(instance.elem, true);
+			var iframe = _s.createIframe(src, instance);
+			instance.button.replaceChild(iframe, instance.elem);
+		}
+	}, '//connect.facebook.net/en_US/all.js#xfbml=1');
+
+	// LinkedIn
+	// http://developer.linkedin.com/plugins/share-button/
+	s.extend('linkedin', function(instance, _s)
+	{
+		var attr = instance.elem.attributes;
+		var el = document.createElement('script');
+		el.type = 'IN/Share';
+		_s.copyDataAttributes(instance.elem, el);
+		instance.button.replaceChild(el, instance.elem);
+		if (typeof window.IN === 'object' && typeof window.IN.init === 'function') {
+			window.IN.init();
+			_s.activateInstance(instance);
+		} else {
+			if (!_s.hasLoaded('linkedin')) {
+				_s.appendScript('linkedin');
+			}
+		}
+	}, '//platform.linkedin.com/in.js');
+
+})();
