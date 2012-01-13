@@ -16,6 +16,8 @@ class SiteController extends Controller {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
+		define('PAGE', 'site');
+		
 		$this->load = new Load();
 		
 		$this->getSite();

@@ -48,8 +48,6 @@ switch ($request[0]) {
 	case '':
 		// home
 
-		define('PAGE', 'site');
-
 		$con = new SiteController($request);
 
         break;
