@@ -80,11 +80,11 @@ class TrackController extends Controller {
 		
 		//check if every whitelist item is in $_POST
 		foreach ($whitelist as $item) {
-		    if( !isset($_POST[$item]) ) return false;
+		    if( !isset($_POST[$item]) ) return;
 		}
 		
 		//check if the're the same size
-		if( sizeof($whitelist) != sizeof($_POST) ) return false;
+		if( sizeof($whitelist) != sizeof($_POST) ) return;
 		
 		//all checks are passed
 		return true;
@@ -92,28 +92,27 @@ class TrackController extends Controller {
 	
 	
 	//		verify the input agressive (regex) since it's POSTED
-	//		this is not the fastest but no one is waiting :)
 
 	function checkTrack() {
 		// I verify everything with the exception of the browser string (not going to do anything with it yet + 
 		// can't find which chars are allowed / not allowed)
 		
 		//phptime: needs to be a number (with dots) / we match for a decimal with (min 2 & max 4) digits behind the .
-		if(!preg_match('/^\d+(.\d{2,4})?$/', $_POST['phptime'])) return false;
+		if(!preg_match('/^\d+(.\d{2,4})?$/', $_POST['phptime'])) return;
 		//resolution + viewport: needs to be [number]x[number]
-		if(!preg_match('/[0-9]+(x[0-9]+)/', $_POST['resolution'])) return false;
-		if(!preg_match('/[0-9]+(x[0-9]+)/', $_POST['viewport'])) return false;
+		if(!preg_match('/[0-9]+(x[0-9]+)/', $_POST['resolution'])) return;
+		if(!preg_match('/[0-9]+(x[0-9]+)/', $_POST['viewport'])) return;
 		
-		if(!$this->checkStep()) return false;
+		if(!$this->checkStep()) return;
 		
 		return true;
 	}
 	
 	function checkStep() {
 		//in page I don't want any strange chars
-		if(!preg_match('/^[^(){};^*@$%<>\\\'"]*$/', $_POST['page'])) return false;
+		if(!preg_match('/^[^(){};^*@$%<>\\\'"]*$/', $_POST['page'])) return;
 		//session: needs to be hex and 32 chars
-		if(!preg_match('/[a-f0-9]{32}/', $_POST['session'])) return false;
+		if(!preg_match('/[a-f0-9]{32}/', $_POST['session'])) return;
 		return true;
 	}
 }
