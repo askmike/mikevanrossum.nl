@@ -75,11 +75,8 @@ class TrackController extends Controller {
 	}
 	
 	// small checks to make sure nobody is messing with the POST vars
-	//
-	// http://stackoverflow.com/questions/2284317/do-i-have-to-use-mysql-real-escape-string-if-i-bind-parameters#answer-2284327
+	// the functions below this one check each input key 
 	function checkInput($whitelist) {
-		//this could be improved by storing all the PHP created sessions in the DB
-		//and compare POST session with the DB
 		
 		//check if every whitelist item is in $_POST
 		foreach ($whitelist as $item) {
