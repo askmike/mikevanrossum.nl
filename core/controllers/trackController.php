@@ -67,7 +67,10 @@ class TrackController extends Controller {
 		
 		if(!$this->checkTrack()) return;
 		
-		$this->model->createNewSession($_POST);
+		$arr = $_POST;
+		$arr['phptime'] *= 1000;
+		
+		$this->model->createNewSession($arr);
 		
 	}
 	
