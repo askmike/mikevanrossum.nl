@@ -4,6 +4,12 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?r=$1 [L,QSA]
 
+# specific for my webhost
+# see: https://www.secure.versio.nl/nieuwsartikel.php?id=52# 
+# <FilesMatch "\.php$">
+# AddHandler x-httpd-php .php
+# </FilesMatch>
+
 # Apache configuration file
 # httpd.apache.org/docs/2.2/mod/quickreference.html
 
