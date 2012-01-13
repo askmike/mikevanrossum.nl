@@ -39,7 +39,6 @@ class TrackController extends Controller {
 				$this->addStep();
 			}
 		} else {
-			echo 'its def a step';
 			$whitelist = array('session','page');
 			if( !$this->checkInput($whitelist) ) return;
 
