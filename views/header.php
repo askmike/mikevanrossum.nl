@@ -36,12 +36,12 @@ PHP:
 	<?php if(PAGE == 'site') { ?>
 		<title>Mike van Rossum - webdeveloper</title>
 		<meta name="description" content="Op het portfolio en blog van Mike van Rossum, een webdeveloper en CMDA student uit Amsterdam, vind je van van alles wat te maken heeft met de front-end en back-end van websites."
-		<link rel="canonical" href="<?= DOMAIN . BASE ?>" />
+		<link rel="canonical" href="<?= SITE ?>" />
 	<?php } else { ?>
 		<title><?= $titel ?></title>
 		<meta name="description" content="<?= $meta ?>">
 		<meta name="keywords" content="Mike van Rossum, webdevelopment, website, webdesign, web, <?= $tags ?>">
-		<link rel="canonical" href="<?= DOMAIN . BASE . $url ?>" />
+		<link rel="canonical" href="<?= SITE . $url ?>" />
 	<?php } ?>
 	<meta name="author" content="Mike van Rossum">
 

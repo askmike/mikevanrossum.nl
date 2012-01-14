@@ -22,6 +22,10 @@ class PostModel extends DBmodel {
 		
 	}
 	
+	public function getUrls($number) {
+		return $this->query('SELECT url FROM post LIMIT ' . $number);
+	}
+	
 	public function getPost($url) {
 		
 		$statement = $this->connection->prepare('SELECT * FROM post WHERE url = ?');

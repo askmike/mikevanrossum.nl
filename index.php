@@ -52,8 +52,17 @@ switch ($request[0]) {
 
         break;
 
+	case 'sitemap.xml':
+		// it's a sitemap request
+
+		$con = new SitemapController;
+
+        break;
+
+
 	default:
 		// 404
+		
 		new ErrorController;
 }
 
