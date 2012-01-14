@@ -34,7 +34,7 @@ switch ($request[0]) {
     case 'admin':
 		// backend time
 
-		$con = new AdminController($request, $_GET['r']);
+		$con = new AdminController($_GET['r']);
 
         break;
 	case 'json':

@@ -25,6 +25,10 @@ function lazyload($class) {
 	
 	$len = sizeof($dirs);
 	for($i = 0; $i < $len; ++$i) {
+		// < PHP5.3
+		// $class{0} = strtolower($class{0});
+		// $file = SBASE . $dirs[$i]  . $class . '.php';
+		// > PHP 5.3
 		$file = SBASE . $dirs[$i]  . lcfirst($class) . '.php';
 		if(file_exists($file)) {
 			require_once $file;
