@@ -32,18 +32,16 @@ PHP:
 <html id="html" class="no-js <?= PAGE ?>" lang="nl">
 <head>
 	<meta charset="utf-8">
-
-	<!-- Use the .htaccess and remove these lines to avoid edge case issues.
-	More info: h5bp.com/b/378 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
 	<?php if(PAGE == 'site') { ?>
 		<title>Mike van Rossum - webdeveloper</title>
 		<meta name="description" content="Op het portfolio en blog van Mike van Rossum, een webdeveloper en CMDA student uit Amsterdam, vind je van van alles wat te maken heeft met de front-end en back-end van websites."
+		<link rel="canonical" href="<?= DOMAIN . BASE ?>" />
 	<?php } else { ?>
 		<title><?= $titel ?></title>
 		<meta name="description" content="<?= $meta ?>">
 		<meta name="keywords" content="Mike van Rossum, webdevelopment, website, webdesign, web, <?= $tags ?>">
+		<link rel="canonical" href="<?= DOMAIN . BASE . $url ?>" />
 	<?php } ?>
 	<meta name="author" content="Mike van Rossum">
 
@@ -54,12 +52,12 @@ PHP:
 	<link rel=stylesheet href='<?php echo BASE; ?>static/css/style.css'>
 	<!-- end CSS-->
 
-  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+	<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
-  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
-       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="<?php echo BASE ?>static/js/mylibs/custom-modernizr.js"></script>
+	<!-- All JavaScript at the bottom, except for Modernizr / Respond.
+	    Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+	    For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+	<script src="<?php echo BASE ?>static/js/mylibs/custom-modernizr.js"></script>
 </head>
 <body>
 	<header>

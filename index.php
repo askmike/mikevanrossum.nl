@@ -4,7 +4,7 @@
 //when we get to views/footer.php we compare this with then.
 define('STARTTIME', microtime(true));
 
-//define basic things we need before we can require_once anything at all
+//define basic things we need before we can require anything at all
 define('APP', 'core/');
 define('CONTROLLERS', APP . 'controllers/');
 define('MODELS', APP . 'models/');

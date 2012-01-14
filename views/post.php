@@ -1,7 +1,8 @@
 <?php if(true) /* check if admin */ { ?>
 <p class='adminBar'>
+	<a href='./'>Post statistieken</a>
+	\
 	<a href='<?= $editUrl ?>'>Edit deze pagina</a> 
-	/ <a href='./'>Post statistieken</a>
 </p>
 <div class='clearfix'></div>
 <?php } ?>
