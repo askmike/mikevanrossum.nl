@@ -57,7 +57,7 @@ class EditPostController extends PartController {
 	// when I hit save I want a couple of things to happen auto:
 	// - I want to save the text excactly how I leave it (with the exception of escaped anglebrackets in pre's (or I mess up the edit page))
 	// - I want everything stripped except for the plain text (excluding code from inside a pre) so I can create:
-	//		- Excerpt (300 chars)
+	//		- Excerpt (300 chars) <- all the quotes need to be escaped
 	//		- meta (160 chars) <- all the quotes need to be escaped
 	// - I want all my ' and " to be converted in HTML using SmartyPants [http://michelf.com/projects/php-smartypants/]
 	// - I want all my pre's to be htmlentitie'd

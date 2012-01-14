@@ -46,8 +46,6 @@ class PostModel extends DBmodel {
 				'url' => $url, 
 				'excerpt' => $excerpt
 				);
-				
-			$i++;
 		}
 		
 		return $array;
@@ -66,8 +64,6 @@ class PostModel extends DBmodel {
 		
 		# Voer het SQL statement uit
 		$statement->execute();
-		
-		// print_r($input);
 		
 	}
 }
