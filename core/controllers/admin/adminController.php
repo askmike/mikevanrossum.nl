@@ -8,14 +8,12 @@ class AdminController extends PartController {
 		
 		define('PAGE', 'admin');
 		
-		$this->model = new PostModel;
-		
-		$this->load = new Load();
-		
 		//route
 		if(empty($request[1])) $this->index();
 		
-		if($request[1] == 'blog') new editPostController($r); 
+		if($request[1] == 'blog') new EditPostController($r); 
+		
+		if($request[1] == 'portfolio') new EditPortfolioController($request);
 	}
 	
 	function __destruct() {
@@ -24,6 +22,8 @@ class AdminController extends PartController {
 	}
 	
 	function index() {
+		$this->model = new PostModel;
+		
 		// get main data
 		$data = $this->model->getPosts( 0, 20 );
 		

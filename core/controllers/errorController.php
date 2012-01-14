@@ -12,8 +12,6 @@ class ErrorController extends Controller {
 		
 		header("HTTP/1.0 404 Not Found"); 
 		
-		$this->load = new Load();
-		
 		$this->load->view('header');
 		$this->load->view('404');
 		$this->load->view('footer');

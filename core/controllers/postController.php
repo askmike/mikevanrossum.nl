@@ -31,8 +31,6 @@ class PostController extends PartController {
 		// possible solution: create a general class that would handle mapping 2 arrays
 		$data = $this->getDatesFromItem($data);
 		
-		$this->load = new Load();
-		
 		$this->load->view('header',$data);
 		$this->load->view('post', $data);
 		$this->load->view('footer');

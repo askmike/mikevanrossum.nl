@@ -7,7 +7,7 @@ class Controller {
 	public $request;
 	
 	function __construct() {
-		//nothing yet
+		$this->load = new Load;
 	}
 	
 	function __destruct() {

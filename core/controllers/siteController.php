@@ -18,8 +18,6 @@ class SiteController extends Controller {
 		
 		define('PAGE', 'site');
 		
-		$this->load = new Load();
-		
 		$this->getSite();
 		
 	}

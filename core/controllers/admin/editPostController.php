@@ -10,7 +10,6 @@ class EditPostController extends PartController {
 		$request = substr($request, 6);
 		
 		$this->model = new PostModel;
-		$this->load = new Load();
 		
 		//currently the online version can't be edited
 		if($_POST['submit'] && LIVE == false) {
@@ -30,6 +29,11 @@ class EditPostController extends PartController {
 		$this->load->view('admin/post',$this->part);
 		$this->load->view('footer',$this->part);
 	
+	}
+	
+	function __destruct() {
+		//this runs the destruct of the class this class is extending
+		parent::__destruct();
 	}
 	
 	function updatePost($url, $input) {
