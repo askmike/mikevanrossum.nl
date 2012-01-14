@@ -40,7 +40,8 @@ $(function() {
 		starttime = new Date().getTime(),
 		//this object stores everything for the analytics
 		tracking = {},
-		oldBlogPage = 1;
+		oldBlogPage = 1,
+		globalPage = '';
 	
 	
 	/* This function returns all the names of the pages in an array */	
@@ -68,68 +69,72 @@ $(function() {
 	/* This function loads a page */
 	function init(request) {
 		
-		//get & parse request if none is provided
-		if(!request) request = getHash();
-		
-		//set map pageIndex on the request (name to number)
-		//we need to reset it because when it's not the first time, it never catches #
-		pageIndex = null;
-		if (request[0]) {
-			//map request to pages
-			for(var i=0, len = pages.length; i < len; i++) {
-				if(pages[i] == request[0]) pageIndex = i;
-			}
-		}
-		//if were still here no match is found, either 404 or home
-		if(!pageIndex) pageIndex = 0;
-		
-		//only do this if we're changing pages
-		if(pageIndex != old) { 
-			// if # is empty it's home
-			var page = request[0] ? request[0] : 'home' ;
+		if(globalPage != 'post') {
 			
-			//prepare for the lavalamp (spawning or updating)
-			$menu.find('li')
-				.removeClass('current')
-				.eq(pageIndex)
-				.addClass('current');
 
-			//if this is on pageload
-			if(!isNumber(old)) {
-				initLavalamp();
-				
-				initTracking(page);
-				
-				//because of (something that looks like) a bug in animate I set the css also via js
-				//bug: when not setting those via js the first fadeout animation breaks
-				$pages
-					.eq(pageIndex)
-					.css({marginTop: base, opacity: 1, display: 'block'})
-					.addClass('current');
-				
-				//showportfolio is called in fadeinpage but that never gets run on pageload
-				if(request[0] == 'portfolio') showPortfolio(request);
-				
-			} else { //we're not on pageload
-				$menu.find('.current').trigger('mouseenter');
-				animatePage(pageIndex, request);
-				
-				trackPage(page);
+			//get & parse request if none is provided
+			if(!request) request = getHash();
+
+			//set map pageIndex on the request (name to number)
+			//we need to reset it because when it's not the first time, it never catches #
+			pageIndex = null;
+			if (request[0]) {
+				//map request to pages
+				for(var i=0, len = pages.length; i < len; i++) {
+					if(pages[i] == request[0]) pageIndex = i;
+				}
 			}
-			
-			old = pageIndex;
-			oldRequest = request;
-			
-			
-		} else if(request[1] && request[1] != oldP) {
-			//where not changing pages, but changing portfolio items
-			changePortfolioItem(request);
-			trackPage(loc.hash);
-			
-		} if(request[0] == 'blog' && isNumber(request[1])) {
-			//were changing blog pages
-			changeBlogPosts(request[1]);
-			trackPage(loc.hash);
+			//if were still here no match is found, either 404 or home
+			if(!pageIndex) pageIndex = 0;
+
+			//only do this if we're changing pages
+			if(pageIndex != old) { 
+				// if # is empty it's home
+				var page = request[0] ? request[0] : 'home' ;
+
+				//prepare for the lavalamp (spawning or updating)
+				$menu.find('li')
+					.removeClass('current')
+					.eq(pageIndex)
+					.addClass('current');
+
+				//if this is on pageload
+				if(!isNumber(old)) {
+					initLavalamp();
+
+					initTracking(page);
+
+					//because of (something that looks like) a bug in animate I set the css also via js
+					//bug: when not setting those via js the first fadeout animation breaks
+					$pages
+						.eq(pageIndex)
+						.css({marginTop: base, opacity: 1, display: 'block'})
+						.addClass('current');
+
+					//showportfolio is called in fadeinpage but that never gets run on pageload
+					if(request[0] == 'portfolio') showPortfolio(request);
+
+				} else { //we're not on pageload
+					$menu.find('.current').trigger('mouseenter');
+					animatePage(pageIndex, request);
+
+					trackPage(page);
+				}
+
+				old = pageIndex;
+				oldRequest = request;
+
+
+			} else if(request[1] && request[1] != oldP) {
+				//where not changing pages, but changing portfolio items
+				changePortfolioItem(request);
+				trackPage(loc.hash);
+
+			} if(request[0] == 'blog' && isNumber(request[1])) {
+				//were changing blog pages
+				changeBlogPosts(request[1]);
+				trackPage(loc.hash);
+			}
 		}
 	}
 	
@@ -320,25 +325,34 @@ $(function() {
 	}
 	
 	function postInit() {
-		//basic init for a single post page
-		
-		//menu
-		initLavalamp(3);
-		
-		//sharing
-		$('#share').bind('mouseenter', function() {
-			$(this).addClass('loaded');
-			Socialite.load($(this));	
-		});
-		
-		//tracking
-		initTracking(loc.pathname);
-		
-		//syntax hightlighting
-		sh_highlightDocument($php.data('base') + "static/js/mylibs/shjs/", '.min.js');
+		if(!isNumber(old)) {
+			//basic init for a single post page
+			
+			globalPage = 'post';
+			
+			//menu
+			initLavalamp(3);
+
+			//sharing
+			$('#share').bind('mouseenter', function() {
+				$(this).addClass('loaded');
+				Socialite.load($(this));	
+			});
+
+			//tracking
+			initTracking(loc.pathname);
+
+			//syntax hightlighting
+			sh_highlightDocument($php.data('base') + "static/js/mylibs/shjs/", '.min.js');
+
+			old = 1;
+		}
 	}
 	
 	function adminInit() {
+		
+		globalPage = 'admin';
+		
 		//menu
 		initLavalamp(2);
 		
