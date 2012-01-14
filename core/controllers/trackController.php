@@ -9,7 +9,10 @@ class TrackController extends Controller {
 	function __construct() {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
-	
+		
+		//I don't want to track on the local version
+		if(LIVE == false) return;
+		
 		$this->model = new TrackModel;
 		
 		//get current session
