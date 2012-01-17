@@ -47,6 +47,8 @@ class PartController extends Controller {
 	}
 	
 	function getMonth($number) {
+		if($number < 0) $number += 12;
+		
 		$allMonths = array('Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December');
 		return $allMonths[$number];
 	}
