@@ -2,7 +2,7 @@
 		
 class PostController extends PartController {
 	
-	function __construct($request) {
+	function __construct($request, $analytics = null) {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
@@ -18,6 +18,8 @@ class PostController extends PartController {
 			$this->error();
 			return;
 		}
+		
+		if($analytics) $data['analytics'] = $analytics;
 		
 		$data['editUrl'] = DOMAIN . BASE . 'admin/' . $data['url'];
 		
