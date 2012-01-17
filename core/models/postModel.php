@@ -26,6 +26,24 @@ class PostModel extends DBmodel {
 		return $this->query('SELECT url FROM post LIMIT ' . $number);
 	}
 	
+	public function getPostID($url) {
+		//this function is uses url input
+		
+		$statement = $this->connection->prepare('SELECT id FROM post WHERE url = ?');
+		
+		# Koppel de variabele $tekst aan het SQL toevoegen statement
+		$statement->bind_param('s', $url);
+
+		# Voer het SQL statement uit
+		$statement->execute();
+		
+		$statement->bind_result($id);
+		
+		while ($statement->fetch()) {
+			return $id;
+		}
+	}
+	
 	public function getPost($url) {
 		
 		$statement = $this->connection->prepare('SELECT * FROM post WHERE url = ?');

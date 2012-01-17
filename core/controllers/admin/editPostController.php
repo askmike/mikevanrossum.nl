@@ -5,7 +5,7 @@ class EditPostController extends PartController {
 	function __construct($request) {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
-		
+	
 		//because in the admin interface blog/ is prepended to the view url
 		$request = substr($request, 6);
 		
