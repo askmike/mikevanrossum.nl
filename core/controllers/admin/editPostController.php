@@ -18,6 +18,8 @@ class EditPostController extends PartController {
 		
 		$data = $this->model->getPost($request);
 		
+		$data = $this->getDatesFromItem($data);
+		
 		//prepend domain + base to the url so the links are nicer
 		$data['url'] = DOMAIN . BASE . $data['url'];
 		
@@ -81,7 +83,6 @@ class EditPostController extends PartController {
 			$segments = preg_split('/(<\/?pre.*?>)/', $content, -1, PREG_SPLIT_DELIM_CAPTURE);
 			
 			// STATE MACHINE
-			// complicated solution for a complicated problem :)
 			// problem: see above function
 			
 			// borrowed from: http://stackoverflow.com/questions/1278491/howto-encode-texts-outside-the-pre-pre-tag-with-htmlentities-php#answer-1278575
