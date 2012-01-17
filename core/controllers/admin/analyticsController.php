@@ -36,7 +36,7 @@ class AnalyticsController extends PartController {
 		$this->model = new AnalyticsModel;
 		$postHits = $this->model->getPostAnalytics(BASE . $request, $twentyDaysAgo);
 		
-		print_r($postHits);
+		// print_r($postHits);
 		
 		//check if we got any data
 		if(!empty($postHits)) {
@@ -63,7 +63,6 @@ class AnalyticsController extends PartController {
 	in Dutch and the current day of the month (so we can calculate
 	the days backwords with correct previous months) */
 	function processDates($dates) {
-		
 		//prepare vars
 		$results['thisMonth'] = date('n');
 		$lastMonthTS = strtotime("-1 month");
@@ -90,9 +89,10 @@ class AnalyticsController extends PartController {
 				$results['d'][$strMonth][$strDay]++;
 			} else {
 				//the first record for this day, let's create it
-				$results['d'][$strMonth][$strDay] = 0;
+				$results['d'][$strMonth][$strDay] = 1;
 			}
 		}
+		
 		return $results;
 	}
 
