@@ -1,10 +1,21 @@
-<?php if(true) /* check if admin */ { ?>
+<?php if(ANALYTICS != 'true') /* check if admin */ { ?>
 <p class='adminBar'>
-	<a href='./'>Post statistieken</a>
+	<a href='<?= SITE . 'analytics/' . $url ?>'>Post statistieken</a>
 	\
 	<a href='<?= $editUrl ?>'>Edit deze pagina</a> 
 </p>
 <div class='clearfix'></div>
+<?php } else { ?>
+<p class='adminBar'>
+	<a href='<?= SITE . $url ?>'>Terug naar de Post</a>
+	\
+	<a href='<?= $editUrl ?>'>Edit deze pagina</a> 
+</p>
+<div class='clearfix'></div>
+<section id="postAnalytics">	
+	<h1>Post bezoeken afgelopen 20 dagen:</h1>
+	<?= $analytics ?>
+</section>	
 <?php } ?>
 <h1>
 	<?= $titel ?>

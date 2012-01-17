@@ -22,6 +22,7 @@ Javascript:
  - plugin: jQuery color function of jQuery UI 1.9pre [jqueryui.com]
  - syntax highlighting: shjs [http://shjs.sourceforge.net/]
  - AJAX social media buttons: socialite.js [http://socialitejs.com/]
+ - charts (analytics): Raphaël [http://raphaeljs.com/]
 
 PHP:
 

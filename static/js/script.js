@@ -66,26 +66,29 @@ $(function() {
 		return array;
 	}
 	
+	function mapRequest(request) {
+		//set map pageIndex on the request (name to number)
+		//we need to reset it because when it's not the first time, it never catches #
+		pageIndex = null;
+		if (request) {
+			//map request to pages
+			for(var i=0, len = pages.length; i < len; i++) {
+				if(pages[i] == request) pageIndex = i;
+			}
+		}
+		//if were still here no match is found, either 404 or home
+		if(!pageIndex) pageIndex = 0;
+	}
+	
 	/* This function loads a page */
 	function init(request) {
 		
 		if(globalPage != 'post') {
 			
-
 			//get & parse request if none is provided
 			if(!request) request = getHash();
 
-			//set map pageIndex on the request (name to number)
-			//we need to reset it because when it's not the first time, it never catches #
-			pageIndex = null;
-			if (request[0]) {
-				//map request to pages
-				for(var i=0, len = pages.length; i < len; i++) {
-					if(pages[i] == request[0]) pageIndex = i;
-				}
-			}
-			//if were still here no match is found, either 404 or home
-			if(!pageIndex) pageIndex = 0;
+			mapRequest(request[0]);
 
 			//only do this if we're changing pages
 			if(pageIndex != old) { 

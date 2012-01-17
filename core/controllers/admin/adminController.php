@@ -7,13 +7,18 @@ class AdminController extends PartController {
 		parent::__construct();
 		
 		define('PAGE', 'admin');
-		
+			
 		//route
 		if(empty($request[1])) $this->index();
 		
-		if($request[1] == 'blog') new EditPostController($r); 
+		else if($request[1] == 'blog') new EditPostController($r); 
 		
-		if($request[1] == 'portfolio') new EditPortfolioController($request);
+		else if($request[1] == 'portfolio') new EditPortfolioController($request);
+		
+		else if($request[1] == 'analytics') {
+			$con = new AnalyticsController($request);
+			$con->siteStatistics();
+		}
 	}
 	
 	function __destruct() {

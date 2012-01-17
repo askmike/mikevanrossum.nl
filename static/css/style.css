@@ -98,6 +98,7 @@ header {
 	font-size:17px;
 	}   
 	
+	
 /* page plugin */
 
 .page {
@@ -244,10 +245,6 @@ div#pleft a.current {
 	float:left;
 	font-size: 18px;
 	font-weight: lighter;
-}
-
-#blog-nav {
-	/*margin-left: 62px;*/
 }
 
 #blog-nav a {
@@ -454,6 +451,31 @@ pre.sh_sourceCode .sh_value {
 
 #share .googleplus {
 	margin-top: 1px;
+}
+
+/* analytics */
+#dataTable {
+	display:none;
+}
+
+#postAnalytics {
+	background:#efefef;
+	margin-left:-62px;
+	width:640px;
+}
+
+#postAnalytics h1 {
+	padding:5px;
+	font-size:20px;
+	margin-bottom:5px;
+}
+
+#hitsHistory {
+
+}
+
+.post #hitsHistory svg {
+	background:#efefef;
 }
 
 /* admin */
