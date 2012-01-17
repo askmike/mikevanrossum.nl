@@ -1,6 +1,8 @@
 <h1>
 	backend
 </h1>
+<div class='message' id='addPostLink'><a href='#'>Voeg een post toe</a></div>
+<div class='clearfix'></div>
 <div id='blog-posts'>			
 		<?php foreach ($data as $item) {
 		//we only want arays in the array data

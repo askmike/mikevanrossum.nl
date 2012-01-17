@@ -19,7 +19,8 @@ class Route {
 		        //single post request
 
 				$con = new AnalyticsController;
-				$con->postStatistics($request);
+				//20 is the number of days we want to go back
+				$con->postStatistics($request, 20);
 
 		        break;	
 		    case 'track':
