@@ -480,6 +480,12 @@ pre.sh_sourceCode .sh_value {
 
 /* admin */
 
+#addPostLink {
+	float:right;
+	display:inline-block;
+	margin-bottom:5px;
+}
+
 .admin #blog-posts a {
 	overflow:hidden;
 }
