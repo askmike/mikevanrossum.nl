@@ -1,19 +1,24 @@
-# rewrite all requests ( /a/b/c/d/ ) to index.php?r=a/b/c/d/
 RewriteEngine on
+
+# NOTE:
+#
+# my site doesn't have to be at the root of a website
+# for PHP's sake however it does not seem possible to 
+# redirect dynamic, so all redirects in here are root 
+# relative
 
 # /mvr2 was the dev version
 # redirect every request to /mvr2/[a] to /[a]
-RewriteRule ^mvr2/(.*)$ http://mikevanrossum.nl/$1 [R=301,L]
+RewriteRule ^mvr2/(.*)$ /$1 [R=301,L]
+# redirect core files to /sneaky
+RewriteRule ^(core|views|import|libs) /sneaky [R,L]
 
+# rewrite all requests ( /a/b/c/d/ ) to index.php?r=a/b/c/d/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?r=$1 [L,QSA]
 
-# specific for my webhost
-# see: https://www.secure.versio.nl/nieuwsartikel.php?id=52# 
-# <FilesMatch "\.php$">
-# AddHandler x-httpd-php .php
-# </FilesMatch>
+# everything below this point is from the HTML5 Boilerplate.
 
 # Apache configuration file
 # httpd.apache.org/docs/2.2/mod/quickreference.html
