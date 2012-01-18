@@ -2,6 +2,8 @@
 
 class Route {
 	
+	public $con;
+	
 	function __construct($request) {
 		
 		//parse request
@@ -12,52 +14,59 @@ class Route {
 		    case 'blog':
 		        //single post request
 
-				$con = new PostController($_GET['r']);
+				$this->con = new PostController($_GET['r']);
 
 		        break;
 			case 'analytics':
 		        //single post request
 
-				$con = new AnalyticsController;
+				$this->con = new AnalyticsController;
 				//20 is the number of days we want to go back
-				$con->postStatistics($request, 20);
+				$this->con->postStatistics($request, 20);
 
 		        break;	
 		    case 'track':
 				// it's a track request: some analytics data getting passed
 				// we don't return anything
 
-				$con = new TrackController;
+				$this->con = new TrackController;
 
 		        break;
 		    case 'admin':
 				// backend time
 
-				$con = new AdminController($request, $_GET['r']);
+				$this->con = new AdminController($request, $_GET['r']);
 
 		        break;
 			case 'json':
 				// it's a json request
 
-				$con = new PostsController($request[2]);
+				$this->con = new PostsController($request[2]);
 
-				$con->jsonData();
+				$this->con->jsonData();
 
 		        break;
 			case '':
 				// home
 
-				$con = new SiteController($request);
+				$this->con = new SiteController($request);
 
 		        break;
 
 			case 'sitemap.xml':
 				// it's a sitemap request
 
-				$con = new SitemapController;
+				$this->con = new ProtocolController;
+				$this->con->sitemap();
 
 		        break;
+			case 'feed':
+				// it's a sitemap request
 
+				$this->con = new ProtocolController;
+				$this->con->rss();
+
+		        break;
 
 			default:
 				// 404

@@ -1,12 +1,15 @@
 <?php
 
-class SitemapController extends Controller {
+class ProtocolController extends Controller {
 	
 	function __construct() {
 		
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
+	}
+	
+	function sitemap() {
 		$this->model = new PostModel;
 		
 		// just for abstraction's sake, sitemap URLS are limited to 50 000
@@ -15,7 +18,6 @@ class SitemapController extends Controller {
 		$data = $this->model->getUrls(50000);
 		
 		$this->load->view('sitemap',$data);
-		
 	}
 	
 	function __destruct() {
