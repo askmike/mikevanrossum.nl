@@ -17,7 +17,7 @@ class ProtocolController extends Controller {
 		
 		$data = $this->model->getUrls(50000);
 		
-		$this->load->view('sitemap',$data);
+		$this->load->view('protocol/sitemap',$data);
 	}
 	
 	function rss() {
@@ -28,7 +28,7 @@ class ProtocolController extends Controller {
 		// I provide dates, those need to be in english
 		$data = $this->addEnglishDates($data);
 		
-		$this->load->view('feed',$data);
+		$this->load->view('protocol/feed',$data);
 	}
 	
 	function addEnglishDates($array) {
