@@ -17,5 +17,5 @@
 		<p>tags</p>
 		<input name='tags' id='tags' value='<?= $tags ?>'>
 	</div>
-	<input type='submit' name='submit' class='right' id='submitPost'>
+	<input type='submit' name='submit' class='right' id='submitPost' value='wijzig'>
 </form>
