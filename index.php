@@ -14,9 +14,9 @@ require APP . 'config.php';
 require APP . 'lazyloading.php';
 
 //route parses the request and serves accordingly
-new Route($_GET['r']);
+$route = new Route($_GET['r']);
 
-//end with killing the connection
-if($con) $con = NULL;
+//end with killing the controllers
+if($route->con) $route->con = NULL;
 
 ?>
