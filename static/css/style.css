@@ -295,7 +295,7 @@ div#pleft a.current {
 	margin-bottom: 5px;
 }
 
-.post #container p {
+.post #container p, .post #container li {
 	text-align:justify;
 	line-height: 1.4em;
 }
@@ -480,6 +480,39 @@ pre.sh_sourceCode .sh_value {
 
 /* admin */
 
+#slug {
+	width:330px;
+	float:right;
+	margin-right:30px;
+}
+
+#createPost .message {
+	width:579px
+}
+
+.admin #createPost #editTitle {
+	margin-bottom:20px;
+}
+
+.admin input {
+	border:none;
+	-webkit-box-shadow: 0 0 3px #888;
+	box-shadow: 0 0 3px #888;
+}
+
+#postTime {
+	float:right;
+	width:250px;
+	margin-right:30px;
+	margin-top:-44px;
+}
+
+#slugLink {
+	float:left;
+	margin-top: 1px;
+	margin-right:5px;
+}
+
 #addPostLink {
 	float:right;
 	display:inline-block;
@@ -505,7 +538,7 @@ pre.sh_sourceCode .sh_value {
 	height:300px;
 }
 
-#editPost input {
+#editPost input, #createPost #editTitle {
 	width:600px;
 	padding:5px;
 	margin:6px 0;
@@ -542,7 +575,7 @@ pre.sh_sourceCode .sh_value {
 	font-weight: bold;
 }
 
-#editPost #submitPost {
+#submitPost, #editPost #submitPost {
 	float:right;
 	box-shadow: none;
 	-webkit-box-shadow: none;

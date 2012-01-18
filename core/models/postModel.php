@@ -88,5 +88,23 @@ class PostModel extends DBmodel {
 		$statement->execute();
 		
 	}
+	
+	public function createPost($input) {
+		extract($input);
+		
+		$statement = $this->connection->prepare('INSERT INTO post (titel, url, date) VALUES (?, ?, ?)');
+		
+		# Koppel de variabele $tekst aan het SQL toevoegen statement
+		$statement->bind_param('ssi', $title, $url, $date);
+		
+		//debugging
+		// blog/2012/01/animeer-kleuren-via-jquery/
+		// echo 'INSERT INTO post (titel, url, date) VALUES ("'.$title.'", "'.$url.'", "'.$date.'")';
+		// echo $url;
+		
+		# Voer het SQL statement uit
+		$statement->execute();
+		
+	}
 }
 ?>

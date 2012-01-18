@@ -21,8 +21,9 @@
 	<script defer src="<?= BASE ?>static/js/mylibs/raphael/script.js"></script>
 	<?php } ?>
 <?php } ?>
-
-
+<?php if($script) { ?>
+<script defer src="<?= BASE ?>views/adminScripts/<?= $script ?>.js"></script>
+<?php } ?>
 <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
 chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <!--[if lt IE 7 ]>
