@@ -2,6 +2,10 @@
 
 $(function () {
 	
+	if($('.admin #visitsHistory').length) {
+		hitsHistory(660, 'visitsHistory');
+	}
+	
 	if($('.admin #hitsHistory').length) {
 		hitsHistory(660);
 	}
@@ -11,10 +15,10 @@ $(function () {
 	}
 	
 	if($('.post #hitsHistory').length && $('#dataTable').length) {
-		hitsHistory(640);
+		hitsHistory(640, 'hitsHistory');
 	}
 
-	function hitsHistory(width) {
+	function hitsHistory(width, elem) {
 		
 		Raphael.fn.drawGrid = function (x, y, w, h, wv, hv, color) {
 		    color = color || "#000";
@@ -69,7 +73,7 @@ $(function () {
 	        topgutter = 20,
 	        colorhue = .6 || Math.random(),
 	        color = "#B07203",
-	        r = Raphael("hitsHistory", width, height),
+	        r = Raphael(elem, width, height),
 	        txt = {font: '12px Helvetica, Arial', fill: "black"},
 	        txt1 = {font: '10px Helvetica, Arial', fill: "#fff"},
 	        txt2 = {font: '12px Helvetica, Arial', fill: "#ccc"},

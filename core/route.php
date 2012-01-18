@@ -61,7 +61,7 @@ class Route {
 
 			default:
 				// 404
-
+				
 				new ErrorController;
 		}
 		

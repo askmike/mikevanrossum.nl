@@ -14,7 +14,7 @@ class AnalyticsModel extends DBmodel {
 	
 	//
 	
-	public function getPostAnalytics($url, $limit) {
+	public function getPostVisits($url, $limit) {
 		//this function uses URL input so we need to prepare
 		
 		//debugging
@@ -27,6 +27,57 @@ class AnalyticsModel extends DBmodel {
 		
 		# Koppel de variabele $tekst aan het SQL toevoegen statement
 		$statement->bind_param('ss', $url, $limit);
+
+		# Voer het SQL statement uit
+		$statement->execute();
+		
+		$statement->bind_result($id, $time);
+		
+		$i = 0;
+		while ($statement->fetch()) {
+			$array[$i] =  array(
+				'id' => $id, 
+				'time' => $time
+				);
+				$i++;
+		}
+		
+		// temp: from 12/01 untill 17/01 the website has moved from /mvr2/ to /
+		// the code below appends /mvr2/ to the 'to be retrieved url' so that the analytics
+		// also include those from before 17/01
+		
+		// TODO: make sure BASE (path from / to this site) does NOT get included in the page
+		
+		$statement = $this->connection->prepare('SELECT DISTINCT `trackingID`, `time` FROM step WHERE `page` = ? AND `time` > ? GROUP BY `trackingID`');
+		$url = '/mvr2' . $url;
+		$statement->bind_param('ss', $url, $limit);
+		$statement->execute();
+		$statement->bind_result($id, $time);
+		while ($statement->fetch()) {
+			$array[$i] =  array(
+				'id' => $id, 
+				'time' => $time
+				);
+				$i++;
+		}
+		//   /temp
+		
+		return $array;
+		
+		
+	}
+	
+	public function getVisits($limit) {
+		//this function uses URL input so we need to prepare
+		
+		//debugging
+		// $url = 'portfolio';
+		
+		//this statement get's all steps with different PHP sessions (trackingID's)
+		$statement = $this->connection->prepare('SELECT DISTINCT `trackingID`, `time` FROM step WHERE `time` > ? GROUP BY `trackingID`');
+		
+		# Koppel de variabele $tekst aan het SQL toevoegen statement
+		$statement->bind_param('s', $limit);
 
 		# Voer het SQL statement uit
 		$statement->execute();

@@ -14,15 +14,22 @@ class AnalyticsController extends PartController {
 		parent::__destruct();
 	}
 	
+	/* this function prepares all site traffic we're gonna display, 
+	going max 31 days back */
 	function siteStatistics() {
+		$days = 31;
+		
+		$this->model = new AnalyticsModel;
+		$analytics['visits'] = $this->allVisits($days);
+		
 		$this->load->view('header');
-		$this->load->view('admin/analytics');
+		$this->load->view('admin/analytics',$analytics);
 		$this->load->view('footer');
 	}
 	
 	/* this function prepares everything we need to display
-	statistics about a post and the last 20 days */
-	function postStatistics($request) {
+	statistics about a post, going max 20 days back */
+	function postStatistics($request, $days) {
 		
 		//remove analytics from the url
 		array_shift($request);
@@ -30,30 +37,51 @@ class AnalyticsController extends PartController {
 		//turn array into a string again
 		$request = implode('/',$request);
 		
-		
-		$twentyDaysAgo = strtotime("-20 day");
-		
 		$this->model = new AnalyticsModel;
-		$postHits = $this->model->getPostAnalytics(BASE . $request, $twentyDaysAgo);
 		
-		// print_r($postHits);
+		$html = $this->postVisits($request, $days);
+		
+		new PostController($request, $html);
+	}
+	
+	function postVisits($request, $days) {
+		$daysAgo = strtotime('-' . $days . ' day');
+		$postHits = $this->model->getPostVisits(BASE . $request, $daysAgo);
+		
+		return $this->visitsToLinechart($postHits, $days);
+	}
+	
+	function allVisits($days) {
+		$daysAgo = strtotime('-' . $days . ' day');
+		$postHits = $this->model->getVisits($daysAgo);
+		
+		return $this->visitsToLinechart($postHits, $days);
+	}
+	
+	
+	
+	
+	
+	
+	
+	function visitsToLinechart($hits,$dots) {
 		
 		//check if we got any data
-		if(!empty($postHits)) {
-			$hits = $this->processDates($postHits);
-			$table = $this->createTable($hits);
+		if(!empty($hits)) {
+			$hits = $this->processDates($hits);
+			$table = $this->createTable($hits, $dots);
+			
 		} else {
 			$table = 'Er lijkt geen data beschikbaar te zijn :(';
 		}
 		
-		new PostController($request, $table);
-		
+		return $table;
 	}
+	
 	
 	/* this function takes raw database entries with timestamps 
 	it returns a new array sorted with the days counted like so
-	returned['d] ->
-		['1']['12'][20]
+	returned['d']['1']['12'][20]
 		
 	the '1' is the month number
 	the '12' is the day number
@@ -96,14 +124,14 @@ class AnalyticsController extends PartController {
 		return $results;
 	}
 
-	function createTable($analytics) { 
+	function createTable($analytics, $days) { 
 		$table = '<table id="dataTable" data-thisMonth="';
 		$table .= $analytics['thisMonthNamed'] . '" data-lastMonth="' . $analytics['lastMonthNamed'];
 		$table .= '" data-monthSwitch="' . $analytics['today'] . '"><tfoot><tr>';
 		
 		$str = ''; 
-		for($i = 0; $i < 21; $i++) {  
-			$day = $analytics['today'] + ($i - 20);
+		for($i = 0; $i <= $days; $i++) {  
+			$day = $analytics['today'] + ($i - $days);
 			if($day <= 0) $day = $analytics['daysInLastMonth'] + $day;
 			$str .=  '<th>' . $day . '</th>'; 
 		} 
@@ -111,8 +139,8 @@ class AnalyticsController extends PartController {
 		$table .= $str . '</tr></tfoot><tbody><tr>';
 			
 		$str = ''; 
-		for($i = 0; $i < 21; $i++) {  
-			$day = $analytics['today'] + ($i - 20);
+		for($i = 0; $i <= $days; $i++) {  
+			$day = $analytics['today'] + ($i - $days);
 			// $day = $analytics['daysInLastMonth'] + $day;
 			if($day > 0) {
 				$a = $analytics['d'][$analytics['strThisMonth']][$day];	

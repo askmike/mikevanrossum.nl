@@ -16,8 +16,10 @@ class AdminController extends PartController {
 		else if($request[1] == 'portfolio') new EditPortfolioController($request);
 		
 		else if($request[1] == 'analytics') {
-			$con = new AnalyticsController($request);
-			$con->siteStatistics();
+			$con = new AnalyticsController();
+			$a = $con->siteStatistics($request, 30);
+			// $con->siteStatistics();
+			print_r($a);
 		}
 	}
 	
