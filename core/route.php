@@ -1,5 +1,15 @@
 <?php
 
+/* 
+
+This class takes a request (either array 
+or string) and parses the request. It will then
+create one controller to serve the request.
+
+$con is a public property: If this class creates
+a controller, it will get set to this property.
+
+*/
 class Route {
 	
 	public $con;
