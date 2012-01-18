@@ -1,5 +1,10 @@
 # rewrite all requests ( /a/b/c/d/ ) to index.php?r=a/b/c/d/
 RewriteEngine on
+
+# /mvr2 was the dev version
+# redirect every request to /mvr2/[a] to /[a]
+RewriteRule ^mvr2/(.*)$ http://mikevanrossum.nl/$1 [R=301,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?r=$1 [L,QSA]
