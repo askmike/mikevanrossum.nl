@@ -23,6 +23,7 @@ Javascript:
  - syntax highlighting: shjs [http://shjs.sourceforge.net/]
  - AJAX social media buttons: socialite.js [http://socialitejs.com/]
  - charts (analytics): Raphaël [http://raphaeljs.com/]
+	- linechart [http://raphaeljs.com/analytics.html]
 
 PHP:
 
@@ -53,7 +54,7 @@ PHP:
 	<link rel=stylesheet href='<?php echo BASE; ?>static/css/style.css'>
 	<!-- end CSS-->
 
-	<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+	<link rel="alternate" type="application/rss+xml" title="Mike van Rossums blog RSS Feed" href="http://mikevanrossum.nl/feed/" />
 
 	<!-- All JavaScript at the bottom, except for Modernizr / Respond.
 	    Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
