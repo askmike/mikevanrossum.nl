@@ -11,6 +11,12 @@ class Route {
 
 		//route
 		switch ($request[0]) {
+			case '':
+				// home
+
+				$this->con = new SiteController($request);
+
+		        break;
 		    case 'blog':
 		        //single post request
 
@@ -46,12 +52,6 @@ class Route {
 				$this->con->jsonData();
 
 		        break;
-			case '':
-				// home
-
-				$this->con = new SiteController($request);
-
-		        break;
 
 			case 'sitemap.xml':
 				// it's a sitemap request
@@ -61,7 +61,8 @@ class Route {
 
 		        break;
 			case 'feed':
-				// it's a sitemap request
+			case 'feed.rss':
+				// it's a RSS request
 
 				$this->con = new ProtocolController;
 				$this->con->rss();
