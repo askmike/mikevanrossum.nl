@@ -29,7 +29,8 @@ class AnalyticsController extends PartController {
 	
 	/* this function prepares everything we need to display
 	statistics about a post, going max 20 days back */
-	function postStatistics($request, $days) {
+	function postStatistics($request) {
+		$days = 20;
 		
 		//remove analytics from the url
 		array_shift($request);
