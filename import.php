@@ -48,7 +48,7 @@ foreach($xml->children() as $channel) {
 		
 		//echo $query . '<hr>';
 		
-		$link->query($query);
+		// $link->query($query);
 		
 		$i++;
 	}
