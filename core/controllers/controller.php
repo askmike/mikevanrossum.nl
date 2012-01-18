@@ -15,8 +15,8 @@ class Controller {
 		$this->model = NULL;
 	}
 	
-	function error() {
-		new ErrorController;
+	function error($e) {
+		$e = new ErrorController($e);
 	}
 }
 

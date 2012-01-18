@@ -11,6 +11,8 @@ class AdminController extends PartController {
 		//route
 		if(empty($request[1])) $this->index();
 		
+		else if($request[1] == 'create') new CreatePostController($r); 
+		
 		else if($request[1] == 'blog') new EditPostController($r); 
 		
 		else if($request[1] == 'portfolio') new EditPortfolioController($request);
@@ -18,9 +20,7 @@ class AdminController extends PartController {
 		else if($request[1] == 'analytics') {
 			$con = new AnalyticsController();
 			$a = $con->siteStatistics($request, 30);
-			// $con->siteStatistics();
-			print_r($a);
-		}
+		} else $this->error(403);
 	}
 	
 	function __destruct() {

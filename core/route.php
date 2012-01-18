@@ -18,7 +18,7 @@ class Route {
 		
 		//parse request
 		if(is_string($request)) $request = explode('/',$request);
-
+		
 		//route
 		switch ($request[0]) {
 			case '':
@@ -61,7 +61,7 @@ class Route {
 				$this->con->jsonData();
 
 		        break;
-
+			case 'sitemap':
 			case 'sitemap.xml':
 				// it's a sitemap request
 
@@ -77,13 +77,23 @@ class Route {
 				$this->con->rss();
 
 		        break;
+			case 'sneaky':
+				// restricted area
 
+				$this->con = new ErrorController('sneaky');
+
+		        break;
+			case '403':
+				// restricted area
+
+				$this->con = new ErrorController(403);
+
+		        break;
 			default:
 				// 404
 				
-				new ErrorController;
+				new ErrorController(404);
 		}
-		
 	}
 }
 

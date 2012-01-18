@@ -15,7 +15,7 @@ class PostController extends PartController {
 		
 		//if the requested blog entry does not exist
 		if(empty($data)) {
-			$this->error();
+			$this->eror(404);
 			return;
 		}
 		
