@@ -1,17 +1,22 @@
 RewriteEngine on
-
-# NOTE:
+## NOTE:
 #
-# my site doesn't have to be at the root of a website
-# for PHP's sake however it does not seem possible to 
-# redirect dynamic, so all redirects in here are root 
-# relative
+## my site doesn't have to be at the root of a website
+## for PHP's sake however it does not seem possible to 
+## redirect dynamic in here, so all redirects in here are 
+## root relative
 
 # /mvr2 was the dev version
-# redirect every request to /mvr2/[a] to /[a]
+# redirect every request for /mvr2/[a] to /[a] with a 301 (permanent header)
 RewriteRule ^mvr2/(.*)$ /$1 [R=301,L]
 # redirect core files to /sneaky
 RewriteRule ^(core|views|import|libs) /sneaky [R,L]
+
+# redirect requests for /blog to /#blog (and portfolio / projects)
+# the NE (no escape) flag makes it possible to redirect to a hash
+RewriteRule ^blog/?$ /#blog [NE,R,L]
+RewriteRule ^projects/?$ /#projects [NE,R,L]
+RewriteRule ^portfolio/?$ /#portfolio [NE,R,L]
 
 # rewrite all requests ( /a/b/c/d/ ) to index.php?r=a/b/c/d/
 RewriteCond %{REQUEST_FILENAME} !-f
