@@ -9,7 +9,6 @@ if(!function_exists('lcfirst')) {
 	}
 }
 
-//the line would be preferred however that's not working on my webhost
 spl_autoload_register('lazyload');
 
 function lazyload($class) {

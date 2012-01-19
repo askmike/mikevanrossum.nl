@@ -10,7 +10,7 @@ RewriteEngine on
 # redirect every request for /mvr2/[a] to /[a] with a 301 (permanent move header)
 RewriteRule ^mvr2/(.*)$ /$1 [R=301,L]
 # prevent core files from being serverd
-RewriteRule ^(core|views|import|libs) /sneaky [R,L]
+RewriteRule ^(core|views|import|libs|cron) /sneaky [R,L]
 
 # on my old site the blogpage structure was different
 # the NE (no escape) flag makes it possible to redirect to a hash
