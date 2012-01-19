@@ -7,7 +7,7 @@ RewriteEngine on
 ## root relative
 
 # /mvr2 was the dev version
-# redirect every request for /mvr2/[a] to /[a] with a 301 (permanent header)
+# redirect every request for /mvr2/[a] to /[a] with a 301 (permanent move header)
 RewriteRule ^mvr2/(.*)$ /$1 [R=301,L]
 # redirect core files to /sneaky
 RewriteRule ^(core|views|import|libs) /sneaky [R,L]
