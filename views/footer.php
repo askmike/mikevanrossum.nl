@@ -14,7 +14,7 @@
 <!-- end scripts-->
 
 <?php if(ANALYTICS == 'true') { ?>
-<script defer src="<?= BASE ?>static/js/libs/raphael.min.js"></script>
+<script defer src="<?= BASE ?>static/js/libs/raphael.js"></script>
 <script defer src="<?= BASE ?>static/js/libs/raphael-script.js"></script>
 <?php } ?>
 <?php if($script) { ?>
