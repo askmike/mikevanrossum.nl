@@ -15,11 +15,7 @@
 
 <?php if(ANALYTICS == 'true') { ?>
 <script defer src="<?= BASE ?>static/js/libs/raphael.min.js"></script>
-	<?php if(LIVE == false) {
-		// this is necessary because all scripts get concatinized (except the raphael lib) in the minified (live) version
-		// however it's not in the non minified (dev) version ?>
-	<script defer src="<?= BASE ?>static/js/mylibs/raphael/script.js"></script>
-	<?php } ?>
+<script defer src="<?= BASE ?>static/js/libs/raphael-script.js"></script>
 <?php } ?>
 <?php if($script) { ?>
 <script defer src="<?= BASE ?>views/adminScripts/<?= $script ?>.js"></script>
