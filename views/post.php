@@ -15,6 +15,7 @@
 <section id="postAnalytics">	
 	<h1>Post bezoeken afgelopen 20 dagen:</h1>
 	<?= $analytics ?>
+	<div id="hitsHistory"></div>
 </section>	
 <?php } ?>
 <h1>

@@ -18,10 +18,47 @@ class AnalyticsController extends PartController {
 	going max 31 days back */
 	function siteStatistics() {
 		$days = 31;
+		$daysAgo = strtotime('-' . $days . ' day');
 		
 		$this->model = new AnalyticsModel;
-		$analytics['visits'] = $this->allVisits($days);
 		
+				//the 2 line graphs
+				
+		$analytics['visits'] = $this->allVisits($days, $daysAgo);
+		$analytics['hits'] = $this->allHits($days, $daysAgo);
+		
+		
+				//the pie charts
+		
+			//browsers
+		//all the data
+		$browsers = $this->model->getBrowsers($daysAgo);
+		$data = array('chrome','safari','ff','ie','dif');
+		$regex = array('Chrome','Safari','Firefox','MSIE');
+		//the html
+		$browsers = $this->parseForPieChart($browsers, 'browser', $data, $regex);
+		$analytics['browser'] = $this->createPieTable($browsers, 'browserData');
+		
+			//platforms
+		//all the data
+		$platform = $this->model->getPlatforms($daysAgo);
+		$data = array('mac','windows','iphone','android','dif');
+		$regex = array('MacIntel','Win','iPhone','Linux');
+		//the html
+		$platform = $this->parseForPieChart($platform,'platform', $data, $regex);
+		$analytics['platform'] = $this->createPieTable($platform, 'platformData');
+		
+			//referrers
+		//all the data
+		$referrers = $this->model->getReferrers($daysAgo);
+		$data = array('youtube','facebook','google','twitter','dif');
+		$regex = array('youtube.com','facebook.com','google','t.co');
+		//the html
+		$referrers = $this->parseForPieChart($referrers, 'referrer', $data, $regex);
+		$analytics['referrer'] = $this->createPieTable($referrers, 'referrerData');
+		
+		
+				//we got everything, let's spawn
 		$this->load->view('header');
 		$this->load->view('admin/analytics',$analytics);
 		$this->load->view('footer');
@@ -49,28 +86,29 @@ class AnalyticsController extends PartController {
 		$daysAgo = strtotime('-' . $days . ' day');
 		$postHits = $this->model->getPostVisits(BASE . $request, $daysAgo);
 		
-		return $this->visitsToLinechart($postHits, $days);
+		return $this->visitsToLinechart($postHits, $days, 'dataTable');
 	}
 	
-	function allVisits($days) {
-		$daysAgo = strtotime('-' . $days . ' day');
+	function allVisits($days, $daysAgo) {
 		$postHits = $this->model->getVisits($daysAgo);
 		
-		return $this->visitsToLinechart($postHits, $days);
+		return $this->visitsToLinechart($postHits, $days, 'dataVisits');
 	}
 	
+	function allHits($days, $daysAgo) {
+		$postHits = $this->model->getHits($daysAgo);
+		
+		// print_r($postHits);
+		
+		return $this->visitsToLinechart($postHits, $days, 'dataHits');
+	}
 	
-	
-	
-	
-	
-	
-	function visitsToLinechart($hits,$dots) {
+	function visitsToLinechart($hits, $dots, $id) {
 		
 		//check if we got any data
 		if(!empty($hits)) {
 			$hits = $this->processDates($hits);
-			$table = $this->createTable($hits, $dots);
+			$table = $this->createLineTable($hits, $dots, $id);
 			
 		} else {
 			$table = 'Er lijkt geen data beschikbaar te zijn :(';
@@ -125,8 +163,8 @@ class AnalyticsController extends PartController {
 		return $results;
 	}
 
-	function createTable($analytics, $days) { 
-		$table = '<table id="dataTable" data-thisMonth="';
+	function createLineTable($analytics, $days, $id) { 
+		$table = '<table class="rTable" id="' . $id . '" data-thisMonth="';
 		$table .= $analytics['thisMonthNamed'] . '" data-lastMonth="' . $analytics['lastMonthNamed'];
 		$table .= '" data-monthSwitch="' . $analytics['today'] . '"><tfoot><tr>';
 		
@@ -153,9 +191,58 @@ class AnalyticsController extends PartController {
 			
 		} 
 			
-		$table .= $str .'</tr></tbody></table><div id="hitsHistory"></div>';
+		$table .= $str .'</tr></tbody></table>';
 
 		return $table;
+	}
+	
+	/* the functions below create everything we need to spawn pie charts */
+	
+	/*
+	
+	This function takes a set of database results and returns a new array with keys as 
+	browsers and values as the number of times it was in the database set.
+		
+		$arr is the input (DB records)
+		$row is the name of the row (DB records)
+		
+		//vars for parsing
+		$data has to be an array with 5 items!
+		$regex has to be an array with 4 items!
+	*/
+	function parseForPieChart($arr, $row, $data, $regex) {
+		
+		$results = $this->arrayify($data);
+		
+		foreach($arr as $pl) {
+			if(preg_match('/' . $regex[0] . '/', $pl[$row])) $results[$data[0]]++;
+			else if(preg_match('/' . $regex[1] . '/', $pl[$row])) $results[$data[1]]++;
+			else if(preg_match('/' . $regex[2] . '/', $pl[$row])) $results[$data[2]]++;
+			else if(preg_match('/' . $regex[3] . '/', $pl[$row])) $results[$data[3]]++;
+			else $results[$data[4]]++;
+		}
+		
+		return $results;
+	}
+	
+	function createPieTable($arr, $id) {
+		extract($arr);
+		
+		$html = '<div id="' . $id .'"';
+		foreach ($arr as $item => $number) {
+			$html .= ' data-'.$item.'="'.$number.'"';
+		}
+		$html .= ' ></div>';
+		
+		return $html;
+	}
+	
+	//turn ('a','b') into ('a' => 0, 'b' => 0)
+	function arrayify($arr) {
+		foreach($arr as $item) {
+			$results[$item] = 0;
+		}
+		return $results;
 	}
 	
 }

@@ -97,5 +97,54 @@ class AnalyticsModel extends DBmodel {
 		
 		
 	}
+	
+	public function getHits($limit) {
+		//this function uses URL input so we need to prepare
+		
+		//debugging
+		// $url = 'portfolio';
+		
+		//this statement get's all steps with different PHP sessions (trackingID's)
+		$statement = $this->connection->prepare('SELECT `trackingID`, `time` FROM step WHERE `time` > ?');
+		
+		# Koppel de variabele $tekst aan het SQL toevoegen statement
+		$statement->bind_param('s', $limit);
+
+		# Voer het SQL statement uit
+		$statement->execute();
+		
+		$statement->bind_result($id, $time);
+		
+		$i = 0;
+		while ($statement->fetch()) {
+			$array[$i] =  array(
+				'id' => $id, 
+				'time' => $time
+				);
+				$i++;
+		}
+		
+		return $array;
+		
+		
+	}
+	
+	public function getBrowsers($limit) {
+		
+		return $this->query('SELECT browser FROM tracking');
+		
+	}
+	
+	public function getPlatforms($limit) {
+		
+		return $this->query('SELECT platform FROM tracking');
+		
+	}
+	
+	public function getReferrers($limit) {
+		
+		return $this->query('SELECT referrer FROM tracking');
+		
+	}
 }
 ?>
