@@ -32,7 +32,7 @@
 	<h2>Website hits (alle views) van de afgelopen 31 dagen</h2>
 	<?= $hits ?>
 	<div id="hitsHistory"></div>
-	<div class='left'>
+	<div class='left' id='pie'>
 		<h2>Browser overzicht</h2>
 		<?= $browser ?>
 		<div id='browser'></div>
@@ -43,8 +43,13 @@
 		<div id='platform'></div>
 	</div>
 	<div class='left'>
-		<h2>Referentie's</h2>
+		<h2>Bron overzicht</h2>
 		<?= $referrer ?>
 		<div id='referrer'></div>
+	</div>
+	<div class='left'>
+		<h2>Pagina overzicht</h2>
+		<?= $pages ?>
+		<div id='pages'></div>
 	</div>
 </section>

@@ -57,6 +57,17 @@ class AnalyticsController extends PartController {
 		$referrers = $this->parseForPieChart($referrers, 'referrer', $data, $regex);
 		$analytics['referrer'] = $this->createPieTable($referrers, 'referrerData');
 		
+			//page
+		//all the data
+		$pages = $this->model->getPages($daysAgo);
+		$data = array('home','portfolio','posts','blog','dif');
+		$regex = array('^home','^(portfolio|#portfolio)','blog\/','^blog');
+		//the html
+		$pages = $this->parseForPieChart($pages, 'page', $data, $regex);
+		$analytics['pages'] = $this->createPieTable($pages, 'pagesData');
+		
+		
+		
 		
 				//we got everything, let's spawn
 		$this->load->view('header');

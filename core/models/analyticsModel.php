@@ -146,5 +146,11 @@ class AnalyticsModel extends DBmodel {
 		return $this->query('SELECT referrer FROM tracking');
 		
 	}
+	
+	public function getPages($limit) {
+		
+		return $this->query('SELECT page FROM step');
+		
+	}
 }
 ?>
