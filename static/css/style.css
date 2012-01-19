@@ -24,6 +24,7 @@ h1 {font-size: 25px;}
 .strike {text-decoration: line-through;}
 .rTable {display:none}
 .left {float:left}
+.center {text-align:center}
 
 ::-moz-selection{ background: #cb8f42; color:white; text-shadow: none; }
 ::selection { background:#cb8f42; color:white; text-shadow: none; }
