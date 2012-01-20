@@ -37,7 +37,9 @@ class Route {
 		        //single post request
 
 				$this->con = new AnalyticsController;
-				$this->con->postStatistics($request);
+				if($request[1]) $this->con->postStatistics($request);
+				else $this->con->siteStatistics($request);
+				
 
 		        break;	
 		    case 'track':

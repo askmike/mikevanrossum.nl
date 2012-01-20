@@ -1,5 +1,5 @@
 <h1>
-	backend
+	Overzicht blogposts
 </h1>
 <div class='message' id='addPostLink'><a href='<?= SITE . '/admin/create' ?>'>Voeg een post toe</a></div>
 <div class='clearfix'></div>
@@ -18,3 +18,6 @@
 			</a>
 		<?php } } ?>
 </div>
+<p>
+	Oudere blogposts kan je wijzigen via de adminbar van de post zelf
+</p>

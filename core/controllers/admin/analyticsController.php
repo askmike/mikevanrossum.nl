@@ -17,6 +17,9 @@ class AnalyticsController extends PartController {
 	/* this function prepares all site traffic we're gonna display, 
 	going max 31 days back */
 	function siteStatistics() {
+		
+		define('PAGE','admin');
+		
 		$days = 31;
 		$daysAgo = strtotime('-' . $days . ' day');
 		

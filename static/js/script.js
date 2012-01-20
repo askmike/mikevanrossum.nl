@@ -356,9 +356,6 @@ $(function() {
 		
 		globalPage = 'admin';
 		
-		//menu
-		initLavalamp(2);
-		
 		//for as long as the admin is public I want to track it to
 		initTracking(loc.pathname);
 	}
