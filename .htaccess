@@ -18,6 +18,8 @@ RewriteRule ^(core|views|import|libs|cron) sneaky [R,L]
 # on my old site the blogpage structure was different
 # the NE (no escape) flag makes it possible to redirect to a hash
 RewriteRule ^blog/page/(.*)$ #blog/$1 [NE,R=301,L]
+# the analytics page has moved
+RewriteRule ^admin/analytics/?$ analytics/ [R=301,L]
 
 # redirect requests for /blog to /#blog (and portfolio / projects)
 # the NE (no escape) flag makes it possible to redirect to a hash
@@ -26,7 +28,7 @@ RewriteRule ^projects/?$ #projects [NE,R,L]
 RewriteRule ^portfolio/?$ #portfolio [NE,R,L]
 
 # makes sure every CMS request does end with a /
-# because /foo and /foo/ are different URLs
+# because /foo and /foo/ are different URLs (google duplicate content, etc.)
 # this is taken from: http://html5boilerplate.com/docs/Proper-usage-of-trailing-slash-redirects/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/|#(.*))$

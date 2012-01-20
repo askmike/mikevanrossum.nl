@@ -30,6 +30,8 @@ PHP:
  - PHP Markdown 1.0.1o [http://michelf.com/projects/php-markdown/]
  - PHP SmartyPants [http://michelf.com/projects/php-smartypants/]
 
+			-Mike van Rossum
+
 -->
 <html id="html" class="no-js <?= PAGE ?>" lang="nl">
 <head>
@@ -79,7 +81,7 @@ PHP:
 			<li><a href='#portfolio'>Portfolio</a></li>
 			<li><a href="#blog">Blog</a></li>
 		<?php } else if(PAGE == 'admin') { ?>
-			<li><a href="<?= BASE ?>admin/analytics/">Analytics</a></li>
+			<li><a href="<?= BASE ?>analytics/">Analytics</a></li>
 			<li><a href="<?= BASE ?>admin/portfolio/">Portfolio</a></li>
 			<li><a href='<?= BASE ?>admin/'>Blog</a></li>	
 		<?php } else { ?>

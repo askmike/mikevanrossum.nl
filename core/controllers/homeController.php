@@ -2,6 +2,8 @@
 
 class HomeController extends PartController {
 	
+	public $mr;
+	
 	function __construct() {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
@@ -10,7 +12,8 @@ class HomeController extends PartController {
 		
 		// get main data
 		$data = $this->model->getLatestTweet();
-		
+		$this->mr = new MijnrealiteitModel();
+		$data['mijnrealiteitPhoto'] = $this->mr->getLatestImage();
 		// overwrite main data with added dates
 		
 		// note: it would be better to just add the dates over here

@@ -1,12 +1,5 @@
 <?php
 
-define('CRON',true);
-
-// this prefix makes it possible to require while cron'ing this
-// because the cron session has it's own working dir (screws up relative paths)
-require dirname(__FILE__) . '/../core/config.php';
-require dirname(__FILE__) . '/../core/lazyloading.php'
-
 				//		first we grab the latest 10 tweets
 
 function get_tweets() {
