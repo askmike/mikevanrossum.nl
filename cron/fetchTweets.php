@@ -2,8 +2,8 @@
 
 define('CRON',true);
 
-require '../core/config.php';
-require '../core/models/dBmodel.php';
+require dirname(__FILE__) . '/../core/config.php';
+require dirname(__FILE__) . '/../core/lazyloading.php'
 
 				//		first we grab the latest 10 tweets
 
@@ -50,37 +50,6 @@ $tweets = get_tweets();
 
 
 					//		then we compare and store them
-
-class TweetModel extends DBmodel {
-	function __construct() { parent::__construct(); }
-	
-	function __destruct() { parent::__destruct(); }
-	
-	function getLatestDate() {
-		return $this->querySingle('SELECT date FROM `tweet` WHERE `date` = (SELECT MAX(`date`) FROM `tweet`)','date');
-	}
-	
-	function addTweet($tweet) {
-		extract($tweet);
-		
-		# Maak een SQL statement klaar voor toevoegen
-		$statement = $this->connection->prepare('INSERT INTO tweet (fid, date, raw, html) VALUES (?, ?, ?, ?)');
-		
-		# Koppel de variabele $tekst aan het SQL toevoegen statement
-		$statement->bind_param(
-				'siss', 
-				$fid,
-				$date, 
-				$raw, 
-				$html
-				);
-	
-		# Voer het SQL statement uit
-		$statement->execute();
-	}
-
-}
-
 
 $tm = new TweetModel;
 $latest = $tm->getLatestDate();

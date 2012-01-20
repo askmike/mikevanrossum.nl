@@ -26,9 +26,10 @@ class SiteController extends Controller {
 		//if multiple functions need the menu
 		
 		$this->load->view('header');
-		$this->load->view('home');
 		
-		//load the controller part
+		$home = new HomeController;
+		$this->load->view('home',$home->part);
+		
 		$portfolio = new PortfolioController;
 		$this->load->view('portfolio',$portfolio->part);
 		

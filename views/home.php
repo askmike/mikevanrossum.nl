@@ -3,13 +3,20 @@
 				home	
 			</h1>
 			<p>
-				Currently under construction, stay tuned!
+				Onder constructie! Deze website is mijn uitwerking voor de eindopracht van 
+				<a href='http://intra.iam.hva.nl/content/1112/verdieping1/server_side_scripting/intro-en-materiaal/' rel='nofollow'>ServerSide Scripting</a>.
+			Ik heb een 
+			<a href='http://mikevanrossum.nl/blog/2012/01/mijn-eigen-cms-voor-serverside-scripting'>blogpost</a> 
+			geschreven waar je info kan vinden over dit systeem. 
+			</p>
+			<p>
+				Het meest interessant is nog wel de zelf geschreven 
+				<a href='http://mikevanrossum.nl/admin/analytics/'>analytics pagina</a>.
 			</p>
 			<p>	
-				Check out my <a href='#blog'>blog</a> or <a href='#portfolio'>portfolio</a>, both are up and running!</a>
+				Check mijn <a href='#blog'>blog</a> of <a href='#portfolio'>portfolio</a>, deze zijn up and running.
 			</p>
-			<!-- 			<div class=a>a</div>
-						<div class=b>b</div> -->
+			<p>Latest Tweet: <?= $html ?></p>
 		</section>
 		<section class='page'>
 			<h1>
@@ -21,4 +28,9 @@
 			<h2>
 				Under Construction
 			</h2>
+			<p>
+				Check in de tussentijd mijn 
+				<a href='https://github.com/askmike' rel='nofollow'>Github</a>
+				.
+			</p>
 		</section>
