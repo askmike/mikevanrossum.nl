@@ -215,7 +215,7 @@ class AnalyticsController extends PartController {
 	/*
 	
 	This function takes a set of database results and returns a new array with keys as 
-	browsers and values as the number of times it was in the database set.
+	items and values as the number of times it was in the database set.
 		
 		$arr is the input (DB records)
 		$row is the name of the row (DB records)
@@ -223,6 +223,8 @@ class AnalyticsController extends PartController {
 		//vars for parsing
 		$data has to be an array with 5 items!
 		$regex has to be an array with 4 items!
+		
+		TODO: this needs to get dynamic
 	*/
 	function parseForPieChart($arr, $row, $data, $regex) {
 		
