@@ -13,9 +13,11 @@
 				Het meest interessant is nog wel de zelf geschreven 
 				<a href='http://mikevanrossum.nl/admin/analytics/'>analytics pagina</a>.
 			</p>
+			<hr>
 			<p>	
 				Check mijn <a href='#blog'>blog</a> of <a href='#portfolio'>portfolio</a>, deze zijn up and running.
 			</p>
+			<hr>
 			<p>Latest Tweet: <?= $html ?></p>
 		</section>
 		<section class='page'>
