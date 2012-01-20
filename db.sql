@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.4.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2012 at 01:14 PM
--- Server version: 5.1.44
--- PHP Version: 5.3.1
+-- Generation Time: Jan 20, 2012 at 12:13 PM
+-- Server version: 5.1.60
+-- PHP Version: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 --
 -- Database: `mvr`
@@ -48,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `modify-date` int(11) NOT NULL,
   `excerpt` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=68 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=90 ;
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `step` (
   `time` int(11) NOT NULL,
   `page` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1621 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4413 ;
 
 -- --------------------------------------------------------
 
@@ -80,4 +81,19 @@ CREATE TABLE IF NOT EXISTS `tracking` (
   `resolution` text NOT NULL,
   `viewport` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=141 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=523 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tweet`
+--
+
+CREATE TABLE IF NOT EXISTS `tweet` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fid` text NOT NULL,
+  `date` int(11) NOT NULL,
+  `raw` text NOT NULL,
+  `html` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=293 ;
