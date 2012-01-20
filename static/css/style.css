@@ -24,7 +24,7 @@ h1 {font-size: 25px;}
 .strike {text-decoration: line-through;}
 .rTable {display:none}
 .left {float:left}
-.center {text-align:center}
+.center, .post #container .center, #container .center {text-align:center}
 
 ::-moz-selection{ background: #cb8f42; color:white; text-shadow: none; }
 ::selection { background:#cb8f42; color:white; text-shadow: none; }
@@ -119,9 +119,8 @@ header {
 
 /* page CUSTOM STYLING */
 
-.a, .b {float:left; width:325px;}
-.a {background:red}
-.b {margin-left:5px;background:blue}
+.a, .b {float:left; width:315px;}
+.b {margin-left:25px;}
 
 .page h1 {
 	font-weight: lighter;
@@ -261,6 +260,10 @@ div#pleft a.current {
 
 /* single post */
 
+.post .alignnone {
+	text-align:center;
+}
+
 .message, .adminBar {
 	background: #eee;
 	padding:10px 15px 9px 15px;
@@ -298,7 +301,7 @@ div#pleft a.current {
 	margin-bottom: 5px;
 }
 
-.post #container p, .post #container li {
+.post #container p, .post #container li, .page p, .page li {
 	text-align:justify;
 	line-height: 1.4em;
 }

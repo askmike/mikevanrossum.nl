@@ -341,7 +341,13 @@ $(function() {
 				$(this).addClass('loaded');
 				Socialite.load($(this));	
 			});
-
+			
+			//center WP images: http://mikevanrossum.nl/blog/2011/07/afbeeldingen-centreren-in-wordpress/
+			$("p:has(.alignnone)")
+				.add("p:has(.alignnone)")
+				.add("p:has(.alignright)")
+					.addClass("center");
+			
 			//tracking
 			initTracking(loc.pathname);
 
@@ -392,7 +398,7 @@ $(function() {
 	
 	function sendTracking(obj) {
 		
-		obj = obj ? obj : tracking
+		obj = obj ? obj : tracking;
 		// log(obj);
 		
 		//need to change $.post to ajax since $.post is basically a shortcut to $.ajax
