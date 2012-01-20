@@ -1,6 +1,10 @@
 <?php
 
-define('CRON',true);
+/*
+	TODO: also store the name of the image and the date, 
+	this probably means XML parsing (that's ok, this is 
+	a cronjob anyway).
+*/
 
 $url = 'http://mijnrealiteit.nl/feed';
 $c = curl_init($url);
