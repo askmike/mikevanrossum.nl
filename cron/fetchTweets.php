@@ -2,6 +2,8 @@
 
 define('CRON',true);
 
+// this prefix makes it possible to require while cron'ing this
+// because the cron session has it's own working dir (screws up relative paths)
 require dirname(__FILE__) . '/../core/config.php';
 require dirname(__FILE__) . '/../core/lazyloading.php'
 
@@ -21,6 +23,8 @@ function get_tweets() {
 
     foreach($tweets as $tweet) {
 	
+	//prepare each tweet
+	
 		$text = $tweet->text;
 		$html = twitterify($text);
 		$date = strtotime($tweet->created_at);
@@ -37,6 +41,7 @@ function get_tweets() {
     return $arr;
 }
 
+//from: http://snipplr.com/view/28482/twitterify/
 function twitterify($ret) {
 	$ret = preg_replace("#(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t< ]*)#", "\\1<a href=\"\\2\" target=\"_blank\">\\2</a>", $ret);
 	$ret = preg_replace("#(^|[\n ])((www|ftp)\.[^ \"\t\n\r< ]*)#", "\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>", $ret);
@@ -54,14 +59,10 @@ $tweets = get_tweets();
 $tm = new TweetModel;
 $latest = $tm->getLatestDate();
 
-// echo $latest . '<hr>';
-
 foreach($tweets as $tweet) {
-	//only store new tweets
-	
+	//only store new tweets || or if the DB is empty
 	if($latest < $tweet['date'] || empty($latest)) {
 		$tm->addTweet($tweet);
-		// echo $tweet['raw'] . '<br> is zoveel sec nieuwer dan de DB <hr>';
 	}
 }
 
