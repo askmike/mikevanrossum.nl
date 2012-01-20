@@ -288,6 +288,14 @@ $(function() {
 	if($html.hasClass('post')) postInit();
 	if($html.hasClass('admin')) adminInit();
 	
+	if($('a.email').length) {
+		var mail = 'mike' + '@' + 'askmike' + '.org';
+		$('a.email').each(function(){
+			$(this).attr("href", 'mailto:' + mail);
+			$(this).text(mail);
+		});
+	}
+	
 	function changeBlogPosts(page) {
 		var $blogNav = $('#blog-nav');
 		var link = $php.data('base') + 'json/blog/' + page;

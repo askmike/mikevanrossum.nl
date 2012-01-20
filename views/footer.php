@@ -1,4 +1,9 @@
 </div>
+<footer class='center'>
+	<a rel='nofollow' href='http://twitter.com/mikevanrossum'>@mikevanrossum</a> 
+	/ 
+	<a class='email' href='#'>#</a>
+</footer>
 <!-- this is the last piece of content before the scripts, it stores every PHP var I need in my js-->
 <div id='php' data-session='<?= session_id() ?>' data-time='<?= round( (microtime( true ) - STARTTIME)*1000, 4 )?>' data-base='<?= BASE ?>'></div>
 <!-- JavaScript at the bottom for fast page loading -->

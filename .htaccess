@@ -6,8 +6,8 @@ RewriteEngine on
 ## redirect dynamic in here, so all redirects in here are 
 ## relative from the rewritebase, switch between the 
 ## next two lines for live / dev.
-# RewriteBase /mikevanrossum/ 
-RewriteBase /
+RewriteBase /mikevanrossum/ 
+# RewriteBase /
 
 # /mvr2 was the dev version
 # redirect every request for /mvr2/[a] to /[a] with a 301 (permanent move header)
