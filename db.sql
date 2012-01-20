@@ -1,18 +1,30 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.9
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2012 at 12:13 PM
--- Server version: 5.1.60
--- PHP Version: 5.2.17
+-- Generation Time: Jan 20, 2012 at 05:11 PM
+-- Server version: 5.1.44
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 --
 -- Database: `mvr`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mijnrealiteit`
+--
+
+CREATE TABLE IF NOT EXISTS `mijnrealiteit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` text NOT NULL,
+  `fetchdate` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -63,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `step` (
   `time` int(11) NOT NULL,
   `page` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4413 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2436 ;
 
 -- --------------------------------------------------------
 
@@ -81,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `tracking` (
   `resolution` text NOT NULL,
   `viewport` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=523 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=169 ;
 
 -- --------------------------------------------------------
 
@@ -96,4 +108,4 @@ CREATE TABLE IF NOT EXISTS `tweet` (
   `raw` text NOT NULL,
   `html` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=293 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=289 ;
