@@ -122,6 +122,16 @@ header {
 .a, .b {float:left; width:315px;}
 .b {margin-left:25px;}
 
+#mijnrealiteit {
+	margin-top:10px;
+	background:#efefef;
+	padding:2px 7px 4px 7px;
+}
+
+#mijnrealiteit p {
+	margin:5px 0;
+}
+
 .page h1 {
 	font-weight: lighter;
 	font-size: 25px;
