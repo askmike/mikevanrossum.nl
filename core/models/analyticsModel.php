@@ -131,25 +131,43 @@ class AnalyticsModel extends DBmodel {
 	
 	public function getBrowsers($limit) {
 		
-		return $this->query('SELECT browser FROM tracking');
+		return $this->query(
+		'SELECT `tracking`.`browser` 
+		FROM `tracking`
+		INNER JOIN `step`
+		ON `tracking`.`id` = `step`.`trackingID` 
+		WHERE `step`.`time` > ' . $limit
+		);
 		
 	}
 	
 	public function getPlatforms($limit) {
 		
-		return $this->query('SELECT platform FROM tracking');
+		return $this->query(
+		'SELECT `tracking`.`platform` 
+		FROM `tracking`
+		INNER JOIN `step`
+		ON `tracking`.`id` = `step`.`trackingID` 
+		WHERE `step`.`time` > ' . $limit
+		);
 		
 	}
 	
 	public function getReferrers($limit) {
 		
-		return $this->query('SELECT referrer FROM tracking');
+		return $this->query(
+		'SELECT `tracking`.`referrer` 
+		FROM `tracking`
+		INNER JOIN `step`
+		ON `tracking`.`id` = `step`.`trackingID` 
+		WHERE `step`.`time` > ' . $limit
+		);
 		
 	}
 	
 	public function getPages($limit) {
 		
-		return $this->query('SELECT page FROM step');
+		return $this->query('SELECT page FROM step WHERE time > ' . $limit);
 		
 	}
 }

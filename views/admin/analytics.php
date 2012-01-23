@@ -1,4 +1,4 @@
-<h1>Website statistieken</h1>
+<h1>Website statistieken van de afgelopen <?= $days?> dagen</h1>
 <p>
 	Hier zie je de statistieken van mijn website. Ik heb zelf de javascript 
 	<a href='https://github.com/askmike/mikevanrossum.nl/blob/master/static/js/script.js#L372'>geschreven</a> 
@@ -25,11 +25,19 @@
 		hebben gebruikt. Het andere deel kwam van mij terwijl ik op de live versie zat te ontwikkelen.
 	</em>
 </p>
+<hr>
+<p>
+	<form id='days'>
+	Statistieken van hoeveel dagen:
+	<input id='nOfDays'>
+	<input type='submit' name='submit'>
+</p>
+<hr>
 <section id='analytics'>
-	<h2>Website bezoeken (PHP sessie's) van de afgelopen 31 dagen</h2>
+	<h2>Website bezoeken (PHP sessie's)</h2>
 	<?= $visits ?>
 	<div id="visitsHistory"></div>
-	<h2>Website hits (alle views) van de afgelopen 31 dagen</h2>
+	<h2>Website hits (alle views)</h2>
 	<?= $hits ?>
 	<div id="hitsHistory"></div>
 	<div class='left' id='pie'>

@@ -5,7 +5,7 @@ class AnalyticsController extends PartController {
 	function __construct() {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
-		
+
 		define('ANALYTICS','true');
 	}
 	
@@ -16,11 +16,14 @@ class AnalyticsController extends PartController {
 	
 	/* this function prepares all site traffic we're gonna display, 
 	going max 31 days back */
-	function siteStatistics() {
-		
+	function siteStatistics($days) {
 		define('PAGE','admin');
+
+		//default is 1 month (31 days), also capped at 1 month for now
+		if(!is_numeric($days) || $days > 31) $days = 31;
 		
-		$days = 31;
+		$analytics['days'] = $days;
+		
 		$daysAgo = strtotime('-' . $days . ' day');
 		
 		$this->model = new AnalyticsModel;
