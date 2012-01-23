@@ -5,15 +5,15 @@
 			<hr>
 			<div class='a'>
 				<p>
-					Ik ben Mike en ik ontwikkel websites. Van e-learning paketten voor 
+					Ik ben Mike en ik ontwikkel websites. Van E-learning paketten voor 
 					<a rel='nofollow' href='http://talmundo.com/projects/gucci'>Gucci</a> tot en met 
-					<a href='http://chelseywinkel.nl/'>&#8216;coming soon&#8217;</a> pagina's voor mijn vriendin.
+					<a href='http://chelseywinkel.nl/'>&#8216;coming soon&#8217;</a> pagina&#8217;s voor mijn vriendin.
 				</p>
 				<p>
 					Ik studeer 
 					<a rel='nofollow' href='http://www.voltijd.hva.nl/interactieve-media/studieprogramma.htm'>CMD</a> 
 					in Amsterdam en loop stage bij 
-					<a rel='nofollow' href='http://thenextweb.com'>The Next Web</a> :).
+					<a rel='nofollow' href='http://thenextweb.com'>The Next Web</a>.
 				</p>
 			</div>
 			<div class='b'>
@@ -35,7 +35,7 @@
 			<div class='clearfix'></div>
 			
 			<hr>
-			<p>Laatste tweet: <?= $html ?></p>
+			<p>Ik zei: <?= $html ?></p>
 			<hr>
 			<div id='mijnrealiteit'>
 				<p>

@@ -21,7 +21,6 @@ class PortfolioController extends PartController {
 		// possible solution: create a general class that would handle mapping 2 arrays.
 		$data = $this->getDatesFromItems($data);
 		
-		//print_r($part);
 		$this->part = $data;
 		
 	}

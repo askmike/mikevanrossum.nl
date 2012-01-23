@@ -19,11 +19,18 @@ class Route {
 		//parse request
 		if(is_string($request)) $request = explode('/',$request);
 		
-		//route
+		//route based on the fhe first virtual dir
 		switch ($request[0]) {
+			case 'track':
+				// it's a track request: some analytics data getting passed
+				// we don't return anything
+				
+				$this->con = new TrackController;
+
+		        break;
 			case '':
 				// home
-
+				
 				$this->con = new SiteController($request);
 
 		        break;
@@ -37,18 +44,11 @@ class Route {
 		        //single post request
 
 				$this->con = new AnalyticsController;
-				if($request[1]) $this->con->postStatistics($request);
-				else $this->con->siteStatistics($request);
+				if($request[2]) $this->con->postStatistics($request);
+				else $this->con->siteStatistics($request[1]);
 				
 
 		        break;	
-		    case 'track':
-				// it's a track request: some analytics data getting passed
-				// we don't return anything
-
-				$this->con = new TrackController;
-
-		        break;
 		    case 'admin':
 				// backend time
 
@@ -96,6 +96,7 @@ class Route {
 				
 				new ErrorController(404);
 		}
+		
 	}
 }
 

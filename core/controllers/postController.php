@@ -38,7 +38,6 @@ class PostController extends PartController {
 		$this->load->view('post', $data);
 		$this->load->view('footer');
 		
-		//print_r($part);
 		return $data;
 		
 	}

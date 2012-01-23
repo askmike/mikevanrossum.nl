@@ -25,7 +25,6 @@ class PartController extends Controller {
 				$array[$i]['dutchdate'] = $this->getDutchDate($array[$i]['date']);
 			}
 		}
-		//print_r($array);
 		return $array;
 	}
 	
@@ -33,7 +32,6 @@ class PartController extends Controller {
 		if(is_array($array)) {
 			$array['dutchdate'] = $this->getDutchDate($array['date']);
 		}
-		//print_r($array);
 		return $array;
 	}
 	

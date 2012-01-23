@@ -1,4 +1,5 @@
 </div>
+<div class='clearfix'></div>
 <footer class='center'>
 	<a rel='nofollow' href='http://twitter.com/mikevanrossum'>@mikevanrossum</a> 
 	/ 

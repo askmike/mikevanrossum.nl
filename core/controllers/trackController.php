@@ -8,11 +8,11 @@ class TrackController extends Controller {
 	
 	function __construct() {
 		//this runs the construct of the class this class is extending
-		parent::__construct();
+		parent::__construct(); 
 		
 		//I don't want to track on the local version
-		if(LIVE == false) return;
-		
+		if(LIVE == false) return; 
+
 		$this->model = new TrackModel;
 		
 		//get current session
@@ -26,13 +26,14 @@ class TrackController extends Controller {
 		//if that fails somebody tries to break something
 		
 		$whitelist = array('phptime','session','page','referrer', 'platform', 'resolution', 'viewport', 'browser');
-		if( $this->checkInput($whitelist) ) {
+		if( $this->checkInput($whitelist) ) { 
 			//it's a track request
 			
 			if(!empty($this->session)) {
 				//it's a new pageload in an existing session
 				$this->addStep();
-			} else {
+			} else { 
+				
 				//it's a new session
 				//let's add a track and first step
 				$this->addTrack();
@@ -41,12 +42,12 @@ class TrackController extends Controller {
 				$this->session = $this->model->getSession($_POST['session']);
 				$this->addStep();
 			}
-		} else {
-			$whitelist = array('session','page');
-			if( !$this->checkInput($whitelist) ) return;
+		} else { 
 
 			//we're safe, let's do this!
 			$this->addStep();
+			
+
 		}
 		
 	}
@@ -61,8 +62,7 @@ class TrackController extends Controller {
 		
 		if(!$this->checkStep()) return;
 		
-		$this->model->addStepToSession($_POST, $this->session['id']);
-		
+		$this->model->addStepToSession($_POST, $this->session['id']); 
 	}
 	
 	function addTrack() {
@@ -113,8 +113,8 @@ class TrackController extends Controller {
 	function checkStep() {
 		//in page I don't want any strange chars
 		if(!preg_match('/^[^(){};^*@$%<>\\\'"]*$/', $_POST['page'])) return;
-		//session: needs to be hex and 32 chars
-		if(!preg_match('/[a-f0-9]{32}/', $_POST['session'])) return;
+		//session: needs to be hex and 32 chars 
+		if(!preg_match('/[a-f0-9]{32}/', $_POST['session'])) return; 
 		return true;
 	}
 }

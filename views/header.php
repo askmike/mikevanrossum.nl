@@ -56,7 +56,7 @@ PHP:
 	<link rel=stylesheet href='<?php echo BASE; ?>static/css/style.css'>
 	<!-- end CSS-->
 
-	<link rel="alternate" type="application/rss+xml" title="Mike van Rossums blog RSS Feed" href="http://mikevanrossum.nl/feed/" />
+	<link rel="alternate" type="application/rss+xml" title="Mike van Rossums blog RSS Feed" href="<?= SITE ?>feed.rss" />
 
 	<!-- All JavaScript at the bottom, except for Modernizr / Respond.
 	    Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
