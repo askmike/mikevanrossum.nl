@@ -41,6 +41,7 @@ publish
 build
 static/img
 static/js/mylibs/shjs
+cron/backup.php
 libs
 .idea
 
