@@ -386,6 +386,8 @@ $(function() {
 			referrer: document.referrer,
 			page: page,
 			platform: nav.platform,
+			// maybe use this instead? https://github.com/ded/bowser
+			// makes parsing a whole lot easier
 			browser: nav.userAgent,
 			resolution: scr.width + 'x' + scr.height,
 			viewport: $window.width() + 'x' + $window.height()
@@ -406,13 +408,13 @@ $(function() {
 	
 	function sendTracking(obj) {
 		
-		obj = obj ? obj : tracking;
+		obj = obj || tracking;
 		
 		//need to change $.post to ajax since $.post is basically a shortcut to $.ajax
 		
 		$.post($php.data('base') + "track/", obj /*,function(data) { $('html').html(data) }*/);
 		
-		log(obj,$php.data('base') + "track");
+		// log(obj,$php.data('base') + "track");
 		
 	}
 	
