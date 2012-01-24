@@ -637,6 +637,7 @@ footer.center {
 
 #nOfDays {
 	width:40px;
+	text-align:center;
 }
 
 /* rest of reset */
