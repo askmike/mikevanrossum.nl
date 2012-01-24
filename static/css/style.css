@@ -331,8 +331,8 @@ pre {
 	font-style: normal;
 	line-height: 1.45em;
 	border: 1px solid #CCCCCC;
-	width: 540px;
-	margin-left: -20px;
+/*	width: 540px;
+	margin-left: -20px;*/
 	overflow:auto;
 	padding:7px;
 	-moz-border-radius: 5px;
@@ -616,6 +616,27 @@ pre.sh_sourceCode .sh_value {
 
 footer.center {
 	margin-bottom:30px;
+}
+
+#analytics table td, #analytics table th {
+	padding:3px 10px;
+	border:1px solid #eee;
+	margin-bottom:10px;
+}
+
+#analytics table {
+	width:640px;
+	overflow:auto;
+}
+
+#goNofDays {
+	box-shadow:none;
+	-webkit-box-shadow:none;
+	padding:4px 10px;
+}
+
+#nOfDays {
+	width:40px;
 }
 
 /* rest of reset */

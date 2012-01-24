@@ -165,6 +165,20 @@ class AnalyticsModel extends DBmodel {
 		
 	}
 	
+	public function getTopPosts($number, $limit) {
+		
+		return $this->query(
+		'SELECT page, COUNT(page) as times 
+		FROM step 
+		WHERE time > ' . $limit . '
+		GROUP BY page 
+		ORDER BY times DESC
+		LIMIT 0, ' . $number
+		);
+		
+	}
+	
+	
 	public function getPages($limit) {
 		
 		return $this->query('SELECT page FROM step WHERE time > ' . $limit);

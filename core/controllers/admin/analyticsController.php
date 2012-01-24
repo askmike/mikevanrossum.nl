@@ -18,15 +18,20 @@ class AnalyticsController extends PartController {
 	going max 31 days back */
 	function siteStatistics($days) {
 		define('PAGE','admin');
-
+		
 		//default is 1 month (31 days), also capped at 1 month for now
-		if(!is_numeric($days) || $days > 31) $days = 31;
+		if(!is_numeric($days) || $days > 31 || $days < 1) $days = 31;
 		
 		$analytics['days'] = $days;
 		
-		$daysAgo = strtotime('-' . $days . ' day');
+		$daysAgo = strtotime('-' . $analytics['days'] . ' day midnight');
+		
+		// echo $daysAgo;
 		
 		$this->model = new AnalyticsModel;
+		
+				//the top 5 posts
+		$analytics['top'] = $this->model->getTopPosts(5,$daysAgo);
 		
 				//the 2 line graphs
 				

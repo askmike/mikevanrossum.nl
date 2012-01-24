@@ -11,7 +11,7 @@ class TrackController extends Controller {
 		parent::__construct(); 
 		
 		//I don't want to track on the local version
-		if(LIVE == false) return; 
+		// if(LIVE == false) return; 
 
 		$this->model = new TrackModel;
 		
