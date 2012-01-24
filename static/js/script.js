@@ -26,6 +26,7 @@ $(function() {
 		i,
 		
 		speed = 125,
+		menuSpeed = speed*2.5,
 		base = 60,
 		offset = 10,
 		
@@ -118,7 +119,7 @@ $(function() {
 					if(request[0] == 'portfolio') showPortfolio(request);
 
 				} else { //we're not on pageload
-					$menu.find('.current').trigger('mouseenter');
+					$menu.find('.current').trigger('mouseenter').delay(menuSpeed/*, function() {$(this).click()}).click(*/);
 					animatePage(pageIndex, request);
 
 					trackPage(page);
@@ -424,6 +425,6 @@ $(function() {
 	
 	function initLavalamp(page) {
 		if(isNumber(page)) $menu.find('li').eq(page).addClass('current');
-		$menu.lavaLamp({ fx: "easeInOutCirc", speed: speed*2.5 });
+		$menu.lavaLamp({ fx: "easeInOutCirc", speed: menuSpeed });
 	}
 });
