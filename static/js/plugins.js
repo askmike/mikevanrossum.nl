@@ -11,6 +11,16 @@ window.log = function(){
   }
 };
 
+/* google analytics */
+var _gaq = [['_setAccount', 'UA-19313599-4'], ['_trackPageview']];
+
+  (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+  }(document, 'script'));
+
 // make it safe to use console.log always
 (function(b){function c(){}for(var d="assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,timeStamp,profile,profileEnd,time,timeEnd,trace,warn".split(","),a;a=d.pop();){b[a]=b[a]||c}})((function(){try
 {console.log();return window.console;}catch(err){return window.console={};}})());
