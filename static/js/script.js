@@ -250,6 +250,22 @@ $(function() {
 		return 0;
 	}
 	
+	
+	
+	/* on runtime */
+	
+	//track using Googly Analytics
+	var _gaq = [['_setAccount', 'UA-19313599-4'], ['_trackPageview']];
+	
+	  (function(d, t) {
+	    var g = d.createElement(t),
+	        s = d.getElementsByTagName(t)[0];
+	    g.src = '//www.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g, s);
+	  }(document, 'script'));
+	
+	
+	
 	//bind functions to event handlers
 	if( Modernizr.hashchange ) {
 		$window.bind('hashchange',function(){ //also triggers when not using site navigation (back button, etc.)
@@ -415,7 +431,8 @@ $(function() {
 		
 		$.post($php.data('base') + "track/", obj /*,function(data) { $('html').html(data) }*/);
 		
-		// log(obj,$php.data('base') + "track");
+		//also track it on Google Analytics
+		_gaq.push(['_trackPageview', '/some-page']);
 		
 	}
 	
