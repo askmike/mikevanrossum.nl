@@ -36,17 +36,21 @@ PHP:
 <html id="html" class="no-js <?= PAGE ?>" lang="nl">
 <head>
 	<meta charset="utf-8">
+	
+	<!-- dns prefetching -->
+	<link rel="dns-prefetch" href="//ajax.googleapis.com">
+	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<?php if(PAGE == 'site') { ?>
 		<title>Mike van Rossum - webdeveloper</title>
-		<meta name="description" content="Op het portfolio en blog van Mike van Rossum, een webdeveloper en CMDA student uit Amsterdam, vind je van van alles wat te maken heeft met de front-end en back-end van websites."
-		<link rel="canonical" href="<?= SITE ?>" />
+		<meta name="description" content="Op het portfolio en blog van Mike van Rossum, een webdeveloper en CMDA student uit Amsterdam, vind je van van alles wat te maken heeft met de front-end en back-end van websites.">
 	<?php } else { ?>
 		<title><?= $titel ?></title>
 		<meta name="description" content="<?= $meta ?>">
 		<meta name="keywords" content="Mike van Rossum, webdevelopment, website, webdesign, web, <?= $tags ?>">
-		<link rel="canonical" href="<?= SITE . $url ?>" />
 	<?php } ?>
+	<link rel="canonical" href="<?= SITE . $url ?>" />
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 	<meta name="author" content="Mike van Rossum">
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
