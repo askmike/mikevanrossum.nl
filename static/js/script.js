@@ -119,7 +119,7 @@ $(function() {
 					if(request[0] == 'portfolio') showPortfolio(request);
 
 				} else { //we're not on pageload
-					$menu.find('.current').trigger('mouseenter').delay(menuSpeed/*, function() {$(this).click()}).click(*/);
+					$menu.find('.current').trigger('mouseenter')/*.delay(menuSpeed, function() {$(this).click()}).click()*/;
 					animatePage(pageIndex, request);
 
 					trackPage(page);
