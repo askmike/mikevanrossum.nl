@@ -432,7 +432,7 @@ $(function() {
 		$.post($php.data('base') + "track/", obj /*,function(data) { $('html').html(data) }*/);
 		
 		//also track it on Google Analytics
-		_gaq.push(['_trackPageview', '/some-page']);
+		_gaq.push(['_trackPageview', obj.page]);
 		
 	}
 	
