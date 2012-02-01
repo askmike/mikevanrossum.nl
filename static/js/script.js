@@ -295,7 +295,7 @@ $(function() {
 	if($html.hasClass('admin')) adminInit();
 	
 	if($('a.email').length) {
-		var mail = 'mike' + '@' + 'askmike' + '.org';
+		var mail = 'mike' + '@' + 'mikevanrossum.nl';
 		$('a.email').each(function(){
 			$(this).attr("href", 'mailto:' + mail);
 			$(this).text(mail);
