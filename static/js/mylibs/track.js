@@ -25,7 +25,7 @@ $(function() {
 			// this only works when the GA snippet has already run
 			_gaq.push(['_trackPageview', obj.page]);
 			
-			log(obj);
+			// log(obj);
 		},
 		/*
 			the start function tracks a new page load
