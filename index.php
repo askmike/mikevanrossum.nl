@@ -3,6 +3,8 @@
 //so I can time how long the it takes before we sent it back to the client
 //when we get to views/footer.php we compare this with then.
 define('STARTTIME', microtime(true));
+//when did I last changed the code?
+define('MTIME', date("F d Y H:i:s", filemtime('index.php')));
 
 //define basic things we need before we can require anything at all
 define('APP', 'core/');

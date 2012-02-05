@@ -9,8 +9,11 @@ __
     \ \_\\ \_\ \_\ \_\ \_\ \____\
      \ /_/ \/_/\/_/\/_/\/_/\/____/
 
-alot here is minified
-Check out all the code on github [https://github.com/askmike/mikevanrossum.nl]
+
+	You've found the source!
+
+
+Alot here is minified, check out all the code on github [https://github.com/askmike/mikevanrossum.nl]
 
 All is written by me except for:
 
@@ -30,8 +33,14 @@ PHP:
  - PHP Markdown 1.0.1o [http://michelf.com/projects/php-markdown/]
  - PHP SmartyPants [http://michelf.com/projects/php-smartypants/]
 
-			-Mike van Rossum
+			
+	latest update: <?= MTIME ?>
+	
+	
 
+				~ Mike van Rossum
+				  webdeveloper
+				
 -->
 <html id="html" class="no-js <?= PAGE ?>" lang="nl">
 <head>
