@@ -18,36 +18,31 @@ class TrackController extends Controller {
 		//get current session
 		$this->session = $this->model->getSession($_POST['session']);
 		
-		//first we check the POST for a track request
-		// 		if it's a track request but we have the ID already (pageload), add a step
-		//		else add a track
-		//if it fails we check we for step request
-		//		and add a step
-		//if that fails somebody tries to break something
 		
-		$whitelist = array('phptime','session','page','referrer', 'platform', 'resolution', 'viewport', 'browser');
-		if( $this->checkInput($whitelist) ) { 
-			//it's a track request
+		if($_POST['type'] == 'track') {
+			// it's a track
+			
+			$whitelist = array('type','phptime','session','page','referrer', 'platform', 'resolution', 'viewport', 'browser');
+			if(!$this->checkInput($whitelist)) return;
 			
 			if(!empty($this->session)) {
-				//it's a new pageload in an existing session
+				// it's a new pageload in an existing session
 				$this->addStep();
-			} else { 
-				
-				//it's a new session
-				//let's add a track and first step
+			} else {
+				// it's a new session
 				$this->addTrack();
 				
 				//redo this because before the addTrack there was no record yet
 				$this->session = $this->model->getSession($_POST['session']);
 				$this->addStep();
 			}
-		} else { 
-
-			//we're safe, let's do this!
+			
+		} else {
+			// it's a step
+			$whitelist = array('track','session','page');
+			
 			$this->addStep();
 			
-
 		}
 		
 	}

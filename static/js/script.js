@@ -40,7 +40,7 @@ $(function() {
 		steps = [],
 		starttime = new Date().getTime(),
 		//this object stores everything for the analytics
-		tracking = {},
+		track = window.track,
 		oldBlogPage = 1,
 		globalPage = '';
 	
@@ -106,7 +106,7 @@ $(function() {
 				if(!isNumber(old)) {
 					initLavalamp();
 
-					initTracking(page);
+					track.start(page);
 
 					//because of (something that looks like) a bug in animate I set the css also via js
 					//bug: when not setting those via js the first fadeout animation breaks
@@ -122,7 +122,7 @@ $(function() {
 					$menu.find('.current').trigger('mouseenter')/*.delay(menuSpeed, function() {$(this).click()}).click()*/;
 					animatePage(pageIndex, request);
 
-					trackPage(page);
+					track.page(page);
 				}
 
 				old = pageIndex;
@@ -132,12 +132,12 @@ $(function() {
 			} else if(request[1] && request[1] != oldP) {
 				//where not changing pages, but changing portfolio items
 				changePortfolioItem(request);
-				trackPage(loc.hash);
+				track.page(loc.hash);
 
 			} if(request[0] == 'blog' && isNumber(request[1])) {
 				//were changing blog pages
 				changeBlogPosts(request[1]);
-				trackPage(loc.hash);
+				track.page(loc.hash);
 			}
 		}
 	}
@@ -363,7 +363,7 @@ $(function() {
 					.addClass("center");
 			
 			//tracking
-			initTracking(loc.pathname);
+			track.start(loc.pathname);
 
 			//syntax hightlighting
 			sh_highlightDocument($php.data('base') + "static/js/mylibs/shjs/", '.min.js');
@@ -377,60 +377,12 @@ $(function() {
 		globalPage = 'admin';
 		
 		//for as long as the admin is public I want to track it to
-		initTracking(loc.pathname);
-	}
-	
-	/* all the functions for the javascript sided tracking */
-	function initTracking(page) {
-		
-		var nav = navigator;
-		var scr = screen;
-		
-		tracking = {
-			phptime: $php.data('time'),
-			session: $php.data('session'),
-			referrer: document.referrer,
-			page: page,
-			platform: nav.platform,
-			// maybe use this instead? https://github.com/ded/bowser
-			// makes parsing a whole lot easier
-			browser: nav.userAgent,
-			resolution: scr.width + 'x' + scr.height,
-			viewport: $window.width() + 'x' + $window.height()
-		};
-		
-		sendTracking();
-	}
-	
-	function trackPage(page) {
-		
-		var step = {
-			page: page, 
-			session: tracking.session
-		};
-		
-		sendTracking(step);
-	}
-	
-	function sendTracking(obj) {
-		
-		obj = obj || tracking;
-		
-		//need to change $.post to ajax since $.post is basically a shortcut to $.ajax
-		
-		$.post($php.data('base') + "track/", obj /*,function(data) { $('html').html(data) }*/);
-		
-		//also track it on Google Analytics
-		_gaq.push(['_trackPageview', obj.page]);
-		
-	}
-	
-	function SecondsSincePageLoad() {
-		return (new Date().getTime() - starttime) / 1000;
+		track.start(loc.pathname);
 	}
 	
 	function initLavalamp(page) {
 		if(isNumber(page)) $menu.find('li').eq(page).addClass('current');
 		$menu.lavaLamp({ fx: "easeInOutCirc", speed: menuSpeed });
 	}
+	
 });
