@@ -1,17 +1,7 @@
 <!doctype html>
 <!--#  
-by
-__                
-/'\_/`\  __/\ \               
- /\      \/\_\ \ \/'\      __   
-  \ \ \__\ \/\ \ \ , <    /'__`\ 
-   \ \ \_/\ \ \ \ \ \\`\ /\  __/ 
-    \ \_\\ \_\ \_\ \_\ \_\ \____\
-     \ /_/ \/_/\/_/\/_/\/_/\/____/
 
-
-	You've found the source!
-
+	Grats, you've found the source!
 
 Alot here is minified, check out all the code on github [https://github.com/askmike/mikevanrossum.nl]
 
@@ -34,7 +24,7 @@ PHP:
  - PHP SmartyPants [http://michelf.com/projects/php-smartypants/]
 
 			
-	latest update: <?= MTIME ?>
+	latest code update: <?= MTIME ?>
 	
 	
 
