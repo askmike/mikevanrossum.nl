@@ -5,7 +5,7 @@
 	<a href='<?= $editUrl ?>'>Edit deze pagina</a> 
 </p>
 <div class='clearfix'></div>
-<?php } else { ?>
+<?php } elseif(LIVE == false) { ?>
 <p class='adminBar'>
 	<a href='<?= SITE . $url ?>'>Terug naar de Post</a>
 	\
