@@ -1,4 +1,4 @@
-<?php if(ANALYTICS != 'true') /* check if admin */ { ?>
+<?php if(ANALYTICS != 'true' && LIVE == false) /* check if admin and if dev version */ { ?>
 <p class='adminBar'>
 	<a href='<?= SITE . 'analytics/' . $url ?>'>Post statistieken</a>
 	\
