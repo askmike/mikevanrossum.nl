@@ -6,7 +6,8 @@
 	<a class='email' href='#'>#</a>
 </footer>
 <!-- this is the last piece of content before the scripts, it stores every PHP var I need in my js-->
-<div id='php' data-session='<?= session_id() ?>' data-time='<?= round( (microtime( true ) - STARTTIME)*1000, 4 )?>' data-base='<?= BASE ?>'></div>
+<div id='php' data-session='<?= session_id() ?>' data-time='<?= round( (microtime( true ) - STARTTIME)*1000, 4 )?>' data-base='<?= BASE ?>' <?php
+if(LIVE == false) echo 'data-dev'; ?>></div>
 <!-- JavaScript at the bottom for fast page loading -->
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
