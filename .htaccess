@@ -172,6 +172,7 @@ AddType text/x-vcard                        vcf
 
 # rss fix
 AddType application/rss+xml .rss
+AddType application/xml .xml
 
 
 # ----------------------------------------------------------------------
