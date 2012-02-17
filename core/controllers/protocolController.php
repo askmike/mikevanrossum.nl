@@ -17,6 +17,9 @@ class ProtocolController extends Controller {
 		
 		$data = $this->model->getUrls(50000);
 		
+		// this prevents the sitemap from showing up in google
+		header("X-Robots-Tag: noindex", true);
+		
 		$this->load->view('protocol/sitemap',$data);
 	}
 	
