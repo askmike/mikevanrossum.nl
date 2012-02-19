@@ -18,7 +18,7 @@
 			</div>
 			<div class='b'>
 				<p>
-					Deze website is mijn uitwerking voor de eindopracht van 
+					Deze website is mijn uitwerking voor de eindopdracht van 
 					<a rel='nofollow' href='http://intra.iam.hva.nl/content/1112/verdieping1/server_side_scripting/intro-en-materiaal/' rel='nofollow'>ServerSide Scripting</a>.
 				Ik heb een 
 				<a href='http://mikevanrossum.nl/blog/2012/01/mijn-eigen-cms-voor-serverside-scripting'>blogpost</a> 
