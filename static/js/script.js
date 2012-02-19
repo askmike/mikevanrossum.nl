@@ -303,11 +303,13 @@ $(function() {
 	}
 	
 	function changeBlogPosts(page) {
-		var $blogNav = $('#blog-nav');
-		var link = $php.data('base') + 'json/blog/' + page;
-		var $blogPosts = $('#blog-posts');
-		var $posts = $blogPosts.children().filter('.blog-post');
-		var offset = (oldBlogPage < page) ?  15 : -15;
+		var 
+			$blogNav = $('#blog-nav'),
+			link = $php.data('base') + 'json/blog/' + page,
+			$blogPosts = $('#blog-posts'),
+			$posts = $blogPosts.children().filter('.blog-post'),
+			offset = (oldBlogPage < page) ?  15 : -15;
+			
 		// need to change $.getJSON to ajax since $.getJSON is a shortcut to $.ajax (double function call)
 		// also need to to fix the 'assumed speed' since the page right now is waiting for get JSON to do anything
 		// thinking about spinner.js
