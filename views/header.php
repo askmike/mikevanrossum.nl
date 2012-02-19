@@ -38,7 +38,6 @@ PHP:
 	
 	<!-- dns prefetching -->
 	<link rel="dns-prefetch" href="//ajax.googleapis.com">
-	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<?php if(PAGE == 'site') { ?>
 		<title>Mike van Rossum - webdeveloper</title>
@@ -49,7 +48,6 @@ PHP:
 		<meta name="keywords" content="Mike van Rossum, webdevelopment, website, webdesign, web, <?= $tags ?>">
 	<?php } ?>
 	<link rel="canonical" href="<?= SITE . $url ?>" />
-	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 	<meta name="author" content="Mike van Rossum">
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
