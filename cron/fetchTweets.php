@@ -3,8 +3,7 @@
 				//		first we grab the latest 10 tweets
 
 function get_tweets() {
-	//even though we specify 10, we only get 7
-    $url = 'http://twitter.com/statuses/user_timeline/mikevanrossum.json?count=10';
+    $url = 'http://twitter.com/statuses/user_timeline/mikevanrossum.json?count=30';
     $c = curl_init();
     curl_setopt($c, CURLOPT_URL, $url);
     curl_setopt ($c, CURLOPT_RETURNTRANSFER, 1);
@@ -13,7 +12,7 @@ function get_tweets() {
     curl_close($c);
 
     $tweets = json_decode($tweets);
-
+	
     foreach($tweets as $tweet) {
 	
 	//prepare each tweet
@@ -21,7 +20,7 @@ function get_tweets() {
 		$text = $tweet->text;
 		$html = twitterify($text);
 		$date = strtotime($tweet->created_at);
-	
+		
 		$arr[] = array(
 			'fid' => $tweet->id_str,
 			'date' => $date,
