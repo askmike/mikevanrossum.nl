@@ -6,12 +6,12 @@
 			<div class='a'>
 				<p>
 					Ik ben Mike en ik ontwikkel websites. Van E-learning paketten voor 
-					<a rel='nofollow' href='http://talmundo.com/projects/gucci'>Gucci</a> tot en met 
+					<a href='http://talmundo.com/projects/gucci'>Gucci</a> tot en met 
 					<a href='http://chelseywinkel.nl/'>&#8216;coming soon&#8217;</a> pagina&#8217;s voor mijn vriendin.
 				</p>
 				<p>
 					Ik studeer 
-					<a rel='nofollow' href='http://www.voltijd.hva.nl/interactieve-media/studieprogramma.htm'>CMD</a> 
+					<a href='http://www.voltijd.hva.nl/interactieve-media/studieprogramma.htm'>CMD</a> 
 					in Amsterdam en loop stage bij 
 					<a rel='nofollow' href='http://thenextweb.com'>The Next Web</a>.
 				</p>
@@ -19,7 +19,7 @@
 			<div class='b'>
 				<p>
 					Deze website is mijn uitwerking voor de eindopdracht van 
-					<a rel='nofollow' href='http://intra.iam.hva.nl/content/1112/verdieping1/server_side_scripting/intro-en-materiaal/' rel='nofollow'>ServerSide Scripting</a>.
+					<a href='http://intra.iam.hva.nl/content/1112/verdieping1/server_side_scripting/intro-en-materiaal/' rel='nofollow'>ServerSide Scripting</a>.
 				Ik heb een 
 				<a href='http://mikevanrossum.nl/blog/2012/01/mijn-eigen-cms-voor-serverside-scripting'>blogpost</a> 
 				geschreven waar je (technische) info kan vinden over dit systeem. 
