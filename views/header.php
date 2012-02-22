@@ -81,11 +81,11 @@ PHP:
 			<li><a href="#projects">Projects</a></li>
 			<li><a href='#portfolio'>Portfolio</a></li>
 			<li><a href="#blog">Blog</a></li>
-		<?php } else if(PAGE == 'admin') { ?>
+		<?php /* } else if(PAGE == 'admin') { ?>
 			<li><a href="<?= BASE ?>analytics/">Analytics</a></li>
 			<li><a href="<?= BASE ?>admin/portfolio/">Portfolio</a></li>
 			<li><a href='<?= BASE ?>admin/'>Blog</a></li>	
-		<?php } else { ?>
+		<?php */ } else { ?>
 			<li><a href="<?= BASE ?>#">Home</a></li>
 			<li><a href="<?= BASE ?>#projects">Projects</a></li>
 			<li><a href='<?= BASE ?>#portfolio'>Portfolio</a></li>
