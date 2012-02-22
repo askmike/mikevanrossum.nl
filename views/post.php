@@ -27,7 +27,7 @@
 <hr>
 <div id='share' class='clearfix message'>
 	<p>
-		Share deze post
+		Share this post
 	</p>
 	<div>
 		<a class="socialite facebook ir" href="http://facebook.com/share" data-layout="box_count" rel="nofollow" data-href='<?= SITE . $url ?>' target="_blank">
@@ -43,5 +43,44 @@
 </div>
 <hr>
 <p>
-	Op dit moment kan je nog geen comments achterlaten.
+	No comments yet.
 </p>
+<?php /*
+<section class='comment'>
+
+</section>
+<form id='commentForm' method='post' class='form'>
+	<h2>
+		Leave your comment
+	</h2>
+	<input type="hidden" name="post" value="<?= $url ?>" />
+	<p>
+		<label for="author">
+			Name*	</label>
+		<input type="text" name="author" id="author" />
+	</p>
+
+	<p>
+		<label for="email">
+			Mail address* (you can trust me)
+		</label>
+		<input type="text" name="email" id="email" />
+	</p>
+
+	<p>
+		<label for="url">
+			Website
+		</label>
+		<input type="text" name="url" id="url"/>
+	</p>
+	<p>
+		<textarea name="comment"></textarea>
+	</p>
+	<p>
+		<span>Wrap code in <code>&lt;pre&gt;</code> tags. <a rel='nofollow' href='http://daringfireball.net/projects/markdown/syntax'>Markdown</a> is allowed, HTML outside <code>&lt;pre&gt;</code>&#8217;s is not.</span>
+	</p>
+	<p>
+		<input name="submit" type="submit" class="submit" tabindex="5" value="Comment" />
+	</p>
+</form>
+*/ ?>

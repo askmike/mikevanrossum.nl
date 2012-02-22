@@ -30,6 +30,13 @@ h1 {font-size: 25px;}
 ::selection { background:#cb8f42; color:white; text-shadow: none; }
 a:link { -webkit-tap-highlight-color: #cb8f42; }
 
+.form input,
+.form textarea {
+	border: 0;
+	-webkit-box-shadow: 0 0 3px #888;
+	box-shadow: 0 0 3px #888;
+}
+
 /* header */
 
 #header h1 a {
@@ -505,6 +512,53 @@ pre.sh_sourceCode .sh_value {
 
 .post #hitsHistory svg {
 	background:#efefef;
+}
+
+
+/* comments */
+
+#commentForm {
+	border: 1px solid #CCC;
+	border-radius: 6px;
+	background-color: #f1f1f1;
+	padding: 10px;
+	width: 511px;
+	margin: auto;
+	overflow:hidden;
+}
+
+#commentForm input {
+	padding:2px 0;
+	float: right;
+	width: 250px;
+	border-radius: 3px;
+}
+
+#commentForm textarea {
+	border-radius: 3px;
+	resize:none;
+	width: 507px;
+	height:100px;
+}
+
+#commentForm.form input.submit {
+	border: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	padding:4px 0;
+}
+
+#commentForm code {
+	background:#ccc;
+	color:black;
+}
+
+#commentForm span {
+	font-style:italic;
+}
+
+#commentForm h2 {
+	margin:3px 0;
 }
 
 /* admin */
