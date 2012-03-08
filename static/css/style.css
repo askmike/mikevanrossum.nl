@@ -456,15 +456,14 @@ pre.sh_sourceCode .sh_value {
 }
 
 .post #share p {
-	line-height: 66px;
+	line-height: 60px;
 	text-align: center;
 	width:110px;
-	height:66px;
+	height:60px;
 	float:left;
 }
 
 #share {
-	display:inline-block;
 	padding:0 5px 0 5px;
 }
 
@@ -472,21 +471,44 @@ pre.sh_sourceCode .sh_value {
 	display:none;
 }
 
-#share.loaded > div {
-	margin-top:14px;
-/*	width:200px;*/
+#share > ul {
 	overflow:hidden;
 	display:block;
+	list-style: none outside none;
+	margin: 0;
+    padding: 0;
+	width:300px;
+}
+
+#share li {
+	float:left;
+	padding: 10px;
+	display:block;
+}
+
+#share .socialized {
+	background: none repeat scroll 0 0 transparent !important;
 }
 
 #share .facebook {
 	width:46px;
-	margin-left:15px;
-	margin-right:18px;
+	background-position: -145px 0;
+    height: 65px;
+    width: 30px;
+	margin-left:40px;
+}
+
+#share .twitter {
+	background-position: 0 0;
+    height: 65px;
+    width: 55px;
 }
 
 #share .googleplus {
 	margin-top: 1px;
+	background-position: -75px 0;
+    height: 65px;
+    width: 50px;
 }
 
 /* analytics */
@@ -517,12 +539,40 @@ pre.sh_sourceCode .sh_value {
 
 /* comments */
 
+.comment {
+	border-top:1px solid #CCC;
+	padding:5px 0;
+}
+
+#container section.comment h1 {
+	font-size: 16px;
+	float:left;
+	display:inline-block;
+	margin:0;
+}
+
+#container section.comment h1 a {
+	font-size: 16px;
+}
+
+#container section.comment .commentMeta {
+	float:right;
+	display:inline-block;
+	text-align:right;
+}
+
+
+#container section.comment .commentMeta .reply {
+	display:none;
+}
+/* comment form */
+
 #commentForm {
 	border: 1px solid #CCC;
 	border-radius: 6px;
 	background-color: #f1f1f1;
 	padding: 10px;
-	width: 511px;
+	width: 490px;
 	margin: auto;
 	overflow:hidden;
 }
@@ -537,7 +587,7 @@ pre.sh_sourceCode .sh_value {
 #commentForm textarea {
 	border-radius: 3px;
 	resize:none;
-	width: 507px;
+	width: 487px;
 	height:100px;
 }
 
@@ -546,6 +596,7 @@ pre.sh_sourceCode .sh_value {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	padding:4px 0;
+	background:#CCC;
 }
 
 #commentForm code {
@@ -559,6 +610,26 @@ pre.sh_sourceCode .sh_value {
 
 #commentForm h2 {
 	margin:3px 0;
+}
+
+.dynMessage {
+	position: fixed;
+	top: 60px;
+	left:0;
+	right:0;
+	margin: auto;
+	z-index: 10;
+	color: white;
+	padding:10px;
+}
+
+.dynMessage p {
+	border-radius: 20px;
+	background: black;
+	width: 400px;
+	text-align:center;
+	margin: 0 auto;
+	padding:20px;
 }
 
 /* admin */

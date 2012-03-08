@@ -310,7 +310,7 @@ $(function() {
 			$posts = $blogPosts.children().filter('.blog-post'),
 			offset = (oldBlogPage < page) ?  15 : -15;
 			
-		// need to change $.getJSON to ajax since $.getJSON is a shortcut to $.ajax (double function call)
+		// need to change the text off dom
 		// also need to to fix the 'assumed speed' since the page right now is waiting for get JSON to do anything
 		// thinking about spinner.js
 		$.getJSON(link, function(data) {
@@ -360,7 +360,7 @@ $(function() {
 			
 			//center WP images: http://mikevanrossum.nl/blog/2011/07/afbeeldingen-centreren-in-wordpress/
 			$("p:has(.alignnone)")
-				.add("p:has(.alignnone)")
+				.add("p:has(.alignleft)")
 				.add("p:has(.alignright)")
 					.addClass("center");
 			
@@ -371,6 +371,92 @@ $(function() {
 			sh_highlightDocument($php.data('base') + "static/js/mylibs/shjs/", '.min.js');
 
 			old = 1;
+			
+			
+			
+			/*			COMMENTING		*/ 
+			
+			// toggle reply buttons on hover
+			var comments = $('#container').find('.comment'),
+				form = $('#commentForm'),
+				textarea = form.find('textarea');	
+						
+			comments.hover(function() {
+				$(this).find('.reply').toggle();
+			});
+			
+			// create the reply button functionality
+			comments.find('.reply').find('a').click(function(){
+				var name = $(this).data('name');
+					
+				textarea.val('[@' + name + '](#' + $(this).data('perm') + ') ' + textarea.val()).focus().caretToEnd();
+			});
+			
+			// tab cycle the form
+			var	
+				submit = $('#commentForm').find('input.submit'),
+				header = $('#header').find('.ir');
+				
+			$('#markdownLink').focus(function() { submit.focus() });
+			header.focus(function() { $('#author').focus() });	
+			
+			// make sure the name and email are filled
+			// if it's still empty at the backend we can discard it
+			form.submit(function(e) {
+				var filled = true;
+				e.preventDefault();
+				textarea.add('#author').add('#email').each(function() {
+					if($(this).val() == '') {
+						$(this).css('background-color', '#AE7001');
+						filled = false;
+					}
+				}).focus(function() {
+					$(this).css('background-color', 'white');
+				});
+				
+				if(filled) {
+					//store the form data
+					var formData =  form.serialize() + '&submit=true';
+					
+					//clear the form
+					form.find('input:not(.submit)').add('textarea').val('');
+					
+					//start a spinner
+					form.spin({
+					  lines: 18, // The number of lines to draw
+					  length: 16, // The length of each line
+					  width: 10, // The line thickness
+					  radius: 60, // The radius of the inner circle
+					  color: '#7d5204', // #rgb or #rrggbb
+					  speed: 1, // Rounds per second
+					  trail: 35, // Afterglow percentage
+					  shadow: false, // Whether to render a shadow
+					  hwaccel: false, // Whether to use hardware acceleration
+					  className: 'spinner', // The CSS class to assign to the spinner
+					  zIndex: 2e9, // The z-index (defaults to 2000000000)
+					  top: 'auto', // Top position relative to parent in px
+					  left: 'auto' // Left position relative to parent in px
+					});
+					
+					$.post("./", formData, function(data) {
+															
+						//remove the spinner
+						form.spin(false);
+						
+						//create a dynamic message
+						var div = $('<div/>', {
+							class: 'dynMessage'
+						}),
+							p = $('<p/>', {
+							text: data
+						}).appendTo(div);
+						
+						$('body').append(div);
+						
+						div.hide().fadeIn(speed*2).delay(8000);
+					});
+				}
+			});
 		}
 	}
 	

@@ -6,6 +6,15 @@ class PostController extends PartController {
 		//this runs the construct of the class this class is extending
 		parent::__construct();
 		
+		// It's a comment submit
+		if(isset($_POST['submit'])) {
+			$comments = new CommentController;
+			$comments->addComment();
+			//kill the DB connection
+			$comments = null;
+			return;
+		}
+		
 		define('PAGE', 'post');
 		
 		$this->model = new PostModel;
@@ -13,12 +22,20 @@ class PostController extends PartController {
 		// get main data
 		$data = $this->model->getPost($request);
 		
-		
 		//if the requested blog entry does not exist
 		if(empty($data)) {
 			$this->error(404);
 			return;
 		}
+		
+		//get comments
+		$comments = new CommentController;
+		$data['comments'] = $comments->getComments($data['id']);
+		
+		//kill the DB connection
+		$comments = null;
+		
+		$data['comments'] = $this->getDatesFromItems($data['comments']);
 		
 		if($analytics) $data['analytics'] = $analytics;
 		
