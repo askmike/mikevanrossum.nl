@@ -1,7 +1,7 @@
 </div>
 <div class='clearfix'></div>
 <footer class='center'>
-	<a rel='nofollow' href='http://twitter.com/mikevanrossum'>@mikevanrossum</a> 
+	<a id='twitterLink' rel='me' href='http://twitter.com/mikevanrossum'>@mikevanrossum</a> 
 	/ 
 	<a class='email' href='#'>#</a>
 </footer>

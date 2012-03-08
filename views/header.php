@@ -50,6 +50,10 @@ PHP:
 	<link rel="canonical" href="<?= SITE . $url ?>" />
 	<meta name="author" content="Mike van Rossum">
 
+	<?php if(PAGE == 'admin' && ANALYTICS != 'true') { ?>
+		<meta name="robots" content="noindex">
+	<?php } ?>
+
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
 	<!-- CSS: implied media=all -->
@@ -81,11 +85,7 @@ PHP:
 			<li><a href="#projects">Projects</a></li>
 			<li><a href='#portfolio'>Portfolio</a></li>
 			<li><a href="#blog">Blog</a></li>
-		<?php /* } else if(PAGE == 'admin') { ?>
-			<li><a href="<?= BASE ?>analytics/">Analytics</a></li>
-			<li><a href="<?= BASE ?>admin/portfolio/">Portfolio</a></li>
-			<li><a href='<?= BASE ?>admin/'>Blog</a></li>	
-		<?php */ } else { ?>
+		<?php } else { ?>
 			<li><a href="<?= BASE ?>#">Home</a></li>
 			<li><a href="<?= BASE ?>#projects">Projects</a></li>
 			<li><a href='<?= BASE ?>#portfolio'>Portfolio</a></li>
