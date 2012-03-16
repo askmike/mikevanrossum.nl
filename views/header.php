@@ -29,14 +29,11 @@ PHP:
 	
 
 				~ Mike van Rossum
-				  webdeveloper
 				
 -->
 <html id="html" class="no-js <?= PAGE ?>" lang="nl">
 <head>
 	<meta charset="utf-8">
-	
-	<!-- dns prefetching -->
 	<link rel="dns-prefetch" href="//ajax.googleapis.com">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<?php if(PAGE == 'site') { ?>
@@ -49,23 +46,14 @@ PHP:
 	<?php } ?>
 	<link rel="canonical" href="<?= SITE . $url ?>" />
 	<meta name="author" content="Mike van Rossum">
-
 	<?php if(PAGE == 'admin' && ANALYTICS != 'true') { ?>
 		<meta name="robots" content="noindex">
 	<?php } ?>
-
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
-
 	<!-- CSS: implied media=all -->
 	<!-- CSS concatenated and minified via ant build script-->
 	<link rel=stylesheet href='<?php echo BASE; ?>static/css/style.css'>
 	<!-- end CSS-->
-
 	<link rel="alternate" type="application/rss+xml" title="Mike van Rossums blog RSS Feed" href="http://feeds.feedburner.com/mikevanrossum" />
-
-	<!-- All JavaScript at the bottom, except for Modernizr / Respond.
-	    Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-	    For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
 	<script src="<?php echo BASE ?>static/js/mylibs/custom-modernizr.js"></script>
 </head>
 <body>

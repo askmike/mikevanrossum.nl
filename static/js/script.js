@@ -421,39 +421,12 @@ $(function() {
 					//clear the form
 					form.find('input:not(.submit)').add('textarea').val('');
 					
-					//start a spinner
-					form.spin({
-					  lines: 18, // The number of lines to draw
-					  length: 16, // The length of each line
-					  width: 10, // The line thickness
-					  radius: 60, // The radius of the inner circle
-					  color: '#7d5204', // #rgb or #rrggbb
-					  speed: 1, // Rounds per second
-					  trail: 35, // Afterglow percentage
-					  shadow: false, // Whether to render a shadow
-					  hwaccel: false, // Whether to use hardware acceleration
-					  className: 'spinner', // The CSS class to assign to the spinner
-					  zIndex: 2e9, // The z-index (defaults to 2000000000)
-					  top: 'auto', // Top position relative to parent in px
-					  left: 'auto' // Left position relative to parent in px
-					});
+					$.feedback('Submitting your comment...', true);
 					
 					$.post("./", formData, function(data) {
-															
-						//remove the spinner
-						form.spin(false);
 						
-						//create a dynamic message
-						var div = $('<div/>', {
-							class: 'dynMessage'
-						}),
-							p = $('<p/>', {
-							text: data
-						}).appendTo(div);
+						$.feedback(data);
 						
-						$('body').append(div);
-						
-						div.hide().fadeIn(speed*2).delay(8000);
 					});
 				}
 			});

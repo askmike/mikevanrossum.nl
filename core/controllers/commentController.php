@@ -37,7 +37,8 @@ class CommentController extends PartController {
 			'ip' => $_SERVER['REMOTE_ADDR'],
 			'useragent' => $_SERVER['HTTP_USER_AGENT'],
 			'session' => $_POST['session'],
-			'date' => time()
+			'date' => time(),
+			'approved' => 0
 		);
 		
 		//get the postid
@@ -84,19 +85,19 @@ class CommentController extends PartController {
 	        } elseif($akismet->isError('AKISMET_SERVER_NOT_FOUND')) {
                 echo $errorMessage . 'AKISMET_SERVER_NOT_FOUND';
 	        }
+			
 		} else {
 	        // No errors, check for spam.
-	        if ($akismet->isSpam()) { // Returns true if Akismet thinks the comment is spam.
-				$comment['approved'] = 0;
-				$this->model->addComment($comment);
+	        if ($akismet->isSpam()) { 
 				echo "I think you're spamming. If you're not please let me know (my email address is at the bottom of the page).";
 	        } else {
 				$comment['approved'] = 1;
-				$this->model->addComment($comment);
 				$this->mailComment($comment);
 				echo "Your comment has been added.";
 	        }
 		}
+		
+		$this->model->addComment($comment);
 	}
 	
 	// 		ripped from the editpost contoller
@@ -108,7 +109,6 @@ class CommentController extends PartController {
 	// - I want all my html outside pre's removed
 	// - I want everything outside my pre's to be converted to HTML by PHPMarkdown [http://michelf.com/projects/php-markdown/]
 	//
-	// this function returns an array with all those different versions of the text
 	function prepareComment() {
 	
 		require LIBS . 'smartypants.php';
