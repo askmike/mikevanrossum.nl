@@ -333,8 +333,8 @@ $(function() {
 				}
 				//the nav
 				var nav = '';
-				if(data.previousPage) nav += '<a href="' + data.jsonPrevious + '">&lt; oudere posts</a>';
-				if(data.nextPage) nav += '<a href="' + data.jsonNext + '" class=right>nieuwere posts &#62;</a>';
+				if(data.previousPage) nav += '<a href="' + data.jsonPrevious + '">&lt; older posts</a>';
+				if(data.nextPage) nav += '<a href="' + data.jsonNext + '" class=right>newer posts &#62;</a>';
 				$blogNav.html(nav);
 				$blogPosts.stop().animate({opacity: 1, marginLeft: 55, marginRight: 0}, speed, 'easeInOutCirc')
 				oldBlogPage = page;
