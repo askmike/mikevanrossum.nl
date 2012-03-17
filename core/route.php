@@ -52,7 +52,8 @@ class Route {
 		    case 'admin':
 				// backend time
 
-				$this->con = new AdminController($request, $_GET['r']);
+				$this->con = new AdminController();
+				$this->con->route($request, $_GET['r']);
 
 		        break;
 			case 'json':

@@ -50,18 +50,3 @@
 
 			</div>
 		</section>
-		<section class='page'>
-			<h1>
-				Projects	
-			</h1>
-			<p>
-				Hier komt een overzicht van alle projectjes waar ik me mee bezig houd.
-			</p>
-			<h2>
-				Under Construction
-			</h2>
-			<p>
-				Check in de tussentijd mijn 
-				<a href='https://github.com/askmike' rel='nofollow'>Github</a>.
-			</p>
-		</section>

@@ -5,6 +5,16 @@ class CommentModel extends DBmodel {
 	
 	function __destruct() { parent::__destruct(); }
 
+	function getNofComments() {
+		return $this->query(
+		'SELECT postid, COUNT(postid) as times 
+		FROM comment 
+		WHERE approved = 1
+		GROUP BY postid 
+		ORDER BY times DESC'
+		);
+	}
+	
 	function getCommentsForPost($postid) {
 		return $this->query('SELECT * FROM comment WHERE approved = 1 AND postid = ' . $postid);
 	}

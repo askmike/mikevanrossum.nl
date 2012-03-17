@@ -48,6 +48,7 @@ PHP:
 	<meta name="author" content="Mike van Rossum">
 	<?php if(PAGE == 'admin' && ANALYTICS != 'true') { ?>
 		<meta name="robots" content="noindex">
+		<link rel=stylesheet href='<?php echo BASE; ?>static/css/admin.css'>
 	<?php } ?>
 	<!-- CSS: implied media=all -->
 	<!-- CSS concatenated and minified via ant build script-->

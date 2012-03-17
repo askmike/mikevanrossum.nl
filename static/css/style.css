@@ -215,12 +215,12 @@ div#pleft a.current {
 
 /* blog */
 
-#blog-posts {
+#blog-posts, #projects {
 	margin-left: 55px;
 }
 
 
-#blog-posts a.blog-post {
+#projects a, #blog-posts a.blog-post {
 	text-decoration:none;
 	display:block;
 	padding:7px;
@@ -229,18 +229,18 @@ div#pleft a.current {
 	margin:0 0 5px 0;
 }
 
-#blog-posts a.blog-post time {
+#projects a time, #blog-posts a.blog-post time {
 	float:right;
 	display:block;
 	margin-top:7px;
 	font-style:italic;
 }
 
-#blog-posts a.blog-post p {
+#projects a p, #blog-posts a.blog-post p {
 	clear:both;
 }
 
-.csstransitions #blog-posts a.blog-post {
+.csstransitions #projects a, .csstransitions #blog-posts a.blog-post {
 	background-color:white;
 	moz-transition: background-color .4s;
 	-webkit-transition:background-color .4s;
@@ -249,17 +249,17 @@ div#pleft a.current {
 	transition: background-color .4s;
 }
 
-.csstransitions #blog-posts a.blog-post:hover {
+.csstransitions #projects a:hover, .csstransitions #blog-posts a.blog-post:hover {
 	background-color:#eee;
 }
 
-#blog-posts p {
+#projects p, #blog-posts p {
 	margin:0;
 	margin-bottom:5px;
 	text-align:justify;
 }
 
-#blog-posts h2 {
+#projects h2, #blog-posts h2 {
 	margin:5px 0 10px 0;
 	float:left;
 	font-size: 18px;
@@ -304,7 +304,7 @@ div#pleft a.current {
 	font-style:italic;
 }
 
-.post #container, .admin #container {
+.post #container {
 	width: 640px;
 	margin: 60px auto 50px auto;
 	padding-right: 15px;
@@ -610,133 +610,6 @@ pre.sh_sourceCode .sh_value {
 
 #commentForm h2 {
 	margin:3px 0;
-}
-
-.dynMessage {
-	position: fixed;
-	top: 60px;
-	left:0;
-	right:0;
-	margin: auto;
-	z-index: 10;
-	color: white;
-	padding:10px;
-}
-
-.dynMessage p {
-	border-radius: 20px;
-	background: black;
-	width: 400px;
-	text-align:center;
-	margin: 0 auto;
-	padding:20px;
-}
-
-/* admin */
-
-#slug {
-	width:330px;
-	float:right;
-	margin-right:30px;
-}
-
-#createPost .message {
-	width:579px
-}
-
-.admin #createPost #editTitle {
-	margin-bottom:20px;
-}
-
-.admin input {
-	border:none;
-	-webkit-box-shadow: 0 0 3px #888;
-	box-shadow: 0 0 3px #888;
-}
-
-#postTime {
-	float:right;
-	width:250px;
-	margin-right:30px;
-	margin-top:-44px;
-}
-
-#slugLink {
-	float:left;
-	margin-top: 1px;
-	margin-right:5px;
-}
-
-#addPostLink {
-	float:right;
-	display:inline-block;
-	margin-bottom:5px;
-}
-
-.admin #blog-posts a {
-	overflow:hidden;
-}
-
-#editPost textarea {
-	width:600px;
-	height:75px;
-	padding:5px;
-	margin:6px 0;
-	line-height: 1.4em;
-	border:none;
-	-webkit-box-shadow: 0 0 3px #888;
-	box-shadow: 0 0 3px #888;
-}
-
-#editPost #editContent {
-	height:300px;
-}
-
-#editPost input, #createPost #editTitle {
-	width:600px;
-	padding:5px;
-	margin:6px 0;
-	border:none;
-	-webkit-box-shadow: 0 0 3px #888;
-	box-shadow: 0 0 3px #888;
-}
-
-#editPost .labeledTextarea p {
-	float:left;
-	width:80px;
-	line-height:70px;
-}
-
-#editPost .labeledTextarea textarea {
-	float:left;
-	width:520px;
-	margin:10px 0;
-}
-
-#editPost .labeledInput p {
-	float:left;
-	width:80px;
-}
-
-#editPost .labeledInput input {
-	float:left;
-	width:520px;
-	margin:10px 0;
-}
-
-#editTitle {
-	font-size: 25px;
-	font-weight: bold;
-}
-
-#submitPost, #editPost #submitPost {
-	float:right;
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	width:100px;
-	padding:10px 20px;
-	margin-right:27px;
-	margin-bottom:100px;
 }
 
 /* analytics */

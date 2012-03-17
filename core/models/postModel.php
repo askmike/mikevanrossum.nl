@@ -18,7 +18,7 @@ class PostModel extends DBmodel {
 	
 	public function getPosts($from, $number) {
 		
-		return $this->query('SELECT excerpt,titel,date,url FROM post ORDER BY date DESC LIMIT ' . $from . ', ' . $number);
+		return $this->query('SELECT excerpt,titel,date,url,id FROM post ORDER BY date DESC LIMIT ' . $from . ', ' . $number);
 		
 	}
 	

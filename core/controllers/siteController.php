@@ -30,6 +30,9 @@ class SiteController extends Controller {
 		$home = new HomeController;
 		$this->load->view('home',$home->part);
 		
+		$projects = new ProjectsController;
+		$this->load->view('projects',$projects->part);
+		
 		$portfolio = new PortfolioController;
 		$this->load->view('portfolio',$portfolio->part);
 		

@@ -278,7 +278,7 @@ $(function() {
 	if (isChrome) $('#html').removeClass('csstransitions');
 
 	if(!Modernizr.csstransitions || isChrome) {
-		$('#blog-posts').children()
+		$('#blog-posts').add('#projects').children()
 			.on('mouseenter', { color: '#eeeeee' }, fadeBg)
 			.on('mouseleave', { color: '#ffffff' }, fadeBg);
 	}
