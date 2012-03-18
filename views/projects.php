@@ -7,7 +7,7 @@
 		<a href='https://github.com/askmike' rel='nofollow'>Github</a>.
 	</p>
 	<div id='projects'>
-		<?php foreach($data as $item) { if(is_array($item)) { ?> 
+		<?php if(sizeof($data)) { foreach($data as $item) { if(is_array($item)) { ?> 
 			<a href="<?= $item['url'] ?>">
 				<h2>
 					<?= $item['titel'] ?>
@@ -19,6 +19,10 @@
 					<?= $item['excerpt'] ?>
 				</p>
 			</a>
-		<?php } } ?>
-	</div>
+		<?php } } } else { ?>
+		</div>
+			<p>
+				Coming soon!
+			</p>
+		<?php } ?>
 </section>

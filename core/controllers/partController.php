@@ -50,12 +50,12 @@ class PartController extends Controller {
 		return date('F j\t\h &#96;y', $timestamp);
 	}
 	
-	function getMonth($number) {
-		if($number < 0) $number += 12;
-		
-		$allMonths = array('Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December');
-		return $allMonths[$number];
-	}
+	// function getMonth($number) {
+	// 	if($number < 0) $number += 12;
+	// 	
+	// 	$allMonths = array('Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December');
+	// 	return $allMonths[$number];
+	// }
 }
 
 ?>
