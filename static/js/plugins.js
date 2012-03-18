@@ -899,7 +899,7 @@ window.Socialite = (function()
 					p = $( '<p/>' )
 						.css({ 
 							margin: 0,
-							float: 'left'
+							'float': 'left'
 						})
 						.appendTo( content ),
 				// the div that holds the spinner
