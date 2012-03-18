@@ -8,8 +8,8 @@
 	<?php foreach ($data as $item) { if(is_array($item)) { ?>
 		<tr>
 			<td>
-				<time datetime="<?= $item['dutchdate'] ?>">
-					<?= $item['dutchdate'] ?>
+				<time datetime="<?= $item['humandate'] ?>">
+					<?= $item['humandate'] ?>
 				</time>
 			</td>
 			<td>

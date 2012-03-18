@@ -27,7 +27,7 @@
 			<?= $item['body-html'] ?>
 			<p class="portfolio-technieken">
 				Technieken: <?= $item['tech'] ?><br />
-				Datum: <?= $item['dutchdate'] ?>
+				Datum: <?= $item['humandate'] ?>
 			</p>
 		</div>
 	<?php } } ?>

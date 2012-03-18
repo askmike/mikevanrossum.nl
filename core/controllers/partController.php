@@ -22,7 +22,7 @@ class PartController extends Controller {
 			//we can't use a for each loop because we need to manip the array we're looping
 			$len = sizeof($array);
 			for($i = 0; $i < $len ; $i++){
-				$array[$i]['dutchdate'] = $this->getDutchDate($array[$i]['date']);
+				$array[$i]['humandate'] = $this->getHumanDate($array[$i]['date']);
 			}
 		}
 		return $array;
@@ -30,18 +30,24 @@ class PartController extends Controller {
 	
 	function getDatesFromItem($array) {
 		if(is_array($array)) {
-			$array['dutchdate'] = $this->getDutchDate($array['date']);
+			$array['humandate'] = $this->getHumanDate($array['date']);
 		}
 		return $array;
 	}
 	
 	
-	function getDutchDate($timestamp) {
+	function getHumanDate($timestamp) {
 		
-		$month = date('n ',$timestamp);
-		$dutchDate = date('j ',$timestamp) . $this->getMonth($month -1) . date(' Y', $timestamp);
+		// $month = date('n ',$timestamp);
+		// $dutchDate = date('j ',$timestamp) . $this->getMonth($month -1) . date(' Y', $timestamp);
+		// return $dutchDate;
 		
-		return $dutchDate;
+		// if its this year, skip the year
+		if(date('Y', $timestamp) == date('Y', time())) {
+			return date('F j\t\h', $timestamp);
+		}
+		
+		return date('F j\t\h &#96;y', $timestamp);
 	}
 	
 	function getMonth($number) {

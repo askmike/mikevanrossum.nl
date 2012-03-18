@@ -10,8 +10,8 @@
 						<h2>
 							<?= $item['titel'] ?>
 						</h2>
-						<time datetime="<?= $item['dutchdate'] ?>">
-							<?= $item['dutchdate'] ?>
+						<time datetime="<?= $item['humandate'] ?>">
+							<?= $item['humandate'] ?>
 						</time>
 						<p>
 							<?= $item['excerpt'] ?>

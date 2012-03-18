@@ -322,7 +322,7 @@ $(function() {
 						$post
 							.find('h2').html(data[i].titel).end()
 							.find('p').html(data[i].excerpt).end()
-							.find('time').html(data[i].dutchdate).end()
+							.find('time').html(data[i].humandate).end()
 							.attr('href', data[i].url);
 					} else {
 						$post

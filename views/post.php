@@ -21,7 +21,7 @@
 <h1>
 	<?= $titel ?>
 </h1>
-<time class='postTime'><?= $dutchdate ?></time>
+<time class='postTime'><?= $humandate ?></time>
 <div class='clearfix'></div>
 <?= $bodyHtml ?>
 <hr>
@@ -74,7 +74,7 @@ if($comments) {
 				<a href='#commentForm' data-name='<?= $comment['name'] ?>' data-perm='comment-<?= $comment['id'] ?>'>Reply</a>
 				&#8212;
 			</span>
-			<a class='date' href='#comment-<?= $comment['id'] ?>'><?= $comment['dutchdate'] ?></a>
+			<a class='date' href='#comment-<?= $comment['id'] ?>'><?= $comment['humandate'] ?></a>
 		</div>
 		<div class='clearfix'></div>
 		<p>
