@@ -3,7 +3,7 @@
 		Projects	
 	</h1>
 	<p>
-		Check in de tussentijd mijn 
+		I've developed a couple of open source tools that aid me in web development, you can check out all my open source code at
 		<a href='https://github.com/askmike' rel='nofollow'>Github</a>.
 	</p>
 	<div id='projects'>
@@ -16,7 +16,7 @@
 					<?= $item['dutchdate'] ?>
 				</time>
 				<p>
-					<?= $item['body-html'] ?>
+					<?= $item['excerpt'] ?>
 				</p>
 			</a>
 		<?php } } ?>
