@@ -1,7 +1,14 @@
-Ter afsluiting van het vak ServerSide Scripting moeten we een CMS schrijven. Daarnaast heeft [mijn eigen website](http://mikevanrossum.nl) wel behoefte aan een makeover, hij draait nu namelijk nog op [wordpress](https://github.com/askmike/mikevanrossum.nl--old---WP-theme-).
+This is all the code behind [my personal website](http://mikevanrossum.nl). 
 
-Deze code draait op [mikevanrossum.nl/mvr2](http://mikevanrossum.nl/mvr2) (niet perse zo up to date als deze code).
+I had to write my own CMS in PHP for the school class [ServerSide Scripting](http://intra.iam.hva.nl/content/1112/verdieping1/server_side_scripting//intro-en-materiaal/). Instead of writing a simple guestbook (the level of skill expected at the end of the class), I wrote my own portfolio/blog website. *This site got me an A for the class.*
 
-Alle content op de website (met uitzondering van de individuele blog posts) is een enkele webpagina, ik handel alles af met [javascript](https://github.com/askmike/mikevanrossum.nl/blob/master/static/js/script.js). De enkele webpagina wordt opgebouwd uit de PHP bestanden in [views](https://github.com/askmike/mikevanrossum.nl/tree/master/views).
+## Features
 
-Sommige content wordt opgehaald uit een database, [hier](https://github.com/askmike/mikevanrossum.nl/blob/master/db.sql) is de (misschien verouderde) export van deze database.
+* Analytics tracking of site visits, here is [the (monthly) result](http://mikevanrossum.nl/analytics). *The coolest feature IMO!*
+* Request routing on the frontend (javascript) as well as the backend (PHP).
+* Javascript based navigation.
+* MVC pattern similar to CodeIgnitor.
+* Blog system including comments (and verifying them using the Akismet API) and a mailscript which updates me for every non-spam comment.
+* Admin panel to edit blog posts (more coming).
+* Daily backup script (using cron & mail script).
+* Hourly checking for new tweets (using the Twitter API) & photos (using RSS parsing) and stuff them in the database (using cron).
