@@ -318,9 +318,12 @@ div#pleft a.current {
 	margin-bottom: 5px;
 }
 
-.post #container p, .post #container li, .page p, .page li {
+.post #container p, 
+.post #container li, 
+.page p, 
+.page li {
 	text-align:justify;
-	line-height: 1.4em;
+	line-height: 1.55em;
 }
 
 blockquote {
