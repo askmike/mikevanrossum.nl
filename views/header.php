@@ -46,7 +46,7 @@ PHP:
 	<?php } ?>
 	<link rel="canonical" href="<?= SITE . $url ?>" />
 	<meta name="author" content="Mike van Rossum">
-	<?php if(PAGE == 'admin' && ANALYTICS != 'true') { ?>
+	<?php if(PAGE == 'admin') { ?>
 		<meta name="robots" content="noindex">
 		<link rel=stylesheet href='<?php echo BASE; ?>static/css/admin.css'>
 	<?php } ?>
