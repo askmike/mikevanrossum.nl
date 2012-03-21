@@ -7,19 +7,10 @@ class DBModel {
 	# see: https://github.com/ju5tu5/v1112-Serverside-Scripting/blob/master/week3/inc/functions.inc.php#L2
 	# removed comments since this runs auto
 	function __construct(){
-		$this->connection = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB);
-
-		if (mysqli_connect_errno()) {
-		    printf("Connect failed: %s\n", mysqli_connect_error());
-		    exit();
-		}
+		$this->connection = Database::get()->handle();
 	}
-
-	# see: https://github.com/ju5tu5/v1112-Serverside-Scripting/blob/master/week3/inc/functions.inc.php#L23
-	# removed comments since this runs auto
-	function __destruct(){
-		$this->connection->close();
-	}
+	
+	function __destruct() {}
 	
 	function assocResults($results) {
 		//store events in an array
