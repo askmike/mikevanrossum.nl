@@ -16,7 +16,7 @@ require APP . 'lazyloading.php';
 //route parses the request and serves accordingly
 $route = new Route($_GET['r']);
 
-//end with killing the controllers
-if($route->con) $route->con = NULL;
+//end with killing the DB connection
+Database::get()->kill();
 
 ?>
