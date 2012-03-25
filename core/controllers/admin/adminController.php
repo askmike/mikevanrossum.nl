@@ -31,7 +31,7 @@ class AdminController extends PartController {
 	function adminPage($view) {
 		$this->load->view('header',$this->part);
 		$this->load->view('admin/panel',$this->part);
-		$this->load->view('admin/' . $view,$this->part);
+		$this->load->view('admin/' . $view, $this->part);
 		$this->load->view('footer',$this->part);
 	}
 }

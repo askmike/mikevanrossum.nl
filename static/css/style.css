@@ -24,7 +24,7 @@ h1 {font-size: 25px;}
 .strike {text-decoration: line-through;}
 .rTable {display:none}
 .left {float:left}
-.center, .post #container .center, #container .center {text-align:center}
+.center, .single #container .center, #container .center {text-align:center}
 
 ::-moz-selection{ background: #cb8f42; color:white; text-shadow: none; }
 ::selection { background:#cb8f42; color:white; text-shadow: none; }
@@ -277,7 +277,7 @@ div#pleft a.current {
 
 /* single post */
 
-.post .alignnone {
+.single .alignnone {
 	text-align:center;
 }
 
@@ -304,24 +304,24 @@ div#pleft a.current {
 	font-style:italic;
 }
 
-.post #container {
+.single #container {
 	width: 640px;
 	margin: 60px auto 50px auto;
 	padding-right: 15px;
 }
 
-.post #container {
+.single #container {
 	width: 511px;
 }
 
-.post #container h1 {
+.single #container h1 {
 	margin-bottom: 5px;
 }
 
-.post #container p, 
-.post #container li, 
-.page p, 
-.page li {
+.single #container p, 
+.single #container li, 
+.single p, 
+.single li {
 	text-align:justify;
 	line-height: 1.55em;
 }
@@ -458,7 +458,7 @@ pre.sh_sourceCode .sh_value {
 	margin-right:15px;
 }
 
-.post #share p {
+.single #share p {
 	line-height: 60px;
 	text-align: center;
 	width:110px;
@@ -535,7 +535,7 @@ pre.sh_sourceCode .sh_value {
 
 }
 
-.post #hitsHistory svg {
+.single #hitsHistory svg {
 	background:#efefef;
 }
 

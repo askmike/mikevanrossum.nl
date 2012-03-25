@@ -8,9 +8,10 @@ define('STARTTIME', microtime(true));
 define('APP', 'core/');
 define('CONTROLLERS', APP . 'controllers/');
 define('MODELS', APP . 'models/');
+define('HELPERS', APP . 'helpers/');
 
 //get everything we need
-require APP . 'config.php';
+require APP . 'config/config.php';
 require APP . 'lazyloading.php';
 
 //route parses the request and serves accordingly

@@ -291,7 +291,7 @@ $(function() {
 	var $html = $('#html');
 	
 	if($html.hasClass('site')) init();
-	if($html.hasClass('post')) postInit();
+	if($html.hasClass('single')) postInit();
 	if($html.hasClass('admin')) adminInit();
 	
 	if($('a.email').length) {

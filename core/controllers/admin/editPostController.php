@@ -82,9 +82,6 @@ class EditPostController extends PartController {
 		
 			$segments = preg_split('/(<\/?pre.*?>)/', $content, -1, PREG_SPLIT_DELIM_CAPTURE);
 			
-			// STATE MACHINE
-			// problem: see above function
-			
 			// borrowed from: http://stackoverflow.com/questions/1278491/howto-encode-texts-outside-the-pre-pre-tag-with-htmlentities-php#answer-1278575
 			
 			// this breaks when I nest pre's in pre's (unless I escape the <pre> myself), could be fixed though
@@ -161,13 +158,6 @@ class EditPostController extends PartController {
 			$arr['excerpt'] = SmartyPants($excerpt);
 			
 			$arr['meta'] = shrinkText($tagless, 160);
-			
-			// replaced by the statemachine
-			//escape everything inside pre tags: http://davidwalsh.name/php-html-entities
-			/*function pre_entities($matches) {
-				return str_replace($matches[1],htmlentities($matches[1]),$matches[0]);
-			}
-			$arr['html'] = preg_replace_callback('/<pre.*?>(.*?)<\/pre>/imsu',pre_entities, $html);*/
 			
 			return $arr;
 	}

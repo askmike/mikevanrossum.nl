@@ -15,7 +15,7 @@ class PostController extends PartController {
 			return;
 		}
 		
-		define('PAGE', 'post');
+		define('PAGE', 'single');
 		
 		$this->model = new PostModel;
 		

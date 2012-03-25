@@ -8,7 +8,7 @@ class ProjectsController extends PartController {
 		
 		$data = array();
 		
-		$this->model = new ProjectsModel();
+		$this->model = new ProjectModel();
 		
 		$data = $this->model->getProjects();
 		

@@ -4,8 +4,6 @@ class DBModel {
 	
 	public $connection;
 	
-	# see: https://github.com/ju5tu5/v1112-Serverside-Scripting/blob/master/week3/inc/functions.inc.php#L2
-	# removed comments since this runs auto
 	function __construct(){
 		$this->connection = Database::get()->handle();
 	}

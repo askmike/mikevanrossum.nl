@@ -21,13 +21,6 @@ class Route {
 		
 		//route based on the fhe first virtual dir
 		switch ($request[0]) {
-			case 'track':
-				// it's a track request: some analytics data getting passed
-				// we don't return anything
-				
-				$this->con = new TrackController;
-
-		        break;
 			case '':
 				// home
 				
@@ -38,6 +31,12 @@ class Route {
 		        //single post request
 
 				$this->con = new PostController($_GET['r']);
+
+		        break;
+		    case 'projects':
+		        //single post request
+
+				$this->con = new ProjectController($_GET['r']);
 
 		        break;
 			case 'analytics':
@@ -90,6 +89,13 @@ class Route {
 				// restricted area
 
 				$this->con = new ErrorController(403);
+
+		        break;
+			case 'track':
+				// it's a track request: some analytics data getting passed
+				// we don't return anything
+
+				$this->con = new TrackController;
 
 		        break;
 			default:

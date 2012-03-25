@@ -15,10 +15,11 @@ function lazyload($class) {
 	//we check for classes in those dirs
 	$dirs = array(
 		'', 
-		APP, 
+		MODELS, 
 		CONTROLLERS,
 		CONTROLLERS . 'admin/',
-		MODELS,
+		APP,
+		// HELPERS,
 		'libs/'
 	);
 	
