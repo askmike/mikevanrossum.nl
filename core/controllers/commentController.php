@@ -157,7 +157,11 @@ class CommentController extends PartController {
 	function prepareWebsite() {
 		$url = $_POST['url'];
 		
-		// if($url != ) //http:// nog iets fix het dan
+		// append 'http://' if omited 	
+		// http://stackoverflow.com/a/2762083/843033
+		if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+	        $url = "http://" . $url;
+	    }
 		
 		return $url;
 	}
