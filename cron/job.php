@@ -10,7 +10,7 @@ require $path . '/../core/config.php';
 
 // this is not working somehow, I'll do it manually for now
 // require dirname(__FILE__) . '/../core/lazyloading.php';
-
+require $path . '/../core/models/database.php';
 require $path . '/../core/models/dBmodel.php';
 
 //tweet
