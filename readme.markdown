@@ -1,6 +1,6 @@
 This is all the code behind [my personal website](http://mikevanrossum.nl). 
 
-I had to write my own CMS in PHP for the school class [ServerSide Scripting](http://intra.iam.hva.nl/content/1112/verdieping1/server_side_scripting//intro-en-materiaal/). Instead of writing a simple guestbook (the level of skill expected at the end of the class), I wrote my own portfolio/blog website. *This site got me an A for the class.*
+I had to write my own CMS in PHP for the school class [ServerSide Scripting](http://intra.iam.hva.nl/content/1112/verdieping1/server_side_scripting//intro-en-materiaal/). Instead of writing a simple guestbook (the level of skill expected at the end of the class), I wrote my own portfolio/blog website.
 
 ## Features
 
