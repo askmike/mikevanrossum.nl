@@ -15,7 +15,11 @@ class ProtocolController extends Controller {
 		// just for abstraction's sake, sitemap URLS are limited to 50 000
 		// see: http://www.sitemaps.org/protocol.html
 		
-		$data = $this->model->getUrls(50000);
+		$posts = $this->model->getUrls(49000);
+		$p = new ProjectModel;
+		$projects = $p->getUrls(999);
+		
+		$data = array_merge($projects, $posts);
 		
 		// this prevents the sitemap from showing up in google
 		header("X-Robots-Tag: noindex", true);
