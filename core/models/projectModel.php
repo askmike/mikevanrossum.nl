@@ -20,7 +20,7 @@ class ProjectModel extends DBmodel {
 		# Voer het SQL statement uit
 		$statement->execute();
 		
-		$statement->bind_result($id, $date, $titel, $bodyMd, $bodyHtml, $excerpt, $modifyDate, $url);
+		$statement->bind_result($id, $date, $titel, $bodyMd, $bodyHtml, $excerpt, $modifyDate, $url, $meta);
 		
 		while ($statement->fetch()) {
 			$array =  array(
@@ -31,11 +31,16 @@ class ProjectModel extends DBmodel {
 				'meta' => $meta,
 				'date' => $date, 
 				'url' => $url, 
-				'excerpt' => $excerpt
+				'excerpt' => $excerpt,
+				'meta' => $meta
 				);
 		}
 		
 		return $array;
+	}
+	
+	public function getUrls($number) {
+		return $this->query('SELECT url FROM project LIMIT ' . $number);
 	}
 }
 
