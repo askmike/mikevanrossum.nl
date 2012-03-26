@@ -349,8 +349,15 @@ $(function() {
 			
 			globalPage = 'post';
 			
+			//check what page we're on
+			var menuN;
+			if(location.href.indexOf("/projects/") != -1)
+				menuN = 1;
+			else
+				menuN = 3;
+			
 			//menu
-			initLavalamp(3);
+			initLavalamp(menuN);
 
 			//sharing
 			$('#share').bind('mouseenter', function() {
