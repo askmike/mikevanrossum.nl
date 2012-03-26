@@ -291,7 +291,7 @@ $(function() {
 	var $html = $('#html');
 	
 	if($html.hasClass('site')) init();
-	if($html.hasClass('single')) postInit();
+	if($html.hasClass('single')) singleInit();
 	if($html.hasClass('admin')) adminInit();
 	
 	if($('a.email').length) {
@@ -343,7 +343,7 @@ $(function() {
 		
 	}
 	
-	function postInit() {
+	function singleInit() {
 		if(!isNumber(old)) {
 			//basic init for a single post page
 			
@@ -430,6 +430,27 @@ $(function() {
 					});
 				}
 			});
+			
+			
+			// todo: this should not be in the main js file.
+			if($('#feedbackDemo1').length) {
+				
+				$('#feedbackDemo1').click(function(e) {
+					e.preventDefault();
+					$.feedback('Just a sample message!');
+				});
+				
+				$('#feedbackDemo2').click(function(e) {
+					e.preventDefault();
+					$.feedback('Loading something important (just kidding).', true);
+					setTimeout( submitted, 2500 );
+					
+					function submitted() {
+						$.feedback( 'All done!' );
+					}
+				});
+				
+			}
 		}
 	}
 	
