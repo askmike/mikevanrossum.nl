@@ -318,9 +318,8 @@ div#pleft a.current {
 	margin-bottom: 5px;
 }
 
-.single #container p, 
+p,
 .single #container li, 
-.single p, 
 .single li {
 	text-align:justify;
 	line-height: 1.55em;
